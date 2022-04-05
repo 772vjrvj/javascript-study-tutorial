@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>폰트사이즈 px em rem</title>
+  <style>
+    /* Google Web Fonts CDN */
+    @import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR:300,400,500,700,900&display=swap');
+
+    html {
+      font-size: 20px;
+    }
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      font-weight: 300;
+    }
+    header {
+      text-align: center;
+      border-bottom: 1px solid #000;
+    }
+    section {
+      overflow: hidden;
+      display: none;
+    }
+    section div {
+      float: left;
+      width: 50%;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    /* em */
+    .box-em {
+      font-size: 10px;
+    }
+    .box-em h1 {
+      font-size: 3em;
+    }
+    .box-em p {
+      font-size: 2em;
+    }
+
+    /* rem */
+    .box-rem {
+      font-size: 10px;
+    }
+    .box-rem h1 {
+      font-size: 3rem;
+    }
+    .box-rem p {
+      font-size: 2rem;
+    }
+
+    /* btn */
+    .buttons {
+      text-align: center;
+    }
+    .buttons h1 {
+      font-size: 3rem;
+    }
+    .btn {
+      background-color: #000;
+      color: #fff;
+      text-decoration: none;
+      font-size: 2rem;
+      padding: 0.333333333rem 3.333333333rem;
+    }
+
+    @media (max-width: 768px) {
+      html {
+        font-size: 15px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <header>
+      <h1>폰트사이즈</h1>
+      <p class="subhead">px | em | rem</p>
+    </header>
+  
+    <section>
+      <div class="box-em">
+        <h1>em</h1>
+        <p>
+          설산에서 인류의 보이는 위하여 전인 피다. 착목한는 싹이 이상의 것이 사막이다. 생명을 창공에 어디 이상은 이상의 생생하며, 있는 끝까지 설산에서 운다. 같으며, 꽃이 황금시대를 천자만홍이 얼음과 뿐이다. 얼마나 주며, 기쁘며, 무엇을 대고, 그들의 소리다.이것은 고동을 인류의 끓는다. 곳이 인간의 귀는 않는 피에 거선의 이성은 그것은 청춘의 위하여서. 이상의 우리의 보내는 사람은 쓸쓸하랴? 풍부하게 주며, 위하여 불러 이상은 인생의 눈이 것은 자신과 있는가? 꽃이 이 위하여, 관현악이며, 구하지 끓는다.
+        </p>
+      </div>
+      <div class="box-rem">
+        <h1>rem</h1>
+        <p>
+          따뜻한 곳으로 못할 있는가? 웅대한 낙원을 새 약동하다. 풍부하게 우는 있는 석가는 이상의 약동하다. 이 방황하였으며, 위하여 품었기 눈이 위하여서, 유소년에게서 듣는다. 별과 만물은 무한한 이상의 하는 내려온 없으면, 튼튼하며, 인생을 때문이다. 자신과 위하여 맺어, 심장은 길지 이상의 발휘하기 있다. 생의 우리 이상은 피가 청춘의 뜨거운지라, 사는가 이것이다. 붙잡아 목숨을 이 가슴에 피는 속에서 것이다. 피부가 않는 싶이 귀는 있는 사막이다.
+        </p>
+      </div>
+    </section>
+
+    <div class="buttons">
+      <h1>고객센터 문의하기</h1>
+      <a href="#none" class="btn">문의하기</a>
+    </div>
+
+  </div>
+
+</body>
+
+</html>

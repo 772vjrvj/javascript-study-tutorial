@@ -1,0 +1,8 @@
+<!-- Sliding jQuery -->
+  <script>
+    $('선택자').click(function(e) {
+      $.scrollTo(this.hash || 0, 900);
+      e.prevenDefault();
+    });
+  </script>
+  <!-- Sliding jQuery -->

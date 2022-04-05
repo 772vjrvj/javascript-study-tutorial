@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>쇼핑몰 아이템 UI 호버 이펙트 with jQuery</title>
+  <!-- jQuery CDN -->
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="item">
+    <img src="images/model-female.png">
+    <div class="detail">
+      <div class="title">
+        <h2><em>Nightgown</em> Women's Designer Wear</h2>
+        <span class="price">$55.99</span>
+      </div>
+      <div class="info">
+        <div class="size">
+          <label>Sizes</label>
+          <span>XS</span><span>S</span><span>M</span><span>L</span><span>XL</span>
+        </div>
+        <div class="color">
+          <label>Colors</label>
+          <span></span><span></span><span></span><span></span><span></span>
+        </div>
+        <span class="like"></span>
+      </div>
+      <button class="add-cart">Add to Cart</button>
+    </div>
+  </div>
+
+  <script>
+    // const spans = document.querySelectorAll('.size span, .color span');
+    // [...spans].forEach(span => {
+    //   span.addEventListener('click', ()=> {
+    //     const sibs = span.parentNode.childNodes;
+    //     const findSib = [...sibs].find(sib => {
+    //       if(sib.classList && sib.classList.contains('active')){
+    //         return true;
+    //       }
+    //       return false;
+    //     });
+    //     if(findSib){
+    //       findSib.classList.remove('active');
+    //     }
+    //     span.classList.add('active');
+    //   });
+    // }); 됨!
+
+    const sizes = document.querySelectorAll('.size span, .color span');
+    [...sizes].forEach(size => {
+      size.addEventListener('click', ()=> {
+        const findSib = [...sizes].find(sib => sib.classList.contains('active'));
+        if(findSib){
+          findSib.classList.remove('active');
+        }
+        size.classList.add('active');
+      });
+    });
+
+    // const colors = document.querySelectorAll('.color span');
+    // [...colors].forEach(color => {
+    //   color.addEventListener('click', ()=> {
+    //     const findSib = [...colors].find(sib => sib.classList.contains('active'));
+    //     if(findSib){
+    //       findSib.classList.remove('active');
+    //     }
+    //     color.classList.add('active');
+    //   });
+    // });
+
+    const like = document.querySelector('.like');
+
+    like.addEventListener('click', () => {
+      like.classList.toggle('active');
+    })
+
+    // $('.size span, .color span').click(function(){
+    //   $(this).addClass('active')
+    //   $(this).siblings().removeClass('active')
+    // })
+    // $('.like').click(function(){
+    //   $(this).toggleClass('active')
+    // });
+  </script>
+
+</body>
+</html>

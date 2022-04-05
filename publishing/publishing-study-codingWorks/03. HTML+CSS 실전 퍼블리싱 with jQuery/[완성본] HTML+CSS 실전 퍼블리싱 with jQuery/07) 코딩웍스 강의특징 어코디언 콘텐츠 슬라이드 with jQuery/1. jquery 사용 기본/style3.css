@@ -1,0 +1,121 @@
+/* Google Web Fonts CDN */
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR:300,400,500,700,900&display=swap');
+
+/* FontAwesome CDN 4.7 */
+@import url('https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  color: #222222;
+  font-weight: 300;
+  line-height: 1.5em;
+}
+
+a {
+  text-decoration: none;
+  color: #222222;
+}
+
+.container {
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.container .heading {
+  text-align: center;
+
+}
+
+.heading h2 {
+  font-weight: 300;
+  color: crimson;
+  margin-bottom: 25px;
+}
+
+.heading > p {
+  font-size: 35px;
+  font-weight: normal;
+  margin: 0;
+  margin-bottom: 30px;
+}
+
+.heading > p > em {
+  position: relative;
+}
+
+.heading > p > em:after {
+  font-style: normal;
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: -15px;
+  width: 50px;
+  height: 40px;
+  background-image: url("images/logo-kakao.png");
+  background-repeat: no-repeat;
+  background-size: auto;
+  background-position-x: center;
+  background-position-y: center;
+}
+
+
+
+.content {
+  overflow: hidden;
+}
+
+.cardList {
+  width: 50%;
+  float: left;
+}
+
+img {
+  width: 50%;
+  float: right;
+}
+
+.card {
+
+}
+
+.card h3 {
+  font-weight: normal;
+  font-size: 16px;
+  border: 1px solid #cccccc;
+  padding: 6px 12px;
+  border-radius: 3px;
+  position: relative;
+  cursor: pointer;
+}
+
+.card h3:after {
+  position: absolute;
+  right: 10px;
+  content: '\f105';
+  font-family: fontawesome;
+  transition: 0.3s;
+}
+
+.card p{
+  padding: 10px;
+  display: none;
+}
+
+.card.active > p{
+
+}
+
+.card.active > h3{
+  background-color: #203049;
+  color: #ffffff;
+}
+
+.card.active > h3:after{
+  transform: rotate(90deg);
+  color: gold;
+}

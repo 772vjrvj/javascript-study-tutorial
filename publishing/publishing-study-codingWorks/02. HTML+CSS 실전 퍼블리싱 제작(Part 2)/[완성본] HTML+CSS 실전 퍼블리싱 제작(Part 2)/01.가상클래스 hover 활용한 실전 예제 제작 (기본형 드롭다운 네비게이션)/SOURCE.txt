@@ -1,0 +1,9 @@
+Real Estate Type
+
+All
+One room
+1.5 rooms
+Two Room
+Three
+Officetel
+Apartment

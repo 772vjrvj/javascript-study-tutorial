@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>코딩웍스 강의특징 어코디언 콘텐츠 슬라이드 with jQuery</title>
+  <!-- jQuery CDN -->
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="box" >
+    300px * 300px
+  </div>
+  <button id="start">start</button>
+  <button id="paused">paused</button>
+  <button id="reverse">reverse</button>
+<script>
+
+
+  const theBox = document.querySelector('.box');
+  document.getElementById('start').addEventListener('click', () => {
+    theBox.classList.remove('activeani');
+    theBox.classList.remove('activeanireverse');
+    theBox.classList.add('activeani');
+    theBox.style.animationPlayState = "running";
+  });
+
+  document.getElementById('paused').addEventListener('click', () => {
+    theBox.style.animationPlayState = "paused";
+  });
+
+  document.getElementById('reverse').addEventListener('click', () => {
+    theBox.classList.remove('activeani');
+    theBox.classList.remove('activeanireverse');
+    theBox.classList.add('activeanireverse');
+    theBox.style.animationPlayState = "running";
+  });
+
+
+
+</script>
+
+</body>
+</html>
