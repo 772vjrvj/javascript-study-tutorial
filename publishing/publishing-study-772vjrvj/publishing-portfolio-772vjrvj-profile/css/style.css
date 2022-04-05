@@ -1,0 +1,1133 @@
+/* reset */
+* {margin:0; padding:0; font-family: 'Lato';}
+li {list-style: none;}
+a {text-decoration: none; color:#000}
+
+/* nav */
+#nav {position: fixed; left: 0; top: 0; width: 100%; background-color: rgba(255,255,255,0.3); z-index: 1001;}
+#nav .menu {float: right; padding-right: 10px; }
+#nav .menu li {display: inline; }
+#nav .menu li a {display: inline-block; position: relative; padding: 20px 15px; color: #111; font-weight: bold; font-family: 'Abel'; text-transform: capitalize; cursor: pointer}
+#nav .menu li a:before {position: absolute; left: 50%; transform: translateX(-50%); bottom: 10px; height: 1px; background-color: #111; content: ''; width: 0; }
+#nav .menu li.active a:before {width: 70%}
+#nav .mNav {display: none; position: absolute; top: 7px; right: 10px; width: 45px; height: 45px; cursor: pointer;/*background-color: rgba(255,255,255,0.3);*/}
+
+
+/* icon-menu */
+.icon-wrap {padding-left: 10px;}
+.icon-wrap .icon,
+.icon-wrap .icon:before,
+.icon-wrap .icon:after {width: 30px; height: 4px; background: gray;}
+.icon-wrap .icon {position: relative; margin-top:20px;}
+.icon-wrap .icon:before {content:'';position: absolute; left: 0; bottom: 10px; }
+.icon-wrap .icon:after {content:''; position: absolute; left: 0; top: 10px;}
+
+
+/* contents */
+#contents {text-align: center; color: #000;}
+#contents > div {height: 100vh;}
+/*#contents > div h2 {font-size: 90px; font-weight: 100; text-transform: uppercase; z-index: 999}*/
+#contents > div h2 strong {font-weight: 700; font-style: italic;}
+
+/* section */
+#section1 {background:#EEDFD3;}
+#section2 {background:#ffffff}
+#section3 {background:#ffffff;}
+#section4 {background:#E3DCD4}
+#section5 {background:#E3DCD4;}
+#section6 {background:#ffffff;}
+#section7 {background:#F0E9DC;}
+
+
+/* #section1 */
+#section1 .box .mainBox1 {
+    position: absolute;
+    left: 50%; top: 50%;
+    transform: translate(-50%,-50%);
+    width: 500px; height: 400px;
+    background: #ffffff;
+}
+#section1 .box .mainBox1 .mainBox2 {
+    position: absolute;
+    left: -50%; top: 50%;
+    transform: translate(50%,-50%);
+    width: 250px; height: 250px;
+    background-image: url("../img/typewriter-2653187_1920.jpg");
+    background-size: cover;
+    z-index: 1;
+}
+#section1 .box .mainBox1 P{
+    width: 60%;
+    font-weight: bold;
+    font-size: 30px;
+    font-family: 'Nanum Myeongjo', serif;
+    position: absolute;
+    right: 0; top: 50%;
+    transform: translate(50%,-50%);
+    text-align: center;
+}
+#section1 .mainBox1 P span{
+    display: inline-block;
+    line-height: 30px;
+    font-size: 18px;
+    font-family: 'Nanum Myeongjo', serif;
+}
+
+
+/* #section1 */
+#section2 {
+    display: flex;
+    flex-direction: row;
+}
+#section2 .leftSide{
+    width: 50%;
+    height: 100%;
+    position: relative;
+    box-sizing: border-box;
+}
+#section2 .leftSide figure{
+    position: absolute;
+    transform: translate(-50%,-50%);
+    left: 50%; top: 50%;
+}
+#section2 .leftSide figure img{
+    width: 450px;
+    filter: sepia(70%);
+}
+#section2 .rightSide{
+    height: 100%;
+    width: 50%;
+    background-color: #EEDFD3;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+}
+#section2 .rightSide .profile{
+    margin-left: 18%;
+    width: 82%;
+    box-sizing: border-box;
+    text-align: left;
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+}
+#section2 .rightSide .profile h4{
+    font-weight: bold;
+    font-size: 20px;
+    font-family: 'Nanum Myeongjo', serif;
+    margin-bottom: 30px;
+}
+#section2 .rightSide .profile h4 span{
+    font-family: 'Nanum Myeongjo', serif;
+    font-weight: normal;
+    font-size: 20px;
+    padding-left: 40px;
+}
+
+
+#section3{
+    padding: 20px;
+    overflow: hidden;
+}
+
+#section3 .container {
+    width: 33.33%;
+    box-sizing: border-box;
+    background: #fff;
+    padding: 20px;
+    overflow: hidden;
+    float: left;
+    position: relative;
+    height: 100vh;
+}
+
+#section3 .container .box{
+    position: absolute;
+    left: 50%; top: 43%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+}
+
+#section3 .container .box h3 {
+    margin: 0 0 10px 0;
+    padding: 0 0 5px 0;
+    font-family: 'Nanum Myeongjo', serif;
+    font-weight: bold;
+    font-size: 40px;
+    color: #333;
+}
+
+#section3 .container .box .progress-bar{
+    margin-bottom: 13px;
+}
+
+#section3 .container .box .progress-bar h4 {
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+
+
+#section3 .container .box .progress-bar .progress-fill,
+#section3 .container .box .progress-bar .progress-track{
+    height: 30px;
+}
+
+#section3 .container .box .progress-bar .progress-fill span{
+    display: inline-block;
+    line-height: 30px;
+}
+
+
+/* #section4 History */
+#section4 {
+    display: flex;
+}
+
+#section4 .leftSide{
+    height: 100%;
+    flex: 1;
+    position: relative;
+    box-sizing: border-box;
+}
+
+#section4 .leftSide figure{
+    position: absolute;
+    left: 50%; top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+}
+
+#section4 .leftSide figure img{
+    width: 400px;
+}
+
+#section4 .rightSide{
+    flex: 2;
+    height: 100%;
+    background-color: #F6F1EE;
+    box-sizing: border-box;
+    position: relative;
+    padding: 50px 20px;
+}
+
+#section4 .rightSide .entries{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+}
+
+
+#section4 .rightSide .entries .entry {
+    padding: 12px;
+    box-sizing: border-box;
+    text-align: left;
+    margin-left: 40%;
+}
+
+#section4 .rightSide .entries .entry .title {
+    font-family: 'Nanum Myeongjo', serif;
+    font-size: 20px;
+    margin-bottom: 5px;
+    position: relative;
+    color: #000;
+    font-weight: bold;
+}
+
+#section4 .rightSide .entries .entry .title:before {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border: 4px solid #000;
+    background-color: #000;
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+    left: -40px;
+    z-index: 1000;
+}
+
+#section4 .rightSide .entries .entry:nth-child(1) .title:after{
+    content: '';
+    position: absolute;
+    width: 4px;
+    height: 80vh;
+    background-color: #000;
+    top: 10px;
+    left: -34px;
+    z-index: 1000;
+}
+
+#section4 .rightSide .entries .entry .title .portfolioBtn{
+    font-family: 'Nanum Myeongjo', serif;
+    border: 1px solid #E3DCD4;
+    border-radius: 5px;
+    margin-left: 30px;
+    display: inline-block;
+    font-size: 12px;
+    padding: 5px;
+    background-color: #E3DCD4;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+#section4 .rightSide .entries .entry .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    z-index: 10000;
+}
+
+#section4 .rightSide .entries .entry .overlay:target {
+    visibility: visible;
+    opacity: 1;
+}
+
+#section4 .rightSide .entries .entry .overlay .popup {
+    position: absolute;
+    left: 50%; top: 50%;
+    transform: translate(-50%, -50%);
+    padding: 50px;
+    background: #fff;
+    border-radius: 5px;
+    width: 400px;
+    height: 250px;
+}
+
+
+#section4 .rightSide .entries .entry .overlay .popup > h4 {
+    margin-top: 20px;
+    color: #333;
+    font-size: 24px;
+    font-family: 'Nanum Myeongjo', serif;
+}
+#section4 .rightSide .entries .entry .overlay .popup .close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    transition: all 200ms;
+    font-size: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #333;
+}
+#section4 .rightSide .entries .entry .overlay .popup .close:hover {
+    color: #a19e9e;
+}
+#section4 .rightSide .entries .entry .overlay .popup .content {
+    margin-top: 20px;
+}
+#section4 .rightSide .entries .entry .overlay .popup .content p {
+    font-family: 'Nanum Myeongjo', serif;
+    margin-top: 20px;
+}
+
+#section4 .rightSide .entries .entry .body p {
+    width: 100%;
+    font-family: 'Nanum Myeongjo', serif;
+    font-size: 15px;
+    line-height: 1.4em;
+}
+
+
+/* #section5 */
+
+#section5{
+    position: relative;
+}
+
+#section5 .slide_wrapper{
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    width: 960px;
+    margin: 0 auto;
+    height: 300px;
+    overflow:hidden;
+    z-index: 2;
+}
+
+#section5:after{
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 70%;
+    background-color: #ffff;
+    z-index: 1;
+}
+
+
+#section5 .slides{
+    position: absolute;
+    left:0; top:0;
+}
+#section5 .slides.animated{
+    transition: 0.3s ease-out;
+}
+#section5 .slides li{
+    width: 300px;
+    height: 300px;
+    /*background:#ccc;*/
+    float:left;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    border-radius: 3px;
+    filter: saturate(50%);
+}
+#section5 .slides li h4{
+    font-family: 'Nanum Myeongjo', serif;
+    position: absolute;
+    font-size: 20px;
+    width: 50%;
+    left: 50%;
+    bottom: 10%;
+    border-radius: 1px;
+    transform: translateX(-50%);
+    padding: 10px 5px;
+    background-color: white;
+}
+
+
+#section5 .slides li:nth-child(1){
+    background-image: url("../img/megabox.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+#section5 .slides li:nth-child(2){
+    background-image: url("../img/koreaCustom.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+#section5 .slides li:nth-child(3){
+    background-image: url("../img/hynix.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+#section5 .slides li:nth-child(4){
+    background-image: url("../img/locaknlock.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+#section5 .slides li:nth-child(5){
+    background-image: url("../img/hana2.png");
+    background-size: cover;
+    background-position: left;
+    background-repeat: no-repeat;
+}
+
+#section5 .slides li:nth-child(6){
+    background-image: url("../img/dobda.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+#section5 .slides li:nth-child(7){
+    background-image: url("../img/rahan.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+#section5 .slides li:nth-child(8){
+    background-image: url("../img/megabox.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+#section5 .slides li:nth-child(9){
+    background-image: url("../img/koreaCustom.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+#section5 .slides li:nth-child(10){
+    background-image: url("../img/hynix.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+#section5 .slides li:nth-child(11){
+    background-image: url("../img/locaknlock.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+#section5 .slides li:nth-child(12){
+    background-image: url("../img/hana2.png");
+    background-size: cover;
+    background-position: left;
+    background-repeat: no-repeat;
+}
+
+#section5 .slides li:nth-child(13){
+    background-image: url("../img/dobda.jpg");
+    background-size: cover;
+    background-position: left;
+    background-repeat: no-repeat;
+}
+#section5 .slides li:nth-child(14){
+    background-image: url("../img/rahan.jpg");
+    background-size: cover;
+    background-position: left;
+    background-repeat: no-repeat;
+}
+#section5 .slides li:nth-child(15){
+    background-image: url("../img/megabox.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+#section5 .slides li:nth-child(16){
+    background-image: url("../img/koreaCustom.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+#section5 .slides li:nth-child(17){
+    background-image: url("../img/hynix.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+#section5 .slides li:nth-child(18){
+    background-image: url("../img/locaknlock.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+#section5 .slides li:nth-child(19){
+    background-image: url("../img/hana2.png");
+    background-size: cover;
+    background-position: left;
+    background-repeat: no-repeat;
+}
+
+#section5 .slides li:nth-child(20){
+    background-image: url("../img/dobda.jpg");
+    background-size: cover;
+    background-position: left;
+    background-repeat: no-repeat;
+}
+#section5 .slides li:nth-child(21){
+    background-image: url("../img/rahan.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#section5 .slides li:not(:last-child){
+    margin-right: 30px;
+}
+
+
+#section5 .countPage{
+    font-size: 18px;
+    font-weight: bold;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 18%;
+    text-align: center;
+    z-index: 2;
+}
+
+#section5 .controls{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 5%;
+    text-align: center;
+    z-index: 2;
+}
+
+#section5 .controls span{
+    font-family: 'Nanum Myeongjo', serif;
+    background:#333;
+    color: #fff;
+    padding:10px 20px;
+    margin:0 10px;
+    cursor: pointer;
+}
+
+/* #section6 Q&A */
+#section6 {
+    display: flex;
+    position: relative;
+}
+
+#section6 .leftSide{
+    width: 50%;
+    height: 100%;
+    position: relative;
+}
+
+
+#section6 .leftSide .question{
+    background-color: #F5F5F5;
+    width: 70%;
+    height: 80%;
+    position: absolute;
+    right: 0; top: 50%;
+    transform: translateY(-50%);
+}
+
+#section6 .leftSide .question h3{
+    font-family: 'Nanum Myeongjo', serif;
+    margin-top: 40px;
+    font-size: 50px;
+    color: #fff;
+    font-weight: 900;
+    padding: 30px;
+}
+
+#section6 .leftSide .question p{
+    font-family: 'Nanum Myeongjo', serif;
+    display: inline-block;
+    padding: 20px;
+    cursor: pointer;
+    position: relative;
+}
+
+#section6 .leftSide .question p::before{
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 5px;
+    height: 5px;
+    background-color: #000;
+    border-radius: 50%;
+    display: none;
+}
+
+
+
+#section6 .leftSide .question p.active::before{
+    display: inline-block;
+}
+
+#section6 .leftSide .question p.active{
+    font-weight: bolder;
+}
+
+#section6 .rightSide{
+    height: 100%;
+    width: 50%;
+    position: relative;
+}
+
+#section6 .rightSide .answer{
+    background-color: #fff;
+    width: 70%;
+    height: 80%;
+    position: absolute;
+    left: 0; top: 50%;
+    transform: translateY(-50%);
+    padding: 0 80px;
+    box-sizing: border-box;
+}
+
+#section6 .rightSide .answer h3{
+    font-family: 'Nanum Myeongjo', serif;
+    margin-top: 40px;
+    font-size: 50px;
+    color: #000;
+    font-weight: 900;
+    padding: 30px;
+}
+
+#section6 .rightSide .answer p{
+    font-family: 'Nanum Myeongjo', serif;
+    margin-top: 20px;
+    line-height: 40px;
+    display: none;
+}
+
+#section6 .rightSide .answer p.active{
+    display: block;
+}
+
+#section6 .center{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: none;
+}
+
+
+#section6 .center .question{
+    background-color: #F5F5F5;
+    width: 80%;
+    height: 90%;
+    position: absolute;
+    left: 50%; top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#section6 .center .question h3{
+    font-family: 'Nanum Myeongjo', serif;
+    margin-top: 20px;
+    font-size: 45px;
+    color: #fff;
+    font-weight: 900;
+    padding: 30px;
+}
+
+#section6 .center .question p{
+    font-family: 'Nanum Myeongjo', serif;
+    display: inline-block;
+    padding: 10px;
+    cursor: pointer;
+    position: relative;
+}
+
+#section6 .center .question p.title{
+    margin-top: 15px;
+}
+
+#section6 .center .question p.content{
+    line-height: 30px;
+    font-size: 16px;
+    text-align: center;
+    background-color: #ffffff;
+    margin: 0 20px;
+    display: none;
+}
+
+#section6 .center .question p::before{
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 5px;
+    height: 5px;
+    background-color: #000;
+    border-radius: 50%;
+    display: none;
+}
+
+#section6 .center .question p.content.active{
+    display: block;
+}
+
+#section6 .center .question p.title.active::before{
+    display: block;
+}
+#section6 .center .question p.title.active{
+    font-weight: bold;
+}
+
+
+#section7 {
+    display: flex;
+}
+
+#section7 .leftSide{
+    width: 50%;
+    height: 100%;
+    position: relative;
+    box-sizing: border-box;
+}
+
+#section7 .leftSide div{
+    position: absolute;
+    width: 400px;
+    height: 500px;
+    transform: translateY(-50%);
+    right: 0; top: 50%;
+}
+
+#section7 .leftSide div h3{
+    font-family: 'Nanum Myeongjo', serif;
+    margin-top: 40px;
+    font-size: 50px;
+    color: #fff;
+    font-weight: 900;
+    padding: 30px;
+}
+
+
+#section7 .leftSide div .content{
+    font-family: 'Nanum Myeongjo', serif;
+    line-height: 30px;
+    margin-top: 50px;
+}
+
+#section7 .leftSide div .content .no3{
+    font-family: 'Nanum Myeongjo', serif;
+    font-size: 14px;
+}
+
+#section7 .leftSide div .footer{
+    font-family: 'Nanum Myeongjo', serif;
+    font-size: 15px;
+    width: 100%;
+    position: absolute;
+    transform: translateX(-50%);
+    left: 50%; bottom: 0;
+}
+
+#section7 .leftSide div .footer .live{
+    font-family: 'Nanum Myeongjo', serif;
+    display: inline-block;
+    margin-right: 8px;
+    font-size: 14px;
+}
+
+#section7 .leftSide div .footer .name{
+    font-family: 'Nanum Myeongjo', serif;
+    display: inline-block;
+    font-size: 14px;
+}
+
+
+#section7 .leftSide div a {
+    position: absolute;
+    right: 50px;
+    bottom: 30px;
+    background-color: #000;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    color: #fff;
+    display: inline-block;
+    font-size: 30px;
+    line-height: 40px;
+}
+#section7 .leftSide div a span {
+    position: absolute;
+    opacity: 0;
+    left: 50%; top: -40px;
+    transform: translateX(-50%);
+    font-size: 12px;
+    line-height: 1.6;
+    background: #000;
+    padding: 3px 9px;
+    border-radius: 6px 0;
+    transition: all 0.3s ease;
+}
+#section7 .leftSide div a span:before {
+    content: '';
+    position: absolute;
+    left: 50%; bottom: -5px;
+    margin-left: -5px;
+    border-top: 5px solid #000;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+}
+#section7 .leftSide div a:hover span {
+    opacity: 1;
+    top: -33px;
+}
+
+
+#section7 .rightSide{
+    height: 100%;
+    width: 50%;
+    position: relative;
+}
+
+#section7 .rightSide div{
+    position: absolute;
+    width: 400px;
+    height: 500px;
+    background-image: url(../img/women-3118387_1920.jpg);
+    background-size: cover;
+    background-position-x: right;
+    transform: translateY(-50%);
+    left: 0; top: 50%;
+}
+
+
+
+.horizontal .progress-bar {
+    float: left;
+    height: 45px;
+    width: 100%;
+    padding: 12px 0;
+    text-align: left;
+}
+
+.horizontal .progress-bar h4{
+    font-family: 'Nanum Myeongjo', serif;
+    padding: 0 0 3px 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+}
+
+.horizontal .progress-track {
+    position: relative;
+    width: 100%;
+    height: 20px;
+    background: #ebebeb;
+}
+
+.horizontal .progress-fill {
+    overflow: hidden;
+    position: relative;
+    background: #666;
+    height: 20px;
+    width: 0%;
+    color: #fff;
+    text-align: center;
+    font-family: "Lato","Verdana",sans-serif;
+    font-size: 12px;
+    line-height: 20px;
+}
+
+#section3.active .horizontal .progress-fill {
+    animation-name: ani;
+    animation-duration: 1.5s;
+    animation-timing-function: ease-in-out;
+}
+
+
+@keyframes ani {
+    0% {
+        width: 0;
+    }
+}
+
+@media (max-width:1200px){
+    #contents > #section3 {height: 200vh;}
+    #section3 .container {
+        width: 50%;
+    }
+    #section3 .container:last-child{
+        left: 50%;
+        transform: translatex(-50%);
+    }
+    #section4 .leftSide figure img{
+        width: 300px;
+    }
+    #section4 .rightSide .entries .entry{
+        width: 300px;
+        margin-right: 120px;
+    }
+}
+
+@media (max-width:1100px){
+    #section6 .leftSide,
+    #section6 .rightSide
+    {
+        display: none;
+    }
+    #section6 .center{
+        display: block;
+    }
+}
+
+
+@media (max-width:1020px){
+    #section2 .leftSide figure img{
+        width: 350px;
+    }
+    #section4 .leftSide figure{
+        display: none;
+    }
+    #section5 .slide_wrapper{
+        width: 630px;
+    }
+}
+
+@media (max-width:900px){
+    #contents > #section3 {
+        height: 300vh;
+    }
+    #section3 .container {
+        width: 100%;
+    }
+    #section4 .leftSide{
+        display: none;
+    }
+    #section4 .rightSide{
+        width: 100%;
+    }
+    #section4 .rightSide .entries .entry .body p:first-child{
+        display: none;
+    }
+    #section7 .rightSide{
+        display: none;
+    }
+    #section7 .leftSide{
+        width: 100%;
+    }
+    #section7 .leftSide div{
+        background-image: url(../img/women-3118387_1920.jpg);
+        background-size: cover;
+        background-position-y: bottom;
+        background-position-x: right;
+        position: absolute;
+        width: 400px;
+        height: 500px;
+        left: 50%; top: 50%;
+        transform: translate(-50%, -50%);
+    }
+    #section7 .leftSide div h3{
+        color: #000;
+        margin-top: 10px;
+    }
+    #section7 .leftSide div .content{
+        font-family: 'Nanum Myeongjo', serif;
+        line-height: 30px;
+        margin-top: 5px;
+    }
+
+    #section7 .leftSide div .footer{
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+}
+
+@media (max-width:800px){
+    #nav .menu {
+        display: none;
+        height: 100vh;
+        float: none; text-align: center; padding-right: 0;
+        background-color: white;
+    }
+    #nav .menu li a:before {bottom: 0px; }
+
+    #nav .mNav {
+        display: block;
+    }
+    #nav h1 {
+        width: 100%;
+    }
+    #nav .menu li {
+        height: 16.66%;
+        width: 100%; display: inline-block;
+        background-color: #EEDFD3;
+        border-bottom: 2px solid #fff;
+    }
+
+    #nav .menu li.active {
+        background-color: rgba(255, 255, 255, 0.3);
+    }
+    #section1 .box .mainBox1 .mainBox2 {
+        position: absolute;
+        left: 50%; top: 50%;
+        transform: translate(-50%, -50%);
+        width: 400px; height: 300px;
+        opacity: 0.2;
+    }
+    #section1 .box .mainBox1 p{
+        left: 50%; top: 50%;
+        transform: translate(-50%, -50%);
+    }
+    #section2 {
+        display: flex;
+        flex-direction: column;
+    }
+    #section2 .leftSide{
+        width: 100%;
+        height: 50%;
+    }
+    #section2 .rightSide{
+        height: 50%;
+        width: 100%;
+    }
+    #section2 .rightSide .profile h4{
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+    #section2 .rightSide .profile h4:last-child{
+        margin-bottom: 0;
+    }
+    #section2 .rightSide .profile h4 span{
+        font-size: 18px;
+    }
+    #section4 .rightSide .entries .entry{
+        width: 300px;
+        margin-right: 100px;
+    }
+
+}
+
+@media (max-width:700px){
+    #section5 .slide_wrapper{
+        width: 300px;
+    }
+    #section5:after{
+        width: 400px;
+    }
+    #section1 .box .mainBox1 P{
+        width: 100%;
+    }
+}
+
+
+@media (max-width:600px){
+    #section1 .box .mainBox1{
+        width: 80%;
+    }
+    #section1 .box .mainBox1 .mainBox2 {
+        width: 300px; height: 300px;
+    }
+    #section1 .box .mainBox1 P{
+        font-size: 25px;
+    }
+    #section1 .mainBox1 P span{
+        font-size: 16px;
+    }
+    #section2 .rightSide .profile{
+        margin-left: 5%;
+    }
+}
+
+@media (max-width:550px){
+    #section1 .box .mainBox1 .mainBox2 {
+        width: 270px; height: 250px;
+    }
+    #section4 .rightSide .entries .entry{
+        width: 150px;
+        margin-right: 0px;
+        padding-right: 0px;
+    }
+    #section4 .rightSide .entries .entry .overlay .popup{
+        width: 200px;
+    }
+    #section5:after{
+        width: 350px;
+    }
+    #section7 .leftSide div{
+        width: 350px;
+    }
+}
+
+
+@media (max-width:400px){
+    #section1 .box .mainBox1 P{
+        font-size: 18px;
+    }
+    #section1 .mainBox1 P span{
+        font-size: 12px;
+    }
+    #section1 .box .mainBox1 .mainBox2 {
+        width: 250px; height: 250px;
+    }
+    #section5:after{
+        width: 330px;
+    }
+}

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>화살표 트레이닝</title>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+  <div class="container">
+    <div class="icon">
+      <button id="btn1"><b>화살표</b></br><b>Skill</b></button>
+      <button id="btn2"><b>화살표</b></button>
+    </div>
+  </div>
+  <script>
+      $('#btn1').click(function() {
+        $(location).attr('href','select.html?param=all');
+      });
+
+      $('#btn2').click(function() {
+        $(location).attr('href','select.html?param=arrow');
+      });
+  </script>
+</body>
+</html>

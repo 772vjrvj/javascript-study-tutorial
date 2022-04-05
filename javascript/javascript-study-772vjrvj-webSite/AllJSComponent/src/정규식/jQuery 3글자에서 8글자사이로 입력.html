@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div>
+        <div>3개 이상 8개 이하의 숫자 를 포함한 문자열과 매칭합니다</div>
+        <input type="text" id='text'><input type="button" id="btn" value="버튼">
+        <div>결과 : <span id="result" style="color: red;"></span></div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script>
+        $('#btn').on('click',function(){
+            var txt = $('#text').val();
+
+            //^ 시작
+            //.   엔터문자( line breaks, new line)를 제외한 모든 문자
+            //{3,4} 3개 이상 8개 이하의 숫자 를 포함한 문자열과 매칭합니다
+            // $ 끝
+
+            var reg=/^.{3,8}$/;
+            if(!reg.test(txt)){
+                alert('3개 이상 8개 이하의 숫자 를 포함한 문자열과 매칭하세요');
+                $('#result').text(txt + ' 실패');
+            }else{
+                $('#result').text(txt + ' 성공');
+            }
+        
+        });
+
+    </script>
+</body>
+</html>

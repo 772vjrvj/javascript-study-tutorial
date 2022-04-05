@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<body>
+<script>
+    // const resolvedPromise = Promise.resolve([1, 2, 3]);
+    // resolvedPromise.then(console.log); // [ 1, 2, 3 ]
+
+    // const resolvedPromise = new Promise(resolve => resolve([1, 2, 3]));
+    // resolvedPromise.then(console.log); // [ 1, 2, 3 ]
+
+    // const rejectedPromise = Promise.reject(new Error('Error!'));
+    // rejectedPromise.catch(console.log); // Error: Error!
+
+    // const rejectedPromise = new Promise((resolve, reject) => reject(new Error('Error!')));
+    // rejectedPromise.catch(console.log); // Error: Error!
+
+    const resolvedPromise = Promise.resolve([1, 2, 3]);
+    resolvedPromise.then(res => [...res,4])
+    .then(res => res[3])
+    .then(res => console.log(res))
+    ; // [ 1, 2, 3 ]
+</script>
+</body>
+</html>

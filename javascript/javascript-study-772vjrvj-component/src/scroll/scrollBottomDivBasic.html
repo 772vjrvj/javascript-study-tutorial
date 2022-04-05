@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .out {
+            margin: 0;
+            padding: 0;
+            width: 300px;
+            height: 500px;
+            background-color: gray;
+            overflow: scroll;
+        }
+        .in{
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 800px;
+            background-color: #1ea623;
+        }
+    </style>
+</head>
+<body>
+<button type="button">To the Bottom</button>
+<div class="out">
+    <div class="in">
+        Div int
+    </div>
+</div>
+</body>
+<script>
+    let setT;
+
+    document.getElementsByTagName('button')[0].onclick = function () {
+        const outterDiv = document.querySelector('.out');
+
+        const diff = outterDiv.scrollHeight - outterDiv.clientHeight;
+
+        //=========================================================================================================================
+        // 용도 : 해당 element로 움직이고 싶을 때 사용
+        // 아래 코드는 건드릴게 없다. 그냥 가져다가 써라.
+        clearTimeout(setT);
+
+        scrollToC(outterDiv, outterDiv.offsetTop, diff, 1000);
+
+        function scrollToC(element, from, to, duration) {
+            if (duration <= 0) return;
+            if(typeof from === "object")from=from.offsetTop;
+            if(typeof to === "object")to=to.offsetTop;
+
+            scrollToX(element, from, to, 0, 1/duration, 20, linearTween);
+        }
+
+        function scrollToX(element, xFrom, xTo, t01, speed, step, motion) {
+            if (t01 < 0 || t01 > 1 || speed<= 0) {
+                element.scrollTop = xTo;
+                return;
+            }
+            element.scrollTop = xFrom - (xFrom - xTo) * motion(t01);
+            t01 += speed * step;
+
+            setT = setTimeout(function() {
+                scrollToX(element, xFrom, xTo, t01, speed, step, motion);
+            }, step);
+        }
+
+        function linearTween(t) {
+            return t;
+        }
+
+
+
+
+    }
+
+
+</script>
+</html>

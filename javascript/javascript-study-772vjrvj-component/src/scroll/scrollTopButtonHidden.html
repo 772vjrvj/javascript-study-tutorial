@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="fr-CA">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <title>Défilement doux ou le « Smooth Scrolling » en pur JavaScript (Trucsweb.com)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex,nofollow">
+    <meta name="author" content="Django Oznog Blais, Trucsweb.com">
+    <style>
+        /*html {*/
+        /*    scroll-behavior: smooth;*/
+        /*}*/
+        a#cRetour{
+            border-radius:3px;
+            padding:10px;
+            font-size:15px;
+            text-align:center;
+            color:#fff;
+            background:rgba(0, 0, 0, 0.25);
+            position:fixed;
+            right:20px;
+            opacity:1;
+            z-index:99999;
+            transition:all ease-in 0.2s;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            text-decoration: none;
+        }
+        /* Flèche */
+        a#cRetour:before{ content: "\25b2"; }
+        a#cRetour:hover{
+            background:rgba(0, 0, 0, 1);
+            transition:all ease-in 0.2s;
+        }
+        a#cRetour.cInvisible{
+            bottom:-35px;
+            opacity:0;
+            transition:all ease-in 0.5s;
+        }
+
+        a#cRetour.cVisible{
+            bottom:10px;
+            opacity:1;
+        }
+
+        html,body {
+            height:100%;
+            margin:0;
+        }
+
+        .content {
+            height:100%;
+            min-height:100%;/*for mozilla*/
+        }
+
+        html>body .content {
+            height:auto;
+        }
+
+        #section1 {
+            /* background: url(https://dl.dropboxusercontent.com/u/3400459/CodePen/Fullscreen-DIVs/dark-red.png) center center no-repeat scroll #520E24; */
+            width:100%;
+            text-align: center;
+            vertical-align: middle;
+            /* fallback for non-Flexbox browsers */
+            display: inline-block;
+            /* Flexbox browsers */
+            display: -webkit-inline-box;
+            display: -moz-inline-box;
+            display: -ms-inline-flexbox;
+            display: -webkit-inline-flex;
+            display: inline-flex;
+            /* vertical centering for legacy, horizontal centering for modern */
+            -webkit-box-pack: center;
+            -moz-box-pack: center;
+            -ms-flex-pack: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            /* modern Flexbox only */
+            -ms-flex-align: center;
+            -webkit-align-items: center;
+            align-items: center;
+            /* legacy Flexbox only */
+            -webkit-box-orient: vertical;
+            -moz-box-orient: vertical;
+            background-color: #ff9933;
+            font-size:6em;
+        }
+
+        #section2 {
+            /*  background: url(https://dl.dropboxusercontent.com/u/3400459/CodePen/Fullscreen-DIVs/red.png) center center no-repeat scroll #8F2041; */
+            background-color: #c6c3bd;
+            font-size:6em;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #section3 {
+            /*  background: url(https://dl.dropboxusercontent.com/u/3400459/CodePen/Fullscreen-DIVs/dark-orange.png) center center no-repeat scroll #DC554F; */
+            background-color: #d6d3ce;
+            font-size:6em;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #section4 {
+            /*  background: url(https://dl.dropboxusercontent.com/u/3400459/CodePen/Fullscreen-DIVs/orange.png) center center no-repeat scroll #FF905E; */
+            background-color: #eeeeee;
+            font-size:6em;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #section5 {
+            /*  background: url(https://dl.dropboxusercontent.com/u/3400459/CodePen/Fullscreen-DIVs/yellow.png) center center no-repeat scroll #FFDB77; */
+            background-color: #ffffff;
+            font-size:6em;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+
+</head>
+
+
+<body style="height:100%" name="haut" id="haut">
+<div class="content" id="section1">1</div>
+<div class="content" id="section2">2</div>
+<div class="content" id="section3">3</div>
+<div class="content" id="section4">4</div>
+<div class="content" id="section5">5</div>
+
+<div><a id="cRetour" class="cInvisible" href="#haut"></a></div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        window.onscroll = function(ev) {
+            document.getElementById("cRetour").className = (window.pageYOffset > 100) ? "cVisible" : "cInvisible";
+        };
+    });
+
+
+    document.addEventListener('DOMContentLoaded', function() {
+        var aLiens = document.querySelectorAll('a[href*="#"]');
+        for(var i=0, len = aLiens.length; i<len; i++) {
+            aLiens[i].onclick = function () {
+
+                if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+                    //정규식   /로 시작하는것
+                    var target = this.getAttribute("href").slice(1);
+                    if (target.length) {
+                        scrollTo(document.getElementById(target).offsetTop, 1000);
+                        return false;
+                    }
+                }
+            };
+        }
+    });
+
+    function scrollTo(element, duration) {
+        var e = document.documentElement;
+        if(e.scrollTop===0){
+            var t = e.scrollTop;
+            ++e.scrollTop;
+            e = t+1===e.scrollTop--?e:document.body;
+        }
+        scrollToC(e, e.scrollTop, element, duration);
+    }
+
+    function scrollToC(element, from, to, duration) {
+        if (duration < 0) return;
+        if(typeof from === "object")from=from.offsetTop;
+        if(typeof to === "object")to=to.offsetTop;
+
+        scrollToX(element, from, to, 0, 1/duration, 20, easeOutCuaic);
+    }
+
+    function scrollToX(element, x1, x2, t, v, step, operacion) {
+        if (t < 0 || t > 1 || v <= 0) return;
+        element.scrollTop = x1 - (x1-x2)*operacion(t);
+        t += v * step;
+
+        setTimeout(function() {
+            scrollToX(element, x1, x2, t, v, step, operacion);
+        }, step);
+    }
+
+    //BON
+    function easeOutCuaic(t){
+        t--;
+        return t*t*t+1;
+    }
+
+</script>
+</body>
+</html>

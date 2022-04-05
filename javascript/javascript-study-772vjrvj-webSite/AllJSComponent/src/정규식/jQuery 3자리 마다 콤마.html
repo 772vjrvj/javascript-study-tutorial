@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div>
+        <div>jQuery 3자리 마다 콤마</div>
+        <div id="num1">12345.6789</div>
+        <div id="num2">-12345.6789</div>
+        <input type="text" id='text'><input type="button" id="btn" value="버튼">
+        <div>결과 : <span id="result" style="color: red;"></span></div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script>
+        $('#btn').on('click',function(){
+            var txt = $('#text').val();
+
+            const n1 = 12345.6789;
+            const n2 = -12345.6789;
+
+
+            // \B 경계값   /\Ba/g   경우 ex1) baaa 일치 ex2) abbbb 불일치  ex3)  baaaaabb 일치  a앞에 문자가 잇으면 일치
+            // (?<!)	부정 뒤쪽 일치(Negative Lookbehind), /(?<!ab)c/ ES2018      ab 뒤에 있지 않은 c    cab 의 c
+            // \d 숫자     0-9
+            //  \.         문자 .(점)
+            //  * 0회 이상 연속으로 반복되는 문자와 가능한 많이 일치, {0,}와 동일  
+            // (?=)	앞쪽 일치(Lookahead), /ab(?=c)/   c앞에 있는 ab만     abcccc -> ab
+            // (?!)	부정 앞쪽 일치(Negative Lookahead), /ab(?!c)/     c앞에 있지 않은 ab  => cab -> ab
+
+
+            const cn1 = n1.toString()
+            .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+            const cn2 = n2.toString()
+            .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+
+            console.log('cn1 : ', cn1);
+            console.log('cn2 : ', cn2);
+        
+        });
+
+    </script>
+</body>
+</html>

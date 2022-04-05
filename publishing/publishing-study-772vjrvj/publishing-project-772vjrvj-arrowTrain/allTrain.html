@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>화살표 트레이닝</title>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <link rel="stylesheet" href="style2.css">
+</head>
+<body>
+
+  <div class="container">
+    <div class="icon">
+        <img class="img" src="pic/76.png">
+    </div>
+  </div>
+
+
+  <script>
+    var url = document.location.href;
+    var qs = url.substring(url.indexOf('?') + 1).split('&');
+
+    const result = {}
+    qs[0] = qs[0].split('=');
+    result[qs[0][0]] = decodeURIComponent(qs[0][1]);
+
+    setTimeout(() => {
+        let num = `pic/75.png`
+        $('.img').attr("src",num)
+
+      setTimeout(() => {
+        let num = `pic/74.png`
+        $('.img').attr("src",num)
+
+        setTimeout(() => {
+          let num = `pic/73.png`
+          $('.img').attr("src",num)
+
+          setTimeout(() => {
+            var ranNum = Math.floor(Math.random()*72) + 1;
+            let num = `pic/${ranNum}.png`
+            $('.img').attr("src",num)
+            console.log("ranNum",ranNum);
+
+            setTimeout(() => {
+                let num = `pic/78.png`;
+                $('.img').attr("src",num)
+            },result[qs[0][0]] - 250)
+
+            setInterval(() => {
+              var ranNum = Math.floor(Math.random()*72) + 1;
+              let num = `pic/${ranNum}.png`
+              $('.img').attr("src",num)
+              console.log("ranNum",ranNum);
+
+              setTimeout(() => {
+                let num = `pic/78.png`;
+                $('.img').attr("src",num)
+              },result[qs[0][0]] - 250)
+
+  
+            }, result[qs[0][0]]);
+
+
+          }, 800);
+
+        }, 1000)
+
+      }, 1000)
+
+    }, 1000)
+
+
+
+  </script>
+
+</body>
+</html>

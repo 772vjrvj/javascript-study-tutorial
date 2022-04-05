@@ -1,0 +1,12 @@
+{
+  "name": "VanillaJsComponent",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build:sass": "sass src/sass:dist/css"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

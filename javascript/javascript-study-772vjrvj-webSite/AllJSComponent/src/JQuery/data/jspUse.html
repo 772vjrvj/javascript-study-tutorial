@@ -1,0 +1,31 @@
+jsp 파일
+
+...
+<c:forEach var="item" items="${itemList}" varStatus="status">
+<tr  
+     data-idx='${status.count}'
+     data-distb-idntfc-no='${item.distbIdntfcNo}'
+     data-sn='${item.sn}'
+     data-regn-detail-code='${item.regnDetailCode}'
+     data-regn-code='${item.regnCode}'
+     data-regn-nm='${item.regnNm}'
+     onclick='fn_popupItem(this)'
+>
+     <td>${status.count}</td>
+     <td>${item.distbIdntfcNo}</td>
+     <td>${item.prdlstNm}</td>
+     <td>${item.regnNm}</td>
+</tr>
+</c:forEach>
+...
+
+js 파일
+<script>
+     var fn_popupItem = function(obj) {
+	
+	var param = $(obj).data(); // { idx : 0, distbIdntfcNo: 1, sn: 1 ....}
+	
+	// POST 요청
+	$("#itemLayer").load(CTX + "/bm/sel/insertPuchasFragment.do", param);
+};
+</script>
