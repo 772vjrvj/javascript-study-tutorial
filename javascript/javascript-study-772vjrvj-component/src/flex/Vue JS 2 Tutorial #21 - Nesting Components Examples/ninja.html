@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Page Title</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    #ninjas{
+      width: 100%;
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+      box-sizing: border-box;
+    }
+    ul{
+        display: flex; /* flex container 선언 */
+        flex-wrap: wrap;  /* 크가가 넘치면 flex item 을 아래로 내린다.  */
+        list-style-type: none;
+        padding: 0;
+    }
+    li{
+        flex-grow: 1; /* 자식들이 차지하는 비율 모두 동등하게 1씩 1,2,1이면 2번째 놈이 2배를 차지*/
+        flex-basis: 300px; /* flex item 의 기본값값 300px 밑으로 안내려감 */
+        text-align: center;
+        padding: 30px;
+        border: 1px solid #222;
+        margin: 10px;
+    }
+  </style>
+  <script src='main.js'></script>
+</head>
+<body>
+  <div id="ninjas">
+    <ul>
+        <li>
+          <h2>Ryu</h2>
+        </li>
+        <li>
+          <h2>Crystal</h2>
+        </li>
+        <li>
+          <h2>Hitoshi</h2>
+        </li>
+        <li>
+          <h2>Tango</h2>
+        </li>
+        <li>
+          <h2>Kami</h2>
+        </li>
+        <li>
+          <h2>Yoshi</h2>
+        </li>
+    </ul>
+</div>
+</body>
+</html>
