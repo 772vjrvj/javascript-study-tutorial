@@ -14,7 +14,7 @@ const test1Obj = {
   },
   output: []
 }
-for (let index = 0; index < 100000; index++) {
+for (let index = 0; index < 10000; index++) {
   const inputKey = 'testInputKey' + index;
   const inputVal = ['testInputVal' + index]
   test1Obj.input[inputKey] = inputVal;
@@ -28,17 +28,19 @@ for (let index = 0; index < 100000; index++) {
 }
 const test2Obj = _.cloneDeep(test1Obj);
 const test3Obj = _.cloneDeep(test1Obj);
-
-
 console.timeEnd('test1');
 
 
-// 856ms
+//856ms
 // console.time('test2');
 
-// const keys = _.keys(test1Obj.input)
+////input의 key들을 가져오고 ['testInputKey0', ..]
+// const keys = _.keys(test1Obj.input); 
 // const keysLen = keys.length;
 // const result = [];
+
+////key들의 수만큼 for문을 돌면서 찾는다.
+// let count = 0;
 // for (let i = 0; i < keysLen; i++) {
 
 //   let rsObj = {}
@@ -47,6 +49,7 @@ console.timeEnd('test1');
 //   const output = test1Obj.output;
 
 //   const findItem = _.find(output, (item, idx) => {
+//     count += 1;
 //     return item.key === inputkey
 //   });
 
@@ -56,19 +59,58 @@ console.timeEnd('test1');
 
 //   result[i] = rsObj;
 // }
-
+// console.log('count : ', count);
 // console.timeEnd('test2');
 
 
 
 //26.03515625 ms
+console.time('test3');
+
+const keys = _.keys(test1Obj.input)
+const keysLen = keys.length;
+const result = [];
+
+const test1ObjOutput = _.keyBy(test1Obj.output, 'key');
+
+let cnt = 0;
+for (let i = 0; i < keysLen; i++) {
+
+  let rsObj = {}
+
+  const inputkey = keys[i];
+  const output = test1ObjOutput[inputkey];
+
+  rsObj.val1 = output.val1;
+  rsObj.val2 = output.val2;
+  rsObj.val3 = output.val3;
+
+  result[i] = rsObj;
+}
+console.timeEnd('test3');
+
+
+
+
+
+
+
+
 // console.time('test3');
 
 // const keys = _.keys(test1Obj.input)
 // const keysLen = keys.length;
-// const result = [];
+// const result = new Array(keysLen);
+// const output = test1Obj.output;
+// const outputLen = output.length;
 
-// const test1ObjOutput = _.keyBy(test1Obj.output, 'key');
+// //const test1ObjOutput = _.keyBy(test1Obj.output, 'key');
+// let test1ObjOutput = {}
+// for (let idx = 0; idx < outputLen; idx++) {
+//   const ob = output[idx];
+//   test1ObjOutput[ob.key] = ob;
+// }
+
 
 // let cnt = 0;
 // for (let i = 0; i < keysLen; i++) {
@@ -86,46 +128,6 @@ console.timeEnd('test1');
 // }
 // //console.log('result : ', result);
 // console.timeEnd('test3');
-
-
-
-
-
-
-
-
-console.time('test3');
-
-const keys = _.keys(test1Obj.input)
-const keysLen = keys.length;
-const result = new Array(keysLen);
-const output = test1Obj.output;
-const outputLen = output.length;
-
-//const test1ObjOutput = _.keyBy(test1Obj.output, 'key');
-let test1ObjOutput = {}
-for (let idx = 0; idx < outputLen; idx++) {
-  const ob = output[idx];
-  test1ObjOutput[ob.key] = ob;
-}
-
-
-let cnt = 0;
-for (let i = 0; i < keysLen; i++) {
-
-  let rsObj = {}
-
-  const inputkey = keys[i];
-  const output = test1ObjOutput[inputkey];
-
-  rsObj.val1 = output.val1;
-  rsObj.val2 = output.val2;
-  rsObj.val3 = output.val3;
-
-  result[i] = rsObj;
-}
-//console.log('result : ', result);
-console.timeEnd('test3');
 
 
 
