@@ -1,3 +1,4 @@
+
 console.log('공백      isEmpty : ' + _.isEmpty(''));
 console.log('0         isEmpty : ' + _.isEmpty(0));
 console.log('null      isEmpty : ' + _.isEmpty(null));
