@@ -6,3 +6,4 @@ transition을 사용하는데
 
 2. transition css 속성을 동적으로 넣는다.
 
+https://stackoverflow.com/questions/35672718/javascript-slideup-slidedown-one-button

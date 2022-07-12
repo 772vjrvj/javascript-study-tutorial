@@ -32,9 +32,21 @@
 
 .sub-left-container .sub-left-container-bottom {
   background-color: rgb(230, 252, 38);
-  height: 247px;
+  height: 264px;
   overflow-y: hidden;
+  overflow-x: scroll;
 }
+.sub-left-container .sub-left-container-bottom::-webkit-scrollbar {
+  width: 17px;
+}
+.sub-left-container .sub-left-container-bottom::-webkit-scrollbar-track {
+  background-color: rgb(255, 255, 255);
+}
+.sub-left-container .sub-left-container-bottom::-webkit-scrollbar-thumb {
+  background-color: rgb(255, 255, 255);
+}
+
+
 .sub-left-container .sub-left-container-bottom table{
   width: 100%;
 }
@@ -53,9 +65,23 @@
 .sub-right-container .sub-right-container-top {
   background-color: rgb(187, 75, 75);
   height: 56px;
-  width: 800px;
+  width: 817px;
+  
   overflow-x: hidden;
+  overflow-y: scroll;
 }
+.sub-right-container .sub-right-container-top::-webkit-scrollbar {
+  width: 17px;
+}
+.sub-right-container .sub-right-container-top::-webkit-scrollbar-track {
+  background-color: rgb(255, 255, 255);
+}
+.sub-right-container .sub-right-container-bottom::-webkit-scrollbar-thumb {
+  background-color: rgb(255, 255, 255);
+}
+
+
+
 
 .sub-right-container .sub-right-container-top table{
   width: 1000px;
@@ -77,6 +103,19 @@
   width: 817px;
   overflow: scroll;
 }
+.sub-right-container .sub-right-container-bottom::-webkit-scrollbar {
+  width: 17px;
+}
+.sub-right-container .sub-right-container-bottom::-webkit-scrollbar-track {
+  background-color: white;
+}
+.sub-right-container .sub-right-container-bottom::-webkit-scrollbar-thumb {
+  background-color: rgb(204, 204, 204);
+}
+
+
+
+
 .sub-right-container .sub-right-container-bottom table{
   width: 1000px;
 }

@@ -30,25 +30,9 @@
 }
 
 .sub-left-container .sub-left-container-bottom {
-  background-color: rgb(230, 252, 38);
-  height: 660px;
+  height: 644px;
   overflow-y: hidden;
-  overflow-x: scroll;
 }
-.sub-left-container .sub-left-container-bottom::-webkit-scrollbar {
-  width: 17px;
-}
-.sub-left-container .sub-left-container-bottom::-webkit-scrollbar-track {
-  background-color: rgb(255, 255, 255);
-}
-.sub-left-container .sub-left-container-bottom::-webkit-scrollbar-thumb {
-  background-color: rgb(255, 255, 255);
-}
-
-
-
-
-
 .sub-left-container .sub-left-container-bottom table{
   width: 100%;
 }
@@ -59,7 +43,6 @@
 
 
 .sub-right-container {
-  position: relative;
   float: right;
   width: 80%;
   height: 700px;
@@ -68,23 +51,9 @@
 .sub-right-container .sub-right-container-top {
   background-color: rgb(187, 75, 75);
   height: 56px;
-  width: 817px;
+  width: 800px;
   overflow-x: hidden;
-  overflow-y: scroll; 
-  position: relative;
 }
-.sub-right-container .sub-right-container-top::-webkit-scrollbar {
-  width: 17px;
-}
-.sub-right-container .sub-right-container-top::-webkit-scrollbar-track {
-  background-color: rgb(255, 255, 255);
-}
-.sub-right-container .sub-right-container-bottom::-webkit-scrollbar-thumb {
-  background-color: rgb(255, 255, 255);
-}
-
-
-
 .sub-right-container .sub-right-container-top table{
   width: 2400px;
 }
@@ -99,23 +68,10 @@
 }
 
 .sub-right-container .sub-right-container-bottom {
-  background-color: rgb(84, 164, 211);
   height: 660px;
   width: 817px;
   overflow: scroll;
 }
-
-.sub-right-container .sub-right-container-bottom::-webkit-scrollbar {
-  width: 17px;
-}
-.sub-right-container .sub-right-container-bottom::-webkit-scrollbar-track {
-  background-color: white;
-}
-.sub-right-container .sub-right-container-bottom::-webkit-scrollbar-thumb {
-  background-color: rgb(204, 204, 204);
-}
-
-
 .sub-right-container .sub-right-container-bottom table{
   width: 2400px;
 }

@@ -1,0 +1,42 @@
+p {
+  font-size: 40px;
+}
+
+.container {
+  height: 150px;
+  width: 200px;
+  border: 1px solid black;
+  overflow-x: scroll;
+  overflow-y: scroll;
+}
+
+.container p {
+  font-size: 20px;
+}
+
+html::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+html::-webkit-scrollbar-track {
+  background: black;
+}
+html::-webkit-scrollbar-thumb {
+  background: pink;
+  background-clip: padding-box;
+  border: 2px solid transparent;
+}
+
+.container::-webkit-scrollbar {
+  width: 15px;
+  height: 15px;
+}
+.container::-webkit-scrollbar-track {
+  background: gray;
+}
+.container::-webkit-scrollbar-thumb {
+  background: paleturquoise;
+  background-clip: padding-box;
+  border: 3px solid transparent;
+  border-radius: 8px;
+}
