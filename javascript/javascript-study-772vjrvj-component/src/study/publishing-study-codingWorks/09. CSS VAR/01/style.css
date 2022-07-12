@@ -1,0 +1,27 @@
+:root {
+  --primary: skyblue;
+  --secondary: black;
+  --positive: yellowgreen;
+  --negative: crimson;
+}
+
+.btn {
+  border: none;
+  padding: 5px 20px;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  outline: none;
+}
+.btn.primary {
+  background-color: var(--primary);
+}
+.btn.secondary {
+  background-color: var(--secondary);
+}
+.btn.positive {
+  background-color: var(--positive);
+}
+.btn.negative {
+  background-color: var(--negative);
+}

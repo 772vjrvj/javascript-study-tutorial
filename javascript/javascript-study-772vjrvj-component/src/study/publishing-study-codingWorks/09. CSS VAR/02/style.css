@@ -1,0 +1,15 @@
+:root {
+  --big: 45px;
+  --medium: 30px;
+  --small: 16px;
+}
+
+.container h1 {
+  font-size: var(--big);
+}
+.container h3 {
+  font-size: var(--medium);
+}
+.container p {
+  font-size: var(--small);
+}

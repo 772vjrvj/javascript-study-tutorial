@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>Change Section Testimonial</title>
+  <!-- jQuery CDN -->
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <link rel="stylesheet" href="style3.css">
+</head>
+<body>
+  <div class="container">
+    <ul class="navi">
+      <li class="active" data-alt="portrait-01.jpg" data-text="ABOUT">ABOUT</li>
+      <li data-alt="portrait-02.jpg" data-text="INSTRUCTOR">INSTRUCTOR</li>
+      <li data-alt="portrait-03.jpg" data-text="CLASS">CLASS</li>
+      <li data-alt="portrait-04.jpg" data-text="LOCATION">LOCATION</li>
+    </ul>
+    <div class="photo"></div>
+  </div>
+
+  <script>
+    // $('.navi li').mouseenter(function(){
+    //   var alt = $(this).attr('data-alt');
+    //   $('.photo').css({'background-image':'url(images/'+ alt +')'})
+    // });
+    //
+    // $('.navi li').mouseleave(function(){
+    //   $('.photo').css({'background-image':'url(images/portrait-initial.jpg'});
+    // });
+    const lis = document.querySelectorAll('.navi li');
+    const photo = document. querySelector('.photo');
+
+    [...lis].forEach((li, idx) => {
+      li.addEventListener('mouseenter', () => {
+        const alt = li.getAttribute('data-alt') ;
+        photo.style.backgroundImage = 'url(images/' + alt + ')';
+      });
+      li.addEventListener('mouseleave', () => {
+        const alt = li.getAttribute('data-alt') ;
+        photo.style.backgroundImage = 'url(images/portrait-initial.jpg)';
+      });
+    });
+
+
+
+  </script>
+</body>
+</html>

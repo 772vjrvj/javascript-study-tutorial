@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>Change Section Testimonial</title>
+  <!-- jQuery CDN -->
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <link rel="stylesheet" href="style test.css">
+</head>
+<body>
+  <section>
+    <div class="heading">
+      <h1><span>코딩웍스</span>, 프론트엔드 퍼블리셔 취업을 위한 실전 퍼블리싱 강좌</h1>
+      <input type="text" placeholder="What are you looking for?">
+    </div>
+    <div class="tab-inner">
+      <ul class="btn">
+        <li data-alt="tab1" class="active">HTML5</li>
+        <li data-alt="tab2">CSS3</li>
+        <li data-alt="tab3">JQUERY</li>
+        <li data-alt="tab4">JAVASCRIPT</li>
+        <li data-alt="tab5">CSS FRAMEWORKS</li>
+      </ul>
+      <div class="tabs">
+        <div id="tab1" class="active">
+          <h2>HTML5</h2>
+          <img src="images/platform-logo-01.png">
+          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quae consequatur nemo cum eos repellat recusandae ullam natus cupiditate laboriosam, aliquid nisi aperiam laborum illo ut omnis saepe quam eveniet voluptate, eaque voluptatum? Nobis, libero est. Deleniti perferendis minima modi cum, ut mollitia ipsam unde totam laboriosam fuga sapiente qui autem ipsa repellendus, quis harum, illo explicabo quidem aut officia eaque? Libero doloremque officiis eos. Illum quis architecto porro nemo facilis itaque alias, fugiat possimus debitis iure a? Laborum consequatur esse natus reprehenderit quae velit ex repellendus. Excepturi, pariatur ad, sequi voluptatum quaerat placeat sed assumenda repudiandae quibusdam perferendis eum illo.</p>
+        </div>
+        <div id="tab2">
+          <h2>CSS3</h2>
+          <img src="images/platform-logo-02.png">
+          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quae consequatur nemo cum eos repellat recusandae ullam natus cupiditate laboriosam, aliquid nisi aperiam laborum illo ut omnis saepe quam eveniet voluptate, eaque voluptatum? Nobis, libero est. Deleniti perferendis minima modi cum, ut mollitia ipsam unde totam laboriosam fuga sapiente qui autem ipsa repellendus, quis harum, illo explicabo quidem aut officia eaque? Libero doloremque officiis eos. Illum quis architecto porro nemo facilis itaque alias, fugiat possimus debitis iure a? Laborum consequatur esse natus reprehenderit quae velit ex repellendus. Excepturi, pariatur ad, sequi voluptatum quaerat placeat sed assumenda repudiandae quibusdam perferendis eum illo.</p>
+        </div>
+        <div id="tab3">
+          <h2>JQUERY</h2>
+          <img src="images/platform-logo-03.png">
+          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quae consequatur nemo cum eos repellat recusandae ullam natus cupiditate laboriosam, aliquid nisi aperiam laborum illo ut omnis saepe quam eveniet voluptate, eaque voluptatum? Nobis, libero est. Deleniti perferendis minima modi cum, ut mollitia ipsam unde totam laboriosam fuga sapiente qui autem ipsa repellendus, quis harum, illo explicabo quidem aut officia eaque? Libero doloremque officiis eos. Illum quis architecto porro nemo facilis itaque alias, fugiat possimus debitis iure a? Laborum consequatur esse natus reprehenderit quae velit ex repellendus. Excepturi, pariatur ad, sequi voluptatum quaerat placeat sed assumenda repudiandae quibusdam perferendis eum illo.</p>
+        </div>
+        <div id="tab4">
+          <h2>JAVASCRIPT</h2>
+          <img src="images/platform-logo-04.png">
+          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quae consequatur nemo cum eos repellat recusandae ullam natus cupiditate laboriosam, aliquid nisi aperiam laborum illo ut omnis saepe quam eveniet voluptate, eaque voluptatum? Nobis, libero est. Deleniti perferendis minima modi cum, ut mollitia ipsam unde totam laboriosam fuga sapiente qui autem ipsa repellendus, quis harum, illo explicabo quidem aut officia eaque? Libero doloremque officiis eos. Illum quis architecto porro nemo facilis itaque alias, fugiat possimus debitis iure a? Laborum consequatur esse natus reprehenderit quae velit ex repellendus. Excepturi, pariatur ad, sequi voluptatum quaerat placeat sed assumenda repudiandae quibusdam perferendis eum illo.</p>
+        </div>
+        <div id="tab5">
+          <h2>CSS FRAMEWORKS</h2>
+          <img src="images/platform-logo-05.png">
+          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quae consequatur nemo cum eos repellat recusandae ullam natus cupiditate laboriosam, aliquid nisi aperiam laborum illo ut omnis saepe quam eveniet voluptate, eaque voluptatum? Nobis, libero est. Deleniti perferendis minima modi cum, ut mollitia ipsam unde totam laboriosam fuga sapiente qui autem ipsa repellendus, quis harum, illo explicabo quidem aut officia eaque? Libero doloremque officiis eos. Illum quis architecto porro nemo facilis itaque alias, fugiat possimus debitis iure a? Laborum consequatur esse natus reprehenderit quae velit ex repellendus. Excepturi, pariatur ad, sequi voluptatum quaerat placeat sed assumenda repudiandae quibusdam perferendis eum illo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script>
+    // $('.btn li').click(function(){
+    //   $(this).siblings().removeClass('active');
+    //   $(this).addClass('active');
+    //
+    //   $('.tabs div').removeClass('active');
+    //   var dataAlt = '#' + $(this).attr('data-alt');
+    //   $(dataAlt).addClass('active');
+    // });
+
+    const lis = document.querySelectorAll('.btn li');
+    const tabs = document.querySelectorAll('.tabs div');
+
+    [...lis].forEach((ls, idx) => {
+      ls.addEventListener('click', () => {
+        const findIdx = [...lis].findIndex( (item, index) => item.className === 'active');
+        [...lis][findIdx].classList.remove('active');
+        ls.classList.add('active');
+
+        [...tabs][findIdx].classList.remove('active');
+        [...tabs][idx].classList.add('active');
+      })
+    })
+
+
+  </script>
+</body>
+</html>

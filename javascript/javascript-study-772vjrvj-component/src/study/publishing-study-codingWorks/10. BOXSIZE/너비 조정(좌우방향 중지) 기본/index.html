@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>박스 좌우 넓이 조정 </title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div data-width="100px" class="box";>
+  300px * 300px
+</div>
+<button id="start">start</button>
+<button id="paused">paused</button>
+<button id="reverse">reverse</button>
+
+<script>
+
+
+  const theBox = document.querySelector('.box');
+
+  document.getElementById('start').addEventListener('click', () => {
+    const boxWidth = window.getComputedStyle(theBox).getPropertyValue('width');
+    const boxWidthLength = boxWidth.slice(0, boxWidth.length-2);
+    const sec = 3000 * (300/boxWidthLength);
+
+    theBox.style.transitionProperty = 'width';
+    theBox.style.transitionDuration = sec + 'ms';
+    theBox.style.boxSizing = 'border-box';
+    theBox.style.width = '600px';
+    theBox.style.overflow = 'hidden';
+
+  });
+
+  document.getElementById('paused').addEventListener('click', () => {
+    const boxWidth = window.getComputedStyle(theBox).getPropertyValue('width');
+    theBox.style.transitionProperty = 'width';
+    theBox.style.transitionDuration = 0 + 'ms';
+    theBox.style.boxSizing = 'border-box';
+    theBox.style.width = boxWidth;
+    theBox.style.overflow = 'hidden';
+  });
+
+  document.getElementById('reverse').addEventListener('click', () => {
+    const boxWidth = window.getComputedStyle(theBox).getPropertyValue('width');
+    const boxWidthLength = boxWidth.slice(0, boxWidth.length-2);
+    const sec = 3000 * (boxWidthLength/600);
+
+    theBox.style.transitionProperty = 'width';
+    theBox.style.transitionDuration = sec + 'ms';
+    theBox.style.boxSizing = 'border-box';
+    theBox.style.width = '300px';
+    theBox.style.overflow = 'hidden';
+  });
+
+
+
+</script>
+
+</body>
+</html>

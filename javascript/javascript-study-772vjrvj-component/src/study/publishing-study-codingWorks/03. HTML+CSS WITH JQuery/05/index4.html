@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>Change Section Testimonial</title>
+  <!-- jQuery CDN -->
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <link rel="stylesheet" href="style4.css">
+</head>
+<body>
+  <div class="container">
+    <ul class="navi">
+      <li data-alt="images/portrait-01.jpg"><a href="#none" data-text="ABOUT">ABOUT</a></li>
+      <li data-alt="images/portrait-02.jpg"><a href="#none" data-text="INSTRUCTOR">INSTRUCTOR</a></li>
+      <li data-alt="images/portrait-03.jpg"><a href="#none" data-text="CLASS">CLASS</a></li>
+      <li data-alt="images/portrait-04.jpg"><a href="#none" data-text="LOCATION">LOCATION</a></li>
+    </ul>
+    <div class="photo"></div>
+  </div>
+  <script>
+    // $('.navi li').mouseenter(function(){
+    //   var dataAlt = $(this).attr('data-alt');
+    //   $('.photo').css({"background-image":"url("+ dataAlt+")"});
+    // });
+    //
+    // $('.navi li').mouseleave(function(){
+    //   var dataAlt = $(this).attr('data-alt');
+    //   $('.photo').css({"background-image":""});
+    // });
+    const lis = document.querySelectorAll('.navi li a');
+    const photo = document.querySelector('.photo');
+
+    [...lis].forEach((li, liIdx) => {
+      li.addEventListener('mouseenter',() => {
+        const dataAlt = li.parentNode.getAttribute('data-alt');
+        photo.style.backgroundImage = 'url(' + dataAlt + ')';
+      });
+      li.addEventListener('mouseleave',() => {
+        photo.style.backgroundImage = '';
+      });
+    });
+
+
+  </script>
+</body>
+</html>
