@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>Volume</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+</head>
+<style>
+body {
+        background-color: #2a2a2a;
+    }
+    
+    .volume-container {
+      padding: 40px 0px;
+      margin: 0px 20px;
+    }
+    
+    .volume-range {
+        height: 5px;
+        width: 250px;
+        background: #555;
+        border-radius: 15px;
+
+    }
+
+    .volume-range>.volume {
+        height: 5px;
+        width: 50px;
+        background: #2ecc71;
+        border: none;
+        border-radius: 10px;
+        outline: none;
+        position: relative;
+    }
+
+    .volume-range>.volume>.volume-button {
+        width: 20px;
+        height: 20px;
+        border-radius: 20px;
+        background: #FFF;
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+        outline: none;
+    }
+</style>
+<script>
+const volume = document.querySelector('.volume');
+    const volumeRange = document.querySelector('.volume-range');
+    const volumeContainer = document.querySelector('.volume-container');
+    const volumeBtn = document.querySelector('.volume-button');
+
+    // volumeRange.addEventListener("click", volumeClick    );
+    //     function volumeClick(event) {
+    //         let x = event.offsetX;
+    //         volume.style.width = (Math.floor(x) + 10) + 'px';
+    //     }
+
+
+
+        let mouseIsDown = false;
+
+        volumeContainer.addEventListener("mouseup", up);
+        volumeBtn.addEventListener("mousedown", down);
+        volumeContainer.addEventListener("mousemove", volumeSlide, true);
+
+        function down(){ mouseIsDown = true; }
+        function up(){ mouseIsDown = false; }
+				
+    		const volumeRangeWidth = volumeRange.getBoundingClientRect().width; // This will be the volume limit (100%)
+        
+        function volumeSlide(event) {
+            if (mouseIsDown) {
+                let x = event.offsetX;
+                if (event.target.className == "volume-container") {
+                	x = Math.floor(x);
+                  if (x < 0) x = 0; // check if it's too low
+                  if (x > volumeRangeWidth) x = volumeRangeWidth; // check if it's too high
+                  volume.style.width = (x+10) + 'px';
+                }
+                	
+            }
+        }
+</script>
+<body>
+    <div class="volume-container">
+      <div class="volume-range">
+          <div class="volume">
+              <div class="volume-button"></div>
+          </div>
+      </div>
+    </div>
+</body>
+
+</html>

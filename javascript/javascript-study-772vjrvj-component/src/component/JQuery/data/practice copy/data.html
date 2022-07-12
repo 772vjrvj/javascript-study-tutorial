@@ -1,0 +1,36 @@
+<html>
+
+<head>
+    <!-- <script type="text/javascript" src="underscore.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/underscore@1.13.1/underscore-umd-min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="common.js"></script>
+    <meta http-equiv="Context-Type" context="text/html;charset=UTF-8" />
+
+    <script type="text/javascript">
+
+        $(function () {
+            //form submit할 버튼이벤트에 validFormNow()호출
+            $("#search").click(function () {
+                //검증이 true일 경우에만 form submit
+                if ($("#searchForm").validFormNow()) {
+                    //$("#searchForm").submit();
+                }else{
+                    console.log('test');
+                }
+            });
+        });
+
+    </script>
+</head>
+
+<body>
+    <form name="searchForm" id="searchForm">
+        숫자 : <input type="text" data-valid="[[/^[\d]{4,4}$/,'네자리 숫자를 입력해주세요']]" /><br>
+        문자 : <input type="text" data-valid="[[/^.{3,8}$/,'3글자에서 8글자사이로 입력해주세요']]" /><br>
+        <button id="search">조회</button>
+    </form>
+</body>
+
+</html>
