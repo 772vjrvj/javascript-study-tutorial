@@ -1,0 +1,81 @@
+.container{
+  content: "";
+  display: block;
+  clear: both;
+  width: 1000px;
+  margin: 0 auto;
+}
+
+.sub-left-container {
+  float: left;
+  width: 20%;
+  height: 700px;
+}
+
+.sub-left-container .sub-left-container-top {
+  background-color: rgb(69, 211, 100);
+  height: 56px;
+}
+.sub-left-container .sub-left-container-top table{
+  width: 100%;
+}
+.sub-left-container .sub-left-container-top table th{
+  border: 1px solid black;
+}
+.sub-left-container .sub-left-container-top table .main{
+  width: 100%;
+}
+.sub-left-container .sub-left-container-top table .sub{
+  width: 50%;
+}
+
+.sub-left-container .sub-left-container-bottom {
+  height: 644px;
+  overflow-y: hidden;
+}
+.sub-left-container .sub-left-container-bottom table{
+  width: 100%;
+}
+.sub-left-container .sub-left-container-bottom table th{
+  border: 1px solid black;
+  width: 50%;
+}
+
+
+.sub-right-container {
+  float: right;
+  width: 80%;
+  height: 700px;
+}
+
+.sub-right-container .sub-right-container-top {
+  background-color: rgb(187, 75, 75);
+  height: 56px;
+  width: 800px;
+  overflow-x: hidden;
+}
+.sub-right-container .sub-right-container-top table{
+  width: 2400px;
+}
+.sub-right-container .sub-right-container-top table th{
+  border: 1px solid black;
+}
+.sub-right-container .sub-right-container-top table .main{
+  width: 300px;
+}
+.sub-right-container .sub-right-container-top table .sub{
+  width: 150px;
+}
+
+.sub-right-container .sub-right-container-bottom {
+  height: 660px;
+  width: 817px;
+  overflow: scroll;
+}
+.sub-right-container .sub-right-container-bottom table{
+  width: 2400px;
+}
+.sub-right-container .sub-right-container-bottom table td{
+  border: 1px solid black;
+  width: 150px;
+}
