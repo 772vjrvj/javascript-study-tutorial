@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Page Title</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='mouseDragZoomImageKo.css'>
+  <link rel='stylesheet' type='text/css' media='screen' href='reset.css'>
+  
+</head>
+<body>
+<div id="wrap">
+  <div id="header">HEADER</div>
+  <div id="nav">NAV</div>
+  <div id="side_left">SIDE_LEFT</div>
+  <div id="contents">
+    <div class="image_area">
+      <canvas id="myCanvas" width="500" height="500"
+      style="border:1px solid #d3d3d3;">
+      Your browser does not support the canvas element.
+      </canvas>
+    </div>
+    <div class="image_control_area">
+      <div class="button_area">
+        <div class="buttons">
+          <ul>
+            <li>
+              <button id="move" >Move</button>
+            </li>
+            <li>
+              <button id="reset">Reset</button>
+            </li>
+            <li>
+              <button id="line">Line</button>
+            </li>
+            <li>
+              <button id="plus">+</button>
+            </li>
+            <li>
+              <button id="minus">-</button>
+            </li>
+          </ul>
+        </div>
+        <div class="slider">
+          <ul>
+            <li>
+              <input type="range" min="1" max="99" value="8" id="rate">
+            </li>
+            <li>
+              <p>Rate: <span id="rate_value"></span>%</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="info_area">
+        <div class="coordinate">
+          <ul>
+            <li>
+              <p><span class="info_text">X</span><span class="info_value" id="posX">0</span></p>
+            </li>
+            <li>
+              <p><span class="info_text">Y</span><span class="info_value" id="posY">0</span></p>
+            </li>
+          </ul>
+        </div>
+        <div class="rgb">
+          <ul>
+            <li>
+              <p><span class="info_text">R</span><span class="info_value" id="rgbR">255</span></p>
+            </li>
+            <li>
+              <p><span class="info_text">G</span><span class="info_value" id="rgbG">255</span></p>
+            </li>
+            <li>
+              <p><span class="info_text">B</span><span class="info_value" id="rgbB">255</span></p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="side_right">SIDE_RIGHT</div>
+  <div id="footer">FOOTER</div>
+</div>
+
+<script type="text/javascript" src="mouseDragZoomImageKo.js"></script>
+</body>
+</html>

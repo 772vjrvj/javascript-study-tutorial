@@ -1,0 +1,92 @@
+
+
+
+
+#wrap {width: 1000px; height: 900px; margin: 0 auto; color:#000000; text-align: center;}
+#header {width: 1000px; height: 100px; line-height: 100px; background-color: #0277bd;}
+#nav {width: 1000px; height: 100px; line-height: 100px; background-color: #0288d1;}
+#side_left {float: left; width: 200px; line-height: 600px;  height: 600px; background-color: #039be5;}
+#contents {float: left; width: 600px; height: 600px; }
+
+#contents .image_area {
+  height: 500px;
+  width: 500px;
+  margin: 0 auto;
+}
+
+#contents .button_area {
+  width: 500px;
+  height: 80px;
+}
+
+#contents .info_area {
+  width: 500px;
+  height: 80px;
+}
+
+#contents .image_control_area {overflow: hidden; padding-top: 10px; margin: 0 5px 0 5px;}
+#contents .image_control_area .button_area {float: left; width: 50%; height: 80px; background-color: #fff; box-sizing: border-box; padding: 0 10px 0 10px ;}
+#contents .image_control_area .info_area   {float: left; width: 50%; height: 80px; border: 1px solid #b4b2b2; box-sizing: border-box; padding: 4px; border-radius: 5px;}
+
+#contents .image_control_area .button_area .buttons{height: 40px;}
+#contents .image_control_area .button_area .buttons ul {overflow: hidden;}
+#contents .image_control_area .button_area .buttons ul li{float: left; margin-left: 11px;}
+#contents .image_control_area .button_area .buttons ul li:first-child {margin-left: 0;}
+#contents .image_control_area .button_area .buttons ul li button{ background-color: #fff; width: 40px; height: 40px; border: 1px solid #bcbcbc; padding: 5px;box-sizing: border-box;display: block; font-size: 10px; text-align: center;border-radius: 3px; transition: all 0.3s ease;}
+#contents .image_control_area .button_area .buttons ul li button:hover {background-color: #f0f0f0; border-color: #666; color: #000; cursor: pointer;}
+
+
+#contents .image_control_area .button_area .slider{ height: 40px; box-sizing: border-box; line-height: 40px;}
+#contents .image_control_area .button_area .slider ul{ overflow: hidden; }
+#contents .image_control_area .button_area .slider ul li{ float: left; width: 50%; height: 40px; box-sizing: border-box; padding-top: 5px;}
+
+
+#contents .image_control_area .button_area .slider #rate {
+  -webkit-appearance: none; /* 기본 CSS 스타일을 적용하지 않기 위해서 */
+  width: 100%; /* 슬라이더 길이 */
+  height: 15px; /* 슬라이더 두께 */
+  border-radius: 5px; /* 슬라이더 모서리를 약간 둥글게 */
+  background: #e8e8e8; /* 슬라이더 색상 */
+  outline: none; /* 슬라이더 테두리 없이 */
+}
+
+/* 슬라이더 핸들(클릭해서 드래그하는 부분) 커스텀 
+(Chrome, Opera, Safari, Edge 브라우저를 위해서는 -webkit-을,
+Firefox 브라우저를 위해서는 -moz- 를 사용하세요 */
+#contents .image_control_area .button_area .slider #rate::-webkit-slider-thumb {
+  -webkit-appearance: none; /* 기본 CSS 스타일을 적용하지 않기 위해서 */
+  appearance: none; /* 기본 CSS 스타일을 적용하지 않기 위해서 */
+  width: 25px; /* 슬라이더 핸들 길이 */
+  height: 25px; /* 슬라이더 핸들 높이 */
+  border-radius: 50%; /* 핸들 모양을 원모양으로 만들기 위함 */
+  background: #aaaaaa; /* 슬라이더 핸들 색상 */
+  cursor: pointer; /* 슬라이더 핸들에 마우스를 갖다대면 포인터로 변경 */
+}
+
+#contents .image_control_area .button_area .slider #rate::-moz-range-thumb {
+  width: 25px; /* 슬라이더 핸들 길이 */
+  height: 25px; /* 슬라이더 핸들 높이 */
+  border-radius: 50%; /* 핸들 모양을 원모양으로 만들기 위함 */
+  background: #00f; /* 슬라이더 핸들 색상 */
+  cursor: pointer; /* 슬라이더 핸들에 마우스를 갖다대면 포인터로 변경 */
+}
+
+
+
+#contents .image_control_area .info_area .coordinate{}
+#contents .image_control_area .info_area .coordinate ul li{position: relative; float: left; width: 50%; height: 40px; box-sizing: border-box; padding-top: 8px;}
+#contents .image_control_area .info_area .coordinate ul li::after{content: ""; position: absolute; background-color: #c4c4c4; width: 50px; height: 1px; left: 20px; bottom: 10px;}
+
+#contents .image_control_area .info_area .rgb{}
+#contents .image_control_area .info_area .rgb ul li{position: relative; float: left; width: 33.33%; height: 40px; box-sizing: border-box; padding-top: 8px;}
+#contents .image_control_area .info_area .rgb ul li::after{content: ""; position: absolute; background-color: #c4c4c4; width: 50px; height: 1px; left: 20px; bottom: 10px;}
+
+
+#contents .image_control_area .info_area p{text-align: left;}
+#contents .image_control_area .info_area .info_text{padding: 5px; text-align: left; border: 1px solid #c4c4c4; border-radius: 5px;}
+#contents .image_control_area .info_area .info_value{padding: 5px; text-align: left; }
+
+
+
+#side_right {float: left; width: 200px; line-height: 600px;  height: 600px; background-color: #29b6f6;}
+#footer {clear: both; width: 1000px; height: 100px; line-height: 100px; background-color: #0288d1;}
