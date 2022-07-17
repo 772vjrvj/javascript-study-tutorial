@@ -5,19 +5,28 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <script src="./modernizr.js"></script>
 </head>
 <body>
   <canvas id="canvas"></canvas>
   <script>
+
+    // Canvas 지원 여부 확인
+    if (Modernizr.canvas) {
+      // console.log('Canvas를 지원하는 브라우저');
+    }
+
     const canvas = document.getElementById('canvas');
     const ctx = canvas.getContext('2d');
     //https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/moveTo
+    //끊어진 라인
     ctx.beginPath();
     ctx.moveTo(50, 50);   // Begin first sub-path
     ctx.lineTo(200, 50);
     ctx.moveTo(50, 90);   // Begin second sub-path
     ctx.lineTo(280, 120);
     ctx.stroke();
+    
   </script>
 </body>
 </html>

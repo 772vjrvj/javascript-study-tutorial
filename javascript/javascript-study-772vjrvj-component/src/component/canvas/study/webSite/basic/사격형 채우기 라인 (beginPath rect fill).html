@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./modernizr.js"></script>
+</head>
+<body>
+  <canvas id="canvas"></canvas>
+  <script>
+
+    // Canvas 지원 여부 확인
+    if (Modernizr.canvas) {
+      // console.log('Canvas를 지원하는 브라우저');
+    }
+
+    const canvas = document.getElementById('canvas');
+    canvas.width = 600;
+    canvas.height = 600;
+    const ctx = canvas.getContext('2d');
+    
+    ctx.lineWidth = 30;
+    ctx.strokeStyle = 'red';
+    
+    
+    //라인 두께는 기본선 위 아애로 영향을 준다. 30이니깐 15만큼 위에 칠하고 15만큼 아래 칠한다.
+    ctx.beginPath();
+    ctx.rect(25, 25, 100, 100);
+    ctx.stroke();
+
+    //기본
+    ctx.beginPath();
+    ctx.rect(165, 25, 100, 100);
+    ctx.fill();
+
+    //라인 위에 사각형
+    ctx.beginPath();
+    ctx.rect(300, 25, 100, 100);
+    ctx.stroke();
+    ctx.fill();
+
+    //사각형 위에 라인
+    ctx.beginPath();
+    ctx.rect(450, 25, 100, 100);
+    ctx.fill();
+    ctx.stroke();
+
+  </script>
+</body>
+</html>
