@@ -5,14 +5,46 @@
   <meta http-equiv='X-UA-Compatible' content='IE=edge'>
   <title>Page Title</title>
   <meta name='viewport' content='width=device-width, initial-scale=1'>
-  <link rel='stylesheet' type='text/css' media='screen' href='mouseDragZoomImageKo.css'>
-  <link rel='stylesheet' type='text/css' media='screen' href='reset.css'>
-  
+  <link rel='stylesheet' type='text/css' href='css/mouseDragZoomImageKo.css'>
+  <link rel='stylesheet' type='text/css' href='css/reset.css'>
+  <link rel="stylesheet" type='text/css' href="css/font-awesome.css">
 </head>
 <body>
 <div id="wrap">
   <div id="header">HEADER</div>
-  <div id="nav">NAV</div>
+  <div id="nav">
+    <div id="toolbar">
+      <div class="toolbar_left"></div>
+      <div class="toolbar_center">
+        <div class="buttons">
+          <ul>
+            <li>
+              <button id="tool_pointer" ><i class="fa fa-mouse-pointer" aria-hidden="true"></i></button>
+            </li>
+            <li>
+              <button id="tool_pen" ><i class="fa fa-paint-brush" aria-hidden="true"></i></button>
+            </li>
+            <li>
+              <button id="tool_line"><i class="fa fa fa-minus" aria-hidden="true"></i></button>
+            </li>
+            <li>
+              <button id="tool_square"><i class="fa fa-square-o" aria-hidden="true"></i></button>
+            </li>
+            <li>
+              <button id="tool_circle"><i class="fa fa-circle-o" aria-hidden="true"></i></button>
+            </li>
+            <li>
+              <button id="tool_star"><i class="fa fa-star-o" aria-hidden="true"></i></button>
+            </li>
+            <li>
+              <button id="tool_eraser"></button>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="toolbar_right"></div>
+    </div>
+  </div>
   <div id="side_left">SIDE_LEFT</div>
   <div id="contents">
     <div class="image_area">
