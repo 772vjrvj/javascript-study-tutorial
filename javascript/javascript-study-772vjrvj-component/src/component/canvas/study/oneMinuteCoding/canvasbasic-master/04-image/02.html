@@ -69,11 +69,11 @@
         switch (brush) {
           case 'color':
             context.beginPath();
-            context.arc(이벤트.layerX, 이벤트.layerY, 10, 0, Math.PI*2, false);
+            context.arc(이벤트.offsetX, 이벤트.offsetY, 10, 0, Math.PI*2, false);
             context.fill();
             break;
           case 'image':
-            context.drawImage(imgElem, 이벤트.layerX, 이벤트.layerY, 50, 50);
+            context.drawImage(imgElem, 이벤트.offsetX, 이벤트.offsetY, 50, 50);
             break;
         }
       }

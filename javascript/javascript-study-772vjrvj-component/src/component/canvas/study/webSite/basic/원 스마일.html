@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./modernizr.js"></script>
+</head>
+<body>
+  <canvas id="canvas"></canvas>
+  <script>
+
+    // Canvas 지원 여부 확인
+    if (Modernizr.canvas) {
+      // console.log('Canvas를 지원하는 브라우저');
+    }
+
+    //https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/closePath
+
+    function draw() {
+      const canvas = document.getElementById('canvas');
+      if (canvas.getContext) {
+         const ctx = canvas.getContext('2d');
+    
+        ctx.beginPath();
+        ctx.arc(75, 75, 50, 0, Math.PI * 2, true); // Outer circle
+        ctx.moveTo(110, 75);
+        ctx.arc(75, 75, 35, 0, Math.PI, false);  // Mouth (clockwise)
+        ctx.moveTo(65, 65);
+        ctx.arc(60, 65, 5, 0, Math.PI * 2, true);  // Left eye
+        ctx.moveTo(95, 65);
+        ctx.arc(90, 65, 5, 0, Math.PI * 2, true);  // Right eye
+        ctx.stroke();
+      }
+    }
+
+    draw();
+
+  </script>
+</body>
+</html>

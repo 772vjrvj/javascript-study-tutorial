@@ -260,6 +260,20 @@ function settingZoom(type){
   rate = type === 'm' ? 1 - per : 1 + per;
   imgPosX = rate * (imgPosX - pointX) + pointX;
   imgPosY = rate * (imgPosY - pointY) + pointY;
+  imgWidth = imgWidth * rate;
+  imgHeight = imgHeight * rate;
+
+  path = path.map((p, i) => {
+    let result = 0;
+    if(i % 2 === 0){
+      result = rate * (p - pointX) + pointX;
+    }else{
+      result = rate * (p - pointY) + pointY;
+    }
+    return result;
+  });
+
+
 }
 
 
