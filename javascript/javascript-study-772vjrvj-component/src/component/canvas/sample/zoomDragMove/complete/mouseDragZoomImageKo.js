@@ -40,18 +40,20 @@ var dragged   = false; //이미지 드래그 시작
 var move      = false; //이미지 움직일 수 있는지
 var line      = false; //라인 표시
 
-var path      = [10,10, 490,10, 490,490, 10, 490 ,10, 10,
-                 20,20, 480,20, 480,480, 20, 480 ,20, 20,
-                 30,30, 470,30, 470,470, 30, 470 ,30, 30,
-                 40,40, 460,40, 460,460, 40, 460 ,40, 40,
-                 50,50, 450,50, 450,450, 50, 450 ,50, 50,
-                 60,60, 440,60, 440,440, 60, 440 ,60, 60,
-                 70,70, 430,70, 430,430, 70, 430 ,70, 70,
-                 80,80, 420,80, 420,420, 80, 420 ,80, 80,
-                 90,90, 410,90, 410,410, 90, 410 ,90, 90
-                ]; //테스트 경로
-
-
+// var path      = [10,10, 490,10, 490,490, 10, 490 ,10, 10,
+//                  20,20, 480,20, 480,480, 20, 480 ,20, 20,
+//                  30,30, 470,30, 470,470, 30, 470 ,30, 30,
+//                  40,40, 460,40, 460,460, 40, 460 ,40, 40,
+//                  50,50, 450,50, 450,450, 50, 450 ,50, 50,
+//                  60,60, 440,60, 440,440, 60, 440 ,60, 60,
+//                  70,70, 430,70, 430,430, 70, 430 ,70, 70,
+//                  80,80, 420,80, 420,420, 80, 420 ,80, 80,
+//                  90,90, 410,90, 410,410, 90, 410 ,90, 90
+//                 ]; //테스트 경로
+var path = [];
+var type = 'cursor';
+var color = 'black';
+var lineWidth = 10
 
 var canvas    = document.getElementById("myCanvas");
 var ctx       = canvas.getContext("2d");
@@ -101,17 +103,32 @@ lineBtn.addEventListener('click', () => {
   }
 });
 
+
+
 //마우스 다운
 canvas.onmousedown = (e) => {
   pointX = e.offsetX || (e.pageX - canvas.offsetLeft);
   pointY = e.offsetY || (e.pageY - canvas.offsetTop);
 
   //이미지 안에 마우스가 있었던 경우만
-  if(imgPosX <= pointX && pointX <= imgPosX + imgWidth && 
-     imgPosY <= pointY && pointY <= imgPosY + imgHeight ){ 
-     dragged = true;
-     rate = 1;
-  }
+    if(imgPosX <= pointX && pointX <= imgPosX + imgWidth && 
+      imgPosY <= pointY && pointY <= imgPosY + imgHeight ){ 
+      dragged = true;
+      rate = 1;
+    }
+
+    if(type === 'cursor'){
+
+    }else if(type === 'pen'){
+      path.push({
+        index: path.length,
+        color: color,
+        width: lineWidth,
+        path: [pointX, pointY]
+      });
+    }
+  
+
 }
 
 //마우스 업
@@ -137,34 +154,99 @@ canvas.onmousemove = (e) => {
   document.getElementById('rgbG').innerText = rgb[3] === 0? 255: rgb[1]; //RGB G
   document.getElementById('rgbB').innerText = rgb[3] === 0? 255: rgb[2]; //RGB B
 
-  //라인 버튼을 누른 상태면
-  if(line && !dragged && !move || !dragged && move && line){
-    pointX = movePointX;
-    pointY = movePointY;
-    draw();
-  //이미지를 클릭하고 move버튼을 누른 상태면
-  }else if(dragged && move || dragged && move && line){
-    const diffWidth = movePointX - pointX; 
-    const diffHeight = movePointY - pointY;
-    imgPosX = imgPosX + diffWidth;
-    imgPosY = imgPosY + diffHeight;
+  if(type === 'cursor'){
+    //라인 버튼을 누른 상태면
+    if(line && !dragged && !move || !dragged && move && line){
+      pointX = movePointX;
+      pointY = movePointY;
+      draw();
+    //이미지를 클릭하고 move버튼을 누른 상태면
+    }else if(dragged && move || dragged && move && line){
+      const diffWidth = movePointX - pointX; 
+      const diffHeight = movePointY - pointY;
+      imgPosX = imgPosX + diffWidth;
+      imgPosY = imgPosY + diffHeight;
 
-    path = path.map((p, i) => {
-      let result = 0;
-      if(i % 2 === 0){
-        result = p + diffWidth;
-      }else{
-        result = p + diffHeight;
-      }
-      return result;
-    });
+      path = path.map((p, i) => {
+        let result = 0;
+        if(i % 2 === 0){
+          result = p + diffWidth;
+        }else{
+          result = p + diffHeight;
+        }
+        return result;
+      });
 
-    pointX = movePointX;
-    pointY = movePointY;
-    draw();
+      pointX = movePointX;
+      pointY = movePointY;
+      draw();
+    }
+  }else if(type === 'pen' && dragged){
+
+    if(imgPosX <= movePointX && movePointX <= imgPosX + imgWidth && 
+      imgPosY <= movePointY && movePointY <= imgPosY + imgHeight ){ 
+
+        ctx.globalCompositeOperation="source-over";
+        //https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/globalCompositeOperation
+        //마지막에 그린 그림이 제일 위로 올라 온다.
+        ctx.lineWidth = lineWidth;
+        ctx.strokeStyle = color;
+        ctx.beginPath();
+        ctx.moveTo(pointX, pointY);
+        ctx.lineTo(movePointX, movePointY);
+        ctx.stroke();
+    
+        pointX = movePointX;
+        pointY = movePointY;
+        path[path.length-1].path.push(movePointX);
+        path[path.length-1].path.push(movePointY);
+        console.log('path', path);
+    }
+
+
+
+
   }
-
 }
+
+
+const btns = Array.from(document.querySelectorAll('.toolbar_button'));
+function buttonRemoveActive(index){
+  const findBtn = btns.find((item) => item.classList.contains('active'));
+  findBtn.classList.remove('active');
+  btns[index].classList.add('active');
+}
+
+
+document.getElementById("tool_pointer").addEventListener('click', (e) => {
+  type = 'cursor';
+  buttonRemoveActive(0);
+});
+document.getElementById("tool_pen").addEventListener('click', (e) => {
+  type = 'pen';
+  buttonRemoveActive(1);
+});
+document.getElementById("tool_line").addEventListener('click', (e) => {
+  buttonRemoveActive(2);
+});
+document.getElementById("tool_square").addEventListener('click', (e) => {
+  buttonRemoveActive(3);
+});
+document.getElementById("tool_circle").addEventListener('click', (e) => {
+  buttonRemoveActive(4);
+});
+document.getElementById("tool_star").addEventListener('click', (e) => {
+  buttonRemoveActive(5);
+});
+document.getElementById("tool_eraser").addEventListener('click', (e) => {
+  buttonRemoveActive(6);
+});
+document.getElementById("tool_eraser_all").addEventListener('click', (e) => {
+  buttonRemoveActive(7);
+});
+
+
+
 
 //라인버튼 눌렀을 때 마우스 끝 포인터
 function mousePointerMaker(movePointX, movePointY){

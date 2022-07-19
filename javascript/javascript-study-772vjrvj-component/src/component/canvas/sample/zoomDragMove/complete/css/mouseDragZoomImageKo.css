@@ -1,26 +1,21 @@
-
-
-
-
 #wrap {width: 1000px; height: 900px; margin: 0 auto; color:#000000; text-align: center;}
 #header {width: 1000px; height: 100px; line-height: 100px; background-color: #f6f6f6;}
 
 
-#nav {width: 1000px; height: 100px; background-color: #fff; box-sizing: border-box; padding: 5px;}
-#nav #toolbar {width: 990px; height: 90px; border: 1px solid #d3d3d3; }
+#nav {width: 990px; height: 100px; background-color: #fff; padding: 5px;}
+#nav #toolbar {width: 990px; height: 90px; border: 1px solid #d3d3d3; padding: 5px 0 5px 0; box-sizing: border-box;}
 
-#nav #toolbar .toolbar_left {float: left; width: 195px; height: 90px;}
-#nav #toolbar .toolbar_center {float: left; width: 600px; height: 90px;border: 1px solid #d3d3d3; box-sizing: border-box;}
-#nav #toolbar .toolbar_center .buttons{height: 90px;}
-#nav #toolbar .toolbar_center .buttons ul {height: 90px;overflow: hidden; display: flex; flex-direction: row; justify-content: center; align-items: center;}
+#nav #toolbar .toolbar_left {float: left; width: 195px; height: 80px;}
+#nav #toolbar .toolbar_center {float: left; width: 598px; height: 78px;border: 1px solid #d3d3d3; box-sizing: border-box;}
+#nav #toolbar .toolbar_center .buttons{height: 76px; background-color: #f6f6f6;}
+#nav #toolbar .toolbar_center .buttons ul {height: 76px;overflow: hidden; display: flex; flex-direction: row; justify-content: center; align-items: center;}
 #nav #toolbar .toolbar_center .buttons ul li{ margin-left: 11px;}
 #nav #toolbar .toolbar_center .buttons ul li:first-child {margin-left: 0; }
 #nav #toolbar .toolbar_center .buttons ul li button{ background-color: #fff; width: 40px; height: 40px; border: 1px solid #bcbcbc; padding: 5px;box-sizing: border-box;display: block; font-size: 10px; text-align: center;border-radius: 3px; transition: all 0.3s ease;}
 #nav #toolbar .toolbar_center .buttons ul li button:hover {background-color: #f0f0f0; border-color: #666; color: #000; cursor: pointer;}
+#nav #toolbar .toolbar_center .buttons ul li button.active {background-color: #f0f0f0; border-color: #666; color: #000; cursor: pointer;}
 #nav #toolbar .toolbar_center .buttons ul li button i{font-size: 20px; }
-#nav #toolbar .toolbar_right {float: left; width: 195px; height: 90px;}
-
-
+#nav #toolbar .toolbar_right {float: left; width: 195px; height: 80px;}
 
 
 #side_left {float: left; width: 200px; line-height: 600px;  height: 600px; background-color: #f6f6f6;}
