@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>Test</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  
+  <section>
+    <div class="heading">
+      <h1><span>Test</span>, Test Title</h1>
+      <input type="text" placeholder="What are you looking for?">
+    </div>
+    <div class="tab-inner">
+      <ul class="btn">
+        <li onclick="myFunction(event)" data-alt="tab1" class="active">HTML5</li>
+        <li onclick="myFunction(event)" data-alt="tab2">CSS3</li>
+        <li onclick="myFunction(event)" data-alt="tab3">JQUERY</li>
+        <li onclick="myFunction(event)" data-alt="tab4">JAVASCRIPT</li>
+        <li onclick="myFunction(event)" data-alt="tab5">CSS FRAMEWORKS</li>
+      </ul>
+      <div class="tabs">
+        <div id="tab1" class="active">
+          <h2>HTML5</h2>
+          <p>
+            Test Contents HTML5
+          </p>
+        </div>
+        <div id="tab2">
+          <h2>CSS3</h2>
+          <p>
+            Test Contents CSS3
+          </p>
+        </div>
+        <div id="tab3">
+          <h2>JQUERY</h2>
+          <p>
+            Test Contents
+          </p>
+        </div>
+        <div id="tab4">
+          <h2>JAVASCRIPT</h2>
+          <p>
+            Test Contents
+          </p>
+        </div>
+        <div id="tab5">
+          <h2>CSS FRAMEWORKS</h2>
+          <p>
+            Test Contents
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    function myFunction(e){
+      const btns = document.querySelectorAll('.btn li');
+      const findBtn = [...btns].find(inBtn => inBtn.classList.contains('active'));
+      findBtn.classList.remove('active');
+
+      const tabId = findBtn.getAttribute('data-alt');
+      const findTab = document.getElementById(tabId);
+      findTab.classList.remove('active');
+
+      e.target.classList.add('active');
+      const id = e.target.getAttribute('data-alt');
+      const tab = document.getElementById(id);
+      tab.classList.add('active');
+    }
+  </script>
+</body>
+</html>

@@ -12,10 +12,10 @@
   <div class="testimonial-section">
     <h1><span>CodingWorks</span> Publishing Online Class with Inflearn</h1>
     <div class="testimonial-pic">
-      <img class="active" src="images/face-01.jpg"  data-alt="tab1">
-      <img src="images/face-02.jpg" data-alt="tab2">
-      <img src="images/face-03.jpg" data-alt="tab3">
-      <img src="images/face-04.jpg" data-alt="tab4">
+      <img onclick="myFunction(event, 0)" class="active" src="images/face-01.jpg"  data-alt="tab1">
+      <img onclick="myFunction(event, 1)" src="images/face-02.jpg" data-alt="tab2">
+      <img onclick="myFunction(event, 2)" src="images/face-03.jpg" data-alt="tab3">
+      <img onclick="myFunction(event, 3)" src="images/face-04.jpg" data-alt="tab4">
     </div>
     <div class="testimonial">
       <div class="content active" id="tab1">
@@ -47,31 +47,55 @@
 
   <script>
 
+    function myFunction(e, index) {
+      let elems = document.querySelectorAll(".testimonial-pic img");
+      let contents = document.querySelectorAll('.testimonial .content');
 
-    const imgs = document.querySelectorAll('.testimonial-pic img');
-    const contents = document.querySelectorAll('.testimonial .content');
-
-    [...imgs].forEach( img => {
-
-      img.addEventListener('click', () => {
-        // const sibImgs = img.parentNode.childNodes;
-        // const findSib = [...sibImgs].find((sib) => sib.classList.contains('active'));
-        // findSib.classList.remove('active');
-        // img.classList.add('active');
-
-        const findSib = [...imgs].find((sib) => sib.classList.contains('active'));
-        findSib.classList.remove('active');
-        img.classList.add('active');
-        
-        const findContent = [...contents].find(content => content.classList.contains('active'));
-        findContent.classList.remove('active');
-
-        const dataAlt = img.getAttribute('data-alt');
-        const data = document.getElementById(dataAlt);
-        data.classList.add("active");
-
+      elems.forEach((img, idx) => {
+        img.classList.remove('active');
       });
-    });
+
+      contents.forEach((con, idx) => {
+        con.classList.remove('active');
+      });
+
+
+      elems.forEach((img, idx) => {
+        img.classList.remove('active');
+        contents[idx].classList.remove('active');
+      });
+      e.target.className = 'active';
+      contents[index].classList.add('active');
+    }
+
+
+
+
+
+    // const imgs = document.querySelectorAll('.testimonial-pic img');
+    // const contents = document.querySelectorAll('.testimonial .content');
+    //
+    // [...imgs].forEach( img => {
+    //
+    //   img.addEventListener('click', () => {
+    //     // const sibImgs = img.parentNode.childNodes;
+    //     // const findSib = [...sibImgs].find((sib) => sib.classList.contains('active'));
+    //     // findSib.classList.remove('active');
+    //     // img.classList.add('active');
+    //
+    //     const findSib = [...imgs].find((sib) => sib.classList.contains('active'));
+    //     findSib.classList.remove('active');
+    //     img.classList.add('active');
+    //
+    //     const findContent = [...contents].find(content => content.classList.contains('active'));
+    //     findContent.classList.remove('active');
+    //
+    //     const dataAlt = img.getAttribute('data-alt');
+    //     const data = document.getElementById(dataAlt);
+    //     data.classList.add("active");
+    //
+    //   });
+    // });
 
 
 
