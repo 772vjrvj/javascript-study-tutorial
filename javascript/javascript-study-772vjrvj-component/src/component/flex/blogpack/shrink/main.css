@@ -1,0 +1,27 @@
+.layout{
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0;
+}
+.flexbox{
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 0;
+    padding: 10px;
+    background-color: #f0f0f0;
+}
+.item{
+    min-height: 150px;
+    flex-basis: 200px;
+    flex-shrink: 0;
+}
+
+.item:nth-child(1){ background-color: skyblue}
+.item:nth-child(2){background-color: orange}
+.item:nth-child(3){background-color: gray}
+.item:nth-child(4){background-color: red}
+
+.item:nth-child(1){flex-shrink: 1;}
+.item:nth-child(2){flex-shrink: 0;}
+.item:nth-child(3){flex-shrink: 1;}
+.item:nth-child(4){flex-shrink: 2;}
