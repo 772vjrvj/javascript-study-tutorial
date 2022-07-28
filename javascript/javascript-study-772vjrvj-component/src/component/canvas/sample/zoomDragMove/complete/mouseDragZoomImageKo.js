@@ -53,7 +53,7 @@ var line      = false; //라인 표시
 var path = [];
 var type = 'cursor';
 var color = 'black';
-var lineWidth = 10
+var lineWidth = 2
 
 var canvas    = document.getElementById("myCanvas");
 var ctx       = canvas.getContext("2d");
@@ -73,8 +73,6 @@ reset.addEventListener('click', () => {
   dragged   = false; //이미지 드래그 시작
   move      = false; //이미지 움직일 수 있는지
   line      = false; //라인 표시
-
-  path      = [10,10, 490,10, 490,490, 10, 490 ,10, 10]; //테스트 경로
 
   moveBtn.style.backgroundColor = '';
   lineBtn.style.backgroundColor = '';
@@ -104,7 +102,6 @@ lineBtn.addEventListener('click', () => {
 });
 
 
-
 //마우스 다운
 canvas.onmousedown = (e) => {
   pointX = e.offsetX || (e.pageX - canvas.offsetLeft);
@@ -116,25 +113,30 @@ canvas.onmousedown = (e) => {
       dragged = true;
       rate = 1;
     }
-
     if(type === 'cursor'){
 
     }else if(type === 'pen'){
       path.push({
-        index: path.length,
+        uuid: path.length,
         color: color,
         width: lineWidth,
         path: [pointX, pointY]
       });
+      ctx.beginPath();
+      ctx.arc(pointX, pointY, lineWidth, 0, 2 * Math.PI);
+      ctx.fill();
     }
-  
-
 }
 
 //마우스 업
 canvas.onmouseup = () => {
   dragged = false;
- }
+  if(type === 'pen'){
+    ctx.beginPath();
+    ctx.arc(pointX, pointY, lineWidth, 0, 2 * Math.PI);
+    ctx.fill();
+  }
+}
 
 
 //  var newPath = [];
@@ -192,21 +194,44 @@ canvas.onmousemove = (e) => {
         ctx.lineWidth = lineWidth;
         ctx.strokeStyle = color;
         ctx.beginPath();
-        ctx.moveTo(pointX, pointY);
-        ctx.lineTo(movePointX, movePointY);
+        ctx.arc(pointX, pointY, lineWidth/2, 0, 2 * Math.PI);
+
+        const startPoints = circlePoints(lineWidth, pointX, pointY, movePointX, movePointY);
+        const endPoints = circlePoints(lineWidth, movePointX, movePointY, pointX, pointY );
+
+        ctx.moveTo(startPoints[0], startPoints[1]);
+        ctx.lineTo(startPoints[2], startPoints[3]);
+        ctx.lineTo(endPoints[2], endPoints[3]);
+        ctx.lineTo(endPoints[0], endPoints[1]);
+
+        ctx.lineTo(startPoints[0], startPoints[1]);
         ctx.stroke();
-    
-        pointX = movePointX;
+        ctx.fill();
+
+      pointX = movePointX;
         pointY = movePointY;
         path[path.length-1].path.push(movePointX);
         path[path.length-1].path.push(movePointY);
         console.log('path', path);
     }
-
-
-
-
   }
+}
+
+function circlePoints(lineWidth, pointX1, pointY1, pointX2, pointY2){
+  const r = lineWidth/2;
+  let m = 0;
+  if((pointY2 - pointY1) === 0){
+    m = -10000;
+  }else{
+    m = -(pointX2 - pointX1)/(pointY2 - pointY1);
+  }
+  console.log(m);
+
+  const x1 =  pointX1 + (r / Math.sqrt(1 + (m**2)));
+  const y1 = m * (x1 - pointX1) + pointY1;
+  const x2 = pointX1 - (r / Math.sqrt(1 + (m**2)));
+  const y2 = m * (x2 - pointX1) + pointY1;
+  return [x1,y1,x2,y2];
 }
 
 
