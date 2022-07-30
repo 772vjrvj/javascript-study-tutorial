@@ -170,13 +170,14 @@ canvas.onmousemove = (e) => {
       imgPosY = imgPosY + diffHeight;
 
       path = path.map((p, i) => {
-        let result = 0;
-        if(i % 2 === 0){
-          result = p + diffWidth;
-        }else{
-          result = p + diffHeight;
+        for (let j = 0; j <p.path.length; j++) {
+          if(j % 2 === 0){
+            p.path[j] = p.path[j] + diffWidth;
+          }else{
+            p.path[j] = p.path[j] + diffHeight;
+          }
         }
-        return result;
+        return p;
       });
 
       pointX = movePointX;
@@ -188,27 +189,9 @@ canvas.onmousemove = (e) => {
     if(imgPosX <= movePointX && movePointX <= imgPosX + imgWidth && 
       imgPosY <= movePointY && movePointY <= imgPosY + imgHeight ){ 
 
-        ctx.globalCompositeOperation="source-over";
-        //https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/globalCompositeOperation
-        //마지막에 그린 그림이 제일 위로 올라 온다.
-        ctx.lineWidth = lineWidth;
-        ctx.strokeStyle = color;
-        ctx.beginPath();
-        ctx.arc(pointX, pointY, lineWidth/2, 0, 2 * Math.PI);
+        mousemoveDraw(pointX, pointY, movePointX, movePointY);
 
-        const startPoints = circlePoints(lineWidth, pointX, pointY, movePointX, movePointY);
-        const endPoints = circlePoints(lineWidth, movePointX, movePointY, pointX, pointY );
-
-        ctx.moveTo(startPoints[0], startPoints[1]);
-        ctx.lineTo(startPoints[2], startPoints[3]);
-        ctx.lineTo(endPoints[2], endPoints[3]);
-        ctx.lineTo(endPoints[0], endPoints[1]);
-
-        ctx.lineTo(startPoints[0], startPoints[1]);
-        ctx.stroke();
-        ctx.fill();
-
-      pointX = movePointX;
+        pointX = movePointX;
         pointY = movePointY;
         path[path.length-1].path.push(movePointX);
         path[path.length-1].path.push(movePointY);
@@ -216,6 +199,29 @@ canvas.onmousemove = (e) => {
     }
   }
 }
+
+function mousemoveDraw(pointX, pointY, movePointX, movePointY){
+  ctx.globalCompositeOperation="source-over";
+  //https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/globalCompositeOperation
+  //마지막에 그린 그림이 제일 위로 올라 온다.
+  ctx.lineWidth = lineWidth;
+  ctx.strokeStyle = color;
+  ctx.beginPath();
+  ctx.arc(pointX, pointY, lineWidth/2, 0, 2 * Math.PI);
+
+  const startPoints = circlePoints(lineWidth, pointX, pointY, movePointX, movePointY);
+  const endPoints = circlePoints(lineWidth, movePointX, movePointY, pointX, pointY );
+
+  ctx.moveTo(startPoints[0], startPoints[1]);
+  ctx.lineTo(startPoints[2], startPoints[3]);
+  ctx.lineTo(endPoints[2], endPoints[3]);
+  ctx.lineTo(endPoints[0], endPoints[1]);
+
+  ctx.lineTo(startPoints[0], startPoints[1]);
+  ctx.stroke();
+  ctx.fill();
+}
+
 
 function circlePoints(lineWidth, pointX1, pointY1, pointX2, pointY2){
   const r = lineWidth/2;
@@ -421,19 +427,19 @@ function draw() {
   ctx.drawImage(gkhead, imgPosX, imgPosY, imgWidth, imgHeight);
 
   //이미지 내부 그림 그리기
-  for (let index = 0; index < path.length; index += 2) {
-    const p1 = path[index];
-    const p2 = path[index+1];
-    const p3 = path[index+2];
-    const p4 = path[index+3];
-    if(p3 && p4){
-      ctx.beginPath();
-      ctx.moveTo(p1, p2);
-      ctx.lineTo(p3, p4);
-      ctx.stroke();
-      ctx.closePath();
+  path.forEach((p,i)=>{
+    for (let index = 0; index < p.path.length; index += 2) {
+      const p1 = p.path[index];
+      const p2 = p.path[index+1];
+      const p3 = p.path[index+2];
+      const p4 = p.path[index+3];
+      if(p3 && p4){
+        mousemoveDraw(p1, p2, p3, p4);
+      }
     }
-  }
+  })
+
+
 
   //라인이 있다면 라인 그리기
   if(line){
