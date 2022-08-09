@@ -22,8 +22,13 @@
     </style>
 </head>
     <body>
-        <h3>Checkbox1</h3>
-        <input type="checkbox" id="cb1">
+        <h3>Checkbox2</h3>
+        <input type="checkbox" id="cb1" onclick="test(event)">
         <label for="cb1"></label>
+        <script>
+            function test(e){
+                console.log(e.target.checked);
+            }
+        </script>
     </body>
 </html>
