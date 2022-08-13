@@ -1,0 +1,35 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dragWheel</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<button class="btn">line</button>
+
+<svg id="svgOut">
+
+    <line class="focusLine" id="line1" x1="0" y1="0" x2="0" y2="0" stroke-dasharray="4 1" style="stroke: #000000; stroke-width: 2"></line>
+    <line class="focusLine" id="line2" x1="0" y1="0" x2="0" y2="0" stroke-dasharray="4 1" style="stroke: #000000; stroke-width: 2"></line>
+    <line class="focusLine" id="line3" x1="0" y1="0" x2="0" y2="0" stroke-dasharray="4 1" style="stroke: #000000; stroke-width: 2"></line>
+    <line class="focusLine" id="line4" x1="0" y1="0" x2="0" y2="0" stroke-dasharray="4 1" style="stroke: #000000; stroke-width: 2"></line>
+
+</svg>
+<div id="container">
+    <div id="box">
+
+    </div>
+    <svg id="svgIn">
+        <line class="focusLine" id="line5" x1="0" y1="0" x2="0" y2="0" stroke-dasharray="4 1" style="stroke: #000000; stroke-width: 2"></line>
+        <line class="focusLine" id="line6" x1="0" y1="0" x2="0" y2="0" stroke-dasharray="4 1" style="stroke: #000000; stroke-width: 2"></line>
+        <line class="focusLine" id="line7" x1="0" y1="0" x2="0" y2="0" stroke-dasharray="4 1" style="stroke: #000000; stroke-width: 2"></line>
+        <line class="focusLine" id="line8" x1="0" y1="0" x2="0" y2="0" stroke-dasharray="4 1" style="stroke: #000000; stroke-width: 2"></line>
+    </svg>
+</div>
+<script type="text/javascript" src="dragWheelLine.js"></script>
+
+</body>
+</html>

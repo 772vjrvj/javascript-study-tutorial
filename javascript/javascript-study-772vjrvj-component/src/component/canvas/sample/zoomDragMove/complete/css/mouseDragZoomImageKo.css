@@ -29,7 +29,31 @@
   height: 500px;
   width: 800px;
   margin: 0 auto;
+  position: relative;
+  border: 1px solid blue;
 }
+#contents .image_area #imageWrapper{
+  height: 500px;
+  width: 500px;
+  position: absolute;
+  border: 1px solid red;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  overflow: hidden;
+}
+#contents .image_area #imageWrapper #canvasWrapper{
+  height: 500px;
+  width: 500px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  border: 1px solid violet;
+  background-color: violet;
+}
+
+
+
 #contents .image_control_area {overflow: hidden; padding-top: 10px; margin: 0 5px 0 5px;}
 #contents .image_control_area .button_area {float: left; width: 50%; height: 80px; background-color: #fff; box-sizing: border-box; padding: 0 10px 0 10px ;}
 #contents .image_control_area .info_area   {float: left; width: 50%; height: 80px; border: 1px solid #d3d3d3; box-sizing: border-box; padding: 4px; border-radius: 5px;}

@@ -50,10 +50,13 @@
     <div id="side_left">SIDE_LEFT</div>
     <div id="contents">
       <div class="image_area">
-        <canvas id="myCanvas" width="500" height="500"
-                style="border:1px solid #d3d3d3;">
-          Your browser does not support the canvas element.
-        </canvas>
+        <div id="imageWrapper">
+          <div id="canvasWrapper">
+            <canvas id="myCanvas" width="500" height="500">
+              Your browser does not support the canvas element.
+            </canvas>
+          </div>
+        </div>
       </div>
       <div class="image_control_area">
         <div class="button_area">
@@ -64,9 +67,6 @@
               </li>
               <li>
                 <button id="reset">Reset</button>
-              </li>
-              <li>
-                <button id="line">Line</button>
               </li>
               <li>
                 <button id="plus">+</button>

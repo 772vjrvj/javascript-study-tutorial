@@ -85,7 +85,7 @@
         draw(scale, translatePos);
       }, false);
 
-      // add event listeners to handle screen drag
+      // add event listeners to handle screen dragWheel
       canvas.addEventListener("mousedown", function(evt) {
         mouseDown = true;
         startDragOffset.x = evt.clientX - translatePos.x;

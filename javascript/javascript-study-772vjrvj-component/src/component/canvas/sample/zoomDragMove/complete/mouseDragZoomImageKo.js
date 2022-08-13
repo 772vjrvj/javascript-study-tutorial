@@ -1,5 +1,7 @@
 
 window.onload = function(){
+  ctx.drawImage(gkhead, 0, 0, canvas.width, canvas.height);
+
   draw();
 }
 
@@ -13,7 +15,6 @@ var reset     = document.getElementById("reset");
 var plus      = document.getElementById("plus");
 var minus     = document.getElementById("minus");
 var moveBtn   = document.getElementById("move");
-var lineBtn   = document.getElementById("line");
 
 //slider
 var rateValue = document.getElementById("rate_value");
@@ -26,42 +27,40 @@ var rate      = document.getElementById("rate");
 
 //변수
 var rate      = 1;    //총 증가율
+var areaRate      = 1;    //총 증가율
 var per       = 0.08; //증가비율
-
 var pointX    = 0;   //마지막으로 움직인 마우스 x위치
 var pointY    = 0;   //마지막으로 움직인 마우스 y위치
-
 var imgPosX   = 0;   //초기 이미지 x위치
 var imgPosY   = 0;   //초기 이미지 y위치
 var imgWidth  = 500; //초기 이미지 width
 var imgHeight = 500; //초기 이미지 height
+var oriImgWidth  = 500; //초기 이미지 width
+var oriImgHeight = 500; //초기 이미지 height
 
 var dragged   = false; //이미지 드래그 시작
 var move      = false; //이미지 움직일 수 있는지
 var line      = false; //라인 표시
-
-// var path      = [10,10, 490,10, 490,490, 10, 490 ,10, 10,
-//                  20,20, 480,20, 480,480, 20, 480 ,20, 20,
-//                  30,30, 470,30, 470,470, 30, 470 ,30, 30,
-//                  40,40, 460,40, 460,460, 40, 460 ,40, 40,
-//                  50,50, 450,50, 450,450, 50, 450 ,50, 50,
-//                  60,60, 440,60, 440,440, 60, 440 ,60, 60,
-//                  70,70, 430,70, 430,430, 70, 430 ,70, 70,
-//                  80,80, 420,80, 420,420, 80, 420 ,80, 80,
-//                  90,90, 410,90, 410,410, 90, 410 ,90, 90
-//                 ]; //테스트 경로
 var path = [];
+var oriPath = [];
+var uuid = 0;
 var type = 'cursor';
 var color = 'black';
-var lineWidth = 2
+var lineWidth = 2;
+var eraserWidth = 6;
 
-var canvas    = document.getElementById("myCanvas");
-var ctx       = canvas.getContext("2d");
+imageWrapper
+var imageWrapper    = document.getElementById("imageWrapper");
+
+var canvas           = document.getElementById("myCanvas");
+var canvasWrapper    = document.getElementById("canvasWrapper");
+var ctx              = canvas.getContext("2d");
 
 reset.addEventListener('click', () => {
-  rate      = 1;    //총 증가율
+  rate      = 1/areaRate;    //총 증가율
+  areaRate = 1;
   per       = 0.08; //증가비율
-  
+
   pointX    = 0;   //마지막으로 움직인 마우스 x위치
   pointY    = 0;   //마지막으로 움직인 마우스 y위치
   
@@ -69,13 +68,16 @@ reset.addEventListener('click', () => {
   imgPosY   = 0;   //초기 이미지 y위치
   imgWidth  = 500; //초기 이미지 width
   imgHeight = 500; //초기 이미지 height
-  
+  canvasWrapper.style.left = 0 + 'px';
+  canvasWrapper.style.top = 0 + 'px';
+  canvasWrapper.style.width = imgWidth + 'px';
+  canvasWrapper.style.height = imgHeight + 'px';
   dragged   = false; //이미지 드래그 시작
   move      = false; //이미지 움직일 수 있는지
   line      = false; //라인 표시
 
   moveBtn.style.backgroundColor = '';
-  lineBtn.style.backgroundColor = '';
+  ctx.drawImage(gkhead, 0, 0, canvas.width, canvas.height);
   draw();
 });
 
@@ -89,64 +91,189 @@ moveBtn.addEventListener('click', () => {
   }
 });
 
-//line버튼 클릭
-lineBtn.addEventListener('click', () => {
-  line = !line;
-  if(line === true){
-    lineBtn.style.backgroundColor = '#f0f0f0';
-  }else{
-    lineBtn.style.backgroundColor = '';
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.drawImage(gkhead, imgPosX, imgPosY, imgWidth, imgHeight);
+canvasWrapper.onmousedown = (e) => {
+  if(type === 'cursor'){
+    pointX = e.offsetX || (e.pageX - canvas.offsetLeft);
+    pointY = e.offsetY || (e.pageY - canvas.offsetTop);
+    dragged = true;
+    rate = 1;
   }
-});
+}
 
+canvasWrapper.onmousemove = (e) => {
+
+  if(type === 'cursor'){
+    if(dragged && move){
+      const movePointX = e.offsetX || (e.pageX - canvas.offsetLeft); //움직이는 마우스 x좌표
+      const movePointY = e.offsetY || (e.pageY - canvas.offsetTop);  //움직이는 마우스 y좌표
+
+      const diffWidth = movePointX - pointX;
+      const diffHeight = movePointY - pointY;
+
+      
+      //아래 처럼 하면 문제가 있음
+      // imgPosX = imgPosX + diffWidth;
+      // imgPosY = imgPosY + diffHeight;
+
+      // canvasWrapper.style.left = imgPosX + 'px';
+      // canvasWrapper.style.top = imgPosY + 'px';
+
+
+      const left1 = canvasWrapper.style.left;
+      const left2 = left1.substring(0, left1.length-2);
+
+      const top1 = canvasWrapper.style.top;
+      const top2 = top1.substring(0, top1.length-2);
+
+      const left3 = Number(left2) + Number(diffWidth);
+      const top3 = Number(top2) + Number(diffHeight);
+
+      canvasWrapper.style.left = left3 + 'px';
+      canvasWrapper.style.top = top3 + 'px';
+      imgPosX   = left3;
+      imgPosY   = top3;
+
+    }
+  }
+}
+
+canvasWrapper.onmouseup = () => {
+  dragged = false;
+}
+
+imageWrapper.onwheel = (e) => {
+
+  const rateBtn = document.getElementById("rate");
+
+  if(rateBtn.value !== null
+      && rateBtn.value !== undefined
+      && !Number.isNaN(rateBtn.value)
+      && rateBtn.value > 0 && rateBtn.value <100){
+    per = Number(rateBtn.value) / 100;
+  }else{
+    per = 0.08;
+  }
+
+  if(e.target.id === 'imageWrapper'){
+    pointX = e.offsetX;
+    pointY = e.offsetY;
+  }else if(e.target.id === 'myCanvas' || e.target.id === 'canvasWrapper'){
+    pointX = imgPosX + e.offsetX;
+    pointY = imgPosY + e.offsetY;
+  }
+
+  if(e.deltaY < 0){ //스크롤 up
+    rate = Math.round((1 + per) * 100) / 100;
+  }else{ //스크롤 down
+    rate = Math.round((1 - per) * 100) / 100;
+  }
+  areaRate = areaRate * rate;
+  imgPosX = rate * (imgPosX - pointX) + pointX;
+  imgPosY = rate * (imgPosY - pointY) + pointY;
+  imgWidth = imgWidth * rate;
+  imgHeight = imgHeight * rate;
+
+  canvasWrapper.style.left = imgPosX + 'px';
+  canvasWrapper.style.top = imgPosY + 'px';
+
+  canvasWrapper.style.width = imgWidth + 'px';
+  canvasWrapper.style.height = imgHeight + 'px';
+
+  draw();
+}
 
 //마우스 다운
 canvas.onmousedown = (e) => {
-  pointX = e.offsetX || (e.pageX - canvas.offsetLeft);
-  pointY = e.offsetY || (e.pageY - canvas.offsetTop);
-
-  //이미지 안에 마우스가 있었던 경우만
-    if(imgPosX <= pointX && pointX <= imgPosX + imgWidth && 
-      imgPosY <= pointY && pointY <= imgPosY + imgHeight ){ 
-      dragged = true;
-      rate = 1;
-    }
-    if(type === 'cursor'){
-
-    }else if(type === 'pen'){
-      path.push({
-        uuid: path.length,
-        color: color,
-        width: lineWidth,
-        path: [pointX, pointY]
-      });
-      ctx.beginPath();
-      ctx.arc(pointX, pointY, lineWidth, 0, 2 * Math.PI);
-      ctx.fill();
-    }
-}
-
-//마우스 업
-canvas.onmouseup = () => {
-  dragged = false;
   if(type === 'pen'){
+    dragged = true;
+    pointX = e.offsetX || (e.pageX - canvas.offsetLeft);
+    pointY = e.offsetY || (e.pageY - canvas.offsetTop);
+    path.push({
+      uuid: ++uuid ,
+      color: color,
+      width: lineWidth,
+      path: [pointX, pointY],
+      startPoint: [pointX, pointY],
+      endPoint: [],
+      xMin: 0,
+      xMax: 0,
+      yMin: 0,
+      yMax: 0,
+    });
     ctx.beginPath();
     ctx.arc(pointX, pointY, lineWidth, 0, 2 * Math.PI);
     ctx.fill();
+  }else if(type === 'eraser'){
+    dragged = true;
+    pointX = e.offsetX || (e.pageX - canvas.offsetLeft);
+    pointY = e.offsetY || (e.pageY - canvas.offsetTop)
+
+
+    //점 하나를 찍기는 어려우므로 지우개 사각형 넓이를 구하고 그 넓이 안의 점이 라인에 들어가면 된다.
+    let lineHalf = Math.floor(eraserWidth/2);
+
+    const startX = pointX - lineHalf < 0 ? 0 : pointX - lineHalf;
+    const endX = pointX + lineHalf > 500 ? 500 : pointX + lineHalf;
+
+    const startY = pointY - lineHalf < 0 ? 0 : pointY - lineHalf;
+    const endY = pointY + lineHalf > 500 ? 500 : pointY + lineHalf;
+
+    let xArea = [];
+    for (let i = startX; i <= endX; i++) {
+      xArea.push(i);
+    }
+
+    let yArea = [];
+    for (let i = startY; i <= endY; i++) {
+      yArea.push(i);
+    }
+
+    let area = [];
+
+    for (let i = 0; i <xArea.length; i++) {
+      for (let j = 0; j < yArea.length; j++) {
+        area.push(xArea[i]);
+        area.push(yArea[j]);
+      }
+    }
+
+    //최대최소 밖인 경우 빼기
+    let removePath = null;
+    for (let i = path.length-1; i >= 0; i--) {
+      console.log('i : ', i);
+      if(endX < path[i].xMin || path[i].xMax < startX
+          || endY < path[i].yMin || path[i].yMax < startY){
+      }else{
+        for (let j = 0; j < area.length; j += 2) {
+          for (let k = 0; k < path[i].path.length; k += 2) {
+            if(path[i].path[k] === area[j] && path[i].path[k+1] ===  area[j+1]){
+              removePath = i;
+              console.log('break removePath ; ', removePath);
+              break;
+            }
+          }
+          if(removePath !== null){
+            break;
+          }
+        }
+      }
+      if(removePath !== null){
+        break;
+      }
+    }
+
+    console.log('removePath ; ', removePath);
+    if(removePath !== null){
+      path.splice(removePath, 1);
+      draw();
+    }
   }
 }
 
-
-//  var newPath = [];
 //마우스 움직임
 canvas.onmousemove = (e) => {
-  const movePointX = e.offsetX || (e.pageX - canvas.offsetLeft); //움직이는 마우스 x좌표
-  const movePointY = e.offsetY || (e.pageY - canvas.offsetTop);  //움직이는 마우스 y좌표
-
-  // newPath = [...newPath, movePointX, movePointY];
-  // console.log(JSON.stringify(newPath));
+  const movePointX = e.offsetX < 0 ? 0 : e.offsetX; //움직이는 마우스 x좌표
+  const movePointY = e.offsetY < 0 ? 0 : e.offsetY;  //움직이는 마우스 y좌표
 
   document.getElementById('posX').innerText = movePointX; //x좌표
   document.getElementById('posY').innerText = movePointY; //y좌표
@@ -156,47 +283,109 @@ canvas.onmousemove = (e) => {
   document.getElementById('rgbG').innerText = rgb[3] === 0? 255: rgb[1]; //RGB G
   document.getElementById('rgbB').innerText = rgb[3] === 0? 255: rgb[2]; //RGB B
 
-  if(type === 'cursor'){
-    //라인 버튼을 누른 상태면
-    if(line && !dragged && !move || !dragged && move && line){
-      pointX = movePointX;
-      pointY = movePointY;
-      draw();
-    //이미지를 클릭하고 move버튼을 누른 상태면
-    }else if(dragged && move || dragged && move && line){
-      const diffWidth = movePointX - pointX; 
-      const diffHeight = movePointY - pointY;
-      imgPosX = imgPosX + diffWidth;
-      imgPosY = imgPosY + diffHeight;
-
-      path = path.map((p, i) => {
-        for (let j = 0; j <p.path.length; j++) {
-          if(j % 2 === 0){
-            p.path[j] = p.path[j] + diffWidth;
-          }else{
-            p.path[j] = p.path[j] + diffHeight;
-          }
-        }
-        return p;
-      });
-
-      pointX = movePointX;
-      pointY = movePointY;
-      draw();
-    }
-  }else if(type === 'pen' && dragged){
-
-    if(imgPosX <= movePointX && movePointX <= imgPosX + imgWidth && 
-      imgPosY <= movePointY && movePointY <= imgPosY + imgHeight ){ 
-
+    if(type === 'pen' && dragged){
+      if(e.target.id === "myCanvas" ){
         mousemoveDraw(pointX, pointY, movePointX, movePointY);
-
         pointX = movePointX;
         pointY = movePointY;
         path[path.length-1].path.push(movePointX);
         path[path.length-1].path.push(movePointY);
-        console.log('path', path);
+      }
     }
+}
+
+//마우스 업
+canvas.onmouseup = () => {
+  dragged = false;
+  if(type === 'pen') {
+    ctx.beginPath();
+    ctx.arc(pointX, pointY, lineWidth, 0, 2 * Math.PI);
+    ctx.fill();
+
+    const curPath = path[path.length - 1];
+    curPath.endPoint.push(pointX);
+    curPath.endPoint.push(pointY);
+
+    const stX = curPath.startPoint[0];
+    const stY = curPath.startPoint[1];
+    const edX = curPath.endPoint[0];
+    const edY = curPath.endPoint[1];
+
+    let addArr = [];
+
+    if (stX !== edX && stY !== edY){
+
+      if(stX > edX){
+        const diff = stX - edX;
+        for (let i = 0; i <= diff; i++) {
+          const newX = edX + i;
+          addArr.push(newX);
+          const newY = ((edY - stY)/(edX - stX))*(newX - stX) + stY;
+          addArr.push(newY);
+        }
+      }else{
+        const diff = edX - stX;
+        for (let i = 0; i <= diff; i++) {
+          const newX = edX - i;
+          addArr.push(newX);
+          const newY = ((edY - stY)/(edX - stX))*(newX - stX) + stY;
+          addArr.push(Math.floor(newY));
+        }
+      }
+    }else if(stX === edX && stY !== edY){
+      if(stY > edY){
+        const diff = stY - edY;
+        for (let i = 0; i <= diff; i++) {
+          addArr.push(edX);
+          addArr.push(edY + i);
+        }
+      }else{
+        const diff = edY - stY;
+        for (let i = 0; i <= diff; i++) {
+          addArr.push(edX);
+          addArr.push(edY - i);
+        }
+      }
+    }else if(stX !== edX && stY === edY){
+      if(stX > edX){
+        const diff = stX - edX;
+        for (let i = 0; i <= diff; i++) {
+          addArr.push(edX + i);
+          addArr.push(edY);
+        }
+      }else{
+        const diff = edX - stX;
+        for (let i = 0; i <= diff; i++) {
+          addArr.push(edX - i);
+          addArr.push(edY);
+        }
+      }
+    }
+
+    for (let i = 0; i < addArr.length; i += 2) {
+      mousemoveDraw(addArr[i], addArr[i+1], addArr[i+2], addArr[i+3]);
+    }
+    curPath.path = [...curPath.path, ...addArr];
+
+    console.log('curPath.path : ', curPath.path);
+
+    let xArr =[];
+    let yArr =[];
+
+    for (let i = 0; i < curPath.path.length; i++) {
+      let path = curPath.path[i];
+      if(i % 2 === 0){
+        xArr.push(path);
+      }else{
+        yArr.push(path);
+      }
+    }
+    curPath.xMax = Math.max(...xArr);
+    curPath.xMin = Math.min(...xArr);
+    curPath.yMax = Math.max(...yArr);
+    curPath.yMin = Math.min(...yArr);
+
+    console.log('curPath : ', curPath);
   }
 }
 
@@ -222,62 +411,75 @@ function mousemoveDraw(pointX, pointY, movePointX, movePointY){
   ctx.fill();
 }
 
-
 function circlePoints(lineWidth, pointX1, pointY1, pointX2, pointY2){
-  const r = lineWidth/2;
+  let r = lineWidth/2;
+  r = Math.round(r * 100) / 100;
   let m = 0;
   if((pointY2 - pointY1) === 0){
     m = -10000;
   }else{
     m = -(pointX2 - pointX1)/(pointY2 - pointY1);
+    m = Math.round(m * 100)/100;
   }
-  console.log(m);
 
   const x1 =  pointX1 + (r / Math.sqrt(1 + (m**2)));
   const y1 = m * (x1 - pointX1) + pointY1;
   const x2 = pointX1 - (r / Math.sqrt(1 + (m**2)));
   const y2 = m * (x2 - pointX1) + pointY1;
+
+
   return [x1,y1,x2,y2];
 }
 
-
 const btns = Array.from(document.querySelectorAll('.toolbar_button'));
+
 function buttonRemoveActive(index){
   const findBtn = btns.find((item) => item.classList.contains('active'));
   findBtn.classList.remove('active');
   btns[index].classList.add('active');
 }
 
-
 document.getElementById("tool_pointer").addEventListener('click', (e) => {
   type = 'cursor';
   buttonRemoveActive(0);
 });
+
 document.getElementById("tool_pen").addEventListener('click', (e) => {
   type = 'pen';
   buttonRemoveActive(1);
 });
+
 document.getElementById("tool_line").addEventListener('click', (e) => {
   buttonRemoveActive(2);
 });
+
 document.getElementById("tool_square").addEventListener('click', (e) => {
   buttonRemoveActive(3);
 });
+
 document.getElementById("tool_circle").addEventListener('click', (e) => {
   buttonRemoveActive(4);
 });
+
 document.getElementById("tool_star").addEventListener('click', (e) => {
   buttonRemoveActive(5);
 });
+
 document.getElementById("tool_eraser").addEventListener('click', (e) => {
+  type = 'eraser';
   buttonRemoveActive(6);
 });
+
 document.getElementById("tool_eraser_all").addEventListener('click', (e) => {
+  path = [];
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  canvas.width = imgWidth;
+  canvas.height = imgHeight;
+  ctx.drawImage(gkhead, 0, 0, canvas.width, canvas.height);
+
+
   buttonRemoveActive(7);
 });
-
-
-
 
 //라인버튼 눌렀을 때 마우스 끝 포인터
 function mousePointerMaker(movePointX, movePointY){
@@ -348,12 +550,20 @@ function lineMaker(mpX, mpY, imgX, imgY){
 //plus버튼
 plus.addEventListener('click', () => {
   settingZoom('p');
+  canvasWrapper.style.left = imgPosX + 'px';
+  canvasWrapper.style.top = imgPosY + 'px';
+  canvasWrapper.style.width = imgWidth + 'px';
+  canvasWrapper.style.height = imgHeight + 'px';
   draw();
 });
 
 //minus버튼
 minus.addEventListener('click', () => {
   settingZoom('m');
+  canvasWrapper.style.left = imgPosX + 'px';
+  canvasWrapper.style.top = imgPosY + 'px';
+  canvasWrapper.style.width = imgWidth + 'px';
+  canvasWrapper.style.height = imgHeight + 'px';
   draw();
 });
 
@@ -367,83 +577,43 @@ function settingZoom(type){
   imgWidth = imgWidth * rate;
   imgHeight = imgHeight * rate;
 
-  path = path.map((p, i) => {
-    let result = 0;
-    if(i % 2 === 0){
-      result = rate * (p - pointX) + pointX;
-    }else{
-      result = rate * (p - pointY) + pointY;
-    }
-    return result;
-  });
-
-
-}
-
-
-
-
-//캔버스 안에서 마우스 휠
-canvas.onwheel = (e) => {
-  var rateBtn = document.getElementById("rate");
-
-  if(rateBtn.value !== null 
-    && rateBtn.value !== undefined 
-    && !Number.isNaN(rateBtn.value)
-    && rateBtn.value > 0 && rateBtn.value <100){
-      per = Number(rateBtn.value) / 100;
-    }else{
-      per = 0.08;
-    }
-  pointX = e.offsetX || (e.pageX - canvas.offsetLeft);
-  pointY = e.offsetY || (e.pageY - canvas.offsetTop);
-  if(e.deltaY < 0){ //스크롤 up
-    rate = 1 + per;
-  }else{ //스크롤 down
-    rate = 1 - per;
-  }
-  imgPosX = rate * (imgPosX - pointX) + pointX;
-  imgPosY = rate * (imgPosY - pointY) + pointY;
-  imgWidth = imgWidth * rate;
-  imgHeight = imgHeight * rate;
-
-  path = path.map((p, i) => {
-    let result = 0;
-    if(i % 2 === 0){
-      result = rate * (p - pointX) + pointX;
-    }else{
-      result = rate * (p - pointY) + pointY;
-    }
-    return result;
-  });
-
-  draw();
 }
 
 //그리기
 function draw() {
+
   //이미지 그리기
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  ctx.drawImage(gkhead, imgPosX, imgPosY, imgWidth, imgHeight);
+  canvas.width = imgWidth;
+  canvas.height = imgHeight;
+  ctx.drawImage(gkhead, 0, 0, canvas.width, canvas.height);
+
+  lineWidth = lineWidth * rate;
+
+  path = path.map((pa, idx) => {
+    pa.path = pa.path.map((p,i) => {
+      const result = rate * p;
+      return result;
+    });
+    pa.startPoint = [rate * pa.startPoint[0], rate * pa.startPoint[1]];
+    pa.endPoint = [rate * pa.endPoint[0], rate * pa.endPoint[1]];
+
+    return pa;
+  });
 
   //이미지 내부 그림 그리기
-  path.forEach((p,i)=>{
+  for (let i = 0; i < path.length; i++) {
+    let p = path[i];
     for (let index = 0; index < p.path.length; index += 2) {
-      const p1 = p.path[index];
-      const p2 = p.path[index+1];
-      const p3 = p.path[index+2];
-      const p4 = p.path[index+3];
+      let p1 = p.path[index];
+      let p2 = p.path[index+1];
+      let p3 = p.path[index+2];
+      let p4 = p.path[index+3];
       if(p3 && p4){
         mousemoveDraw(p1, p2, p3, p4);
       }
     }
-  })
-
-
-
-  //라인이 있다면 라인 그리기
-  if(line){
-    allLineMakers(pointX, pointY);
-    mousePointerMaker(pointX, pointY);
+    //mousemoveDraw(p.startPoint[0], p.startPoint[1], p.endPoint[0], p.endPoint[1]);
   }
+
 }
