@@ -1,34 +1,38 @@
-var box = document.querySelector('.box');
-var drag = false;
-pointX = 0;
-pointY = 0;
-imgPosX = 0;
-imgPosY = 0;
+const box = document.getElementById("box");
+let drag = false;
+let pointX = 0;
+let pointY = 0;
+let imgPosX = 150;
+let imgPosY = 150;
 
 box.onmousedown = (e) => {
     drag = true;
-    pointX = e.offsetX || (e.pageX - canvas.offsetLeft);
-    pointY = e.offsetY || (e.pageY - canvas.offsetTop);
+    pointX = e.offsetX;
+    pointY = e.offsetY;
 }
 
 box.onmousemove = (e) => {
     if(drag){
-        const movePointX = e.offsetX || (e.pageX - canvas.offsetLeft); //움직이는 마우스 x좌표
-        const movePointY = e.offsetY || (e.pageY - canvas.offsetTop);  //움직이는 마우스 y좌표
+        console.log('ddd');
+        const movePointX = e.offsetX; //움직이는 마우스 x좌표
+        const movePointY = e.offsetY;  //움직이는 마우스 y좌표
         const diffWidth = movePointX - pointX;
         const diffHeight = movePointY - pointY;
 
-        const left1 = box.style.left;
-        const left2 = left1.substring(0, left1.length-2);
+        imgPosX = imgPosX + diffWidth;
+        imgPosY = imgPosY + diffHeight;
 
-        const top1 = box.style.top;
-        const top2 = top1.substring(0, top1.length-2);
+        // const left1 = box.style.left;
+        // const left2 = left1.substring(0, left1.length-2);
+        //
+        // const top1 = box.style.top;
+        // const top2 = top1.substring(0, top1.length-2);
+        //
+        // const left3 = Number(left2) + Number(diffWidth);
+        // const top3 = Number(top2) + Number(diffHeight);
 
-        const left3 = Number(left2) + Number(diffWidth);
-        const top3 = Number(top2) + Number(diffHeight);
-
-        box.style.left = left3 + 'px';
-        box.style.top = top3 + 'px';
+        box.style.left = imgPosX + 'px';
+        box.style.top = imgPosY + 'px';
 
     }
 }

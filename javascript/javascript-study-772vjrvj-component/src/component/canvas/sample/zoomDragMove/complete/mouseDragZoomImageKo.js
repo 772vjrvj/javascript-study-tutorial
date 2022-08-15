@@ -51,6 +51,7 @@ var eraserWidth = 6;
 
 imageWrapper
 var imageWrapper    = document.getElementById("imageWrapper");
+var eraserIcon    = document.getElementById("eraserIcon");
 
 var canvas           = document.getElementById("myCanvas");
 var canvasWrapper    = document.getElementById("canvasWrapper");
@@ -212,47 +213,51 @@ canvas.onmousedown = (e) => {
     //점 하나를 찍기는 어려우므로 지우개 사각형 넓이를 구하고 그 넓이 안의 점이 라인에 들어가면 된다.
     let lineHalf = Math.floor(eraserWidth/2);
 
-    const startX = pointX - lineHalf < 0 ? 0 : pointX - lineHalf;
-    const endX = pointX + lineHalf > 500 ? 500 : pointX + lineHalf;
+    console.log('ddd');
 
-    const startY = pointY - lineHalf < 0 ? 0 : pointY - lineHalf;
-    const endY = pointY + lineHalf > 500 ? 500 : pointY + lineHalf;
+    // const startX = pointX - lineHalf < 0 ? 0 : pointX - lineHalf;
+    // const endX = pointX + lineHalf > 500 ? 500 : pointX + lineHalf;
+    //
+    // const startY = pointY - lineHalf < 0 ? 0 : pointY - lineHalf;
+    // const endY = pointY + lineHalf > 500 ? 500 : pointY + lineHalf;
 
-    let xArea = [];
-    for (let i = startX; i <= endX; i++) {
-      xArea.push(i);
-    }
+    const startX = pointX - lineHalf;
+    const endX = pointX + lineHalf;
 
-    let yArea = [];
-    for (let i = startY; i <= endY; i++) {
-      yArea.push(i);
-    }
+    const startY = pointY - lineHalf;
+    const endY = pointY + lineHalf;
 
-    let area = [];
 
-    for (let i = 0; i <xArea.length; i++) {
-      for (let j = 0; j < yArea.length; j++) {
-        area.push(xArea[i]);
-        area.push(yArea[j]);
-      }
-    }
+
+    // let xArea = [];
+    // for (let i = startX; i <= endX; i++) {
+    //   xArea.push(i);
+    // }
+    //
+    // let yArea = [];
+    // for (let i = startY; i <= endY; i++) {
+    //   yArea.push(i);
+    // }
+    //
+    // let area = [];
+    //
+    // for (let i = 0; i <xArea.length; i++) {
+    //   for (let j = 0; j < yArea.length; j++) {
+    //     area.push(xArea[i]);
+    //     area.push(yArea[j]);
+    //   }
+    // }
 
     //최대최소 밖인 경우 빼기
     let removePath = null;
     for (let i = path.length-1; i >= 0; i--) {
-      console.log('i : ', i);
       if(endX < path[i].xMin || path[i].xMax < startX
           || endY < path[i].yMin || path[i].yMax < startY){
       }else{
-        for (let j = 0; j < area.length; j += 2) {
-          for (let k = 0; k < path[i].path.length; k += 2) {
-            if(path[i].path[k] === area[j] && path[i].path[k+1] ===  area[j+1]){
-              removePath = i;
-              console.log('break removePath ; ', removePath);
-              break;
-            }
-          }
-          if(removePath !== null){
+        for (let k = 0; k < path[i].path.length; k += 2) {
+          if(path[i].path[k] >= startX && path[i].path[k] <= endX &&
+             path[i].path[k+1] >= startY && path[i].path[k+1] <= endY){
+            removePath = i;
             break;
           }
         }
@@ -265,6 +270,7 @@ canvas.onmousedown = (e) => {
     console.log('removePath ; ', removePath);
     if(removePath !== null){
       path.splice(removePath, 1);
+      rate = 1;
       draw();
     }
   }
@@ -291,6 +297,9 @@ canvas.onmousemove = (e) => {
         path[path.length-1].path.push(movePointX);
         path[path.length-1].path.push(movePointY);
       }
+    }else if(type === 'eraser'){
+      eraserIcon.style.left = movePointX - 5 + 'px';
+      eraserIcon.style.top = movePointY - 5 + 'px';
     }
 }
 
@@ -385,7 +394,6 @@ canvas.onmouseup = () => {
     curPath.yMax = Math.max(...yArr);
     curPath.yMin = Math.min(...yArr);
 
-    console.log('curPath : ', curPath);
   }
 }
 
@@ -441,11 +449,13 @@ function buttonRemoveActive(index){
 
 document.getElementById("tool_pointer").addEventListener('click', (e) => {
   type = 'cursor';
+  eraserIcon.style.display = 'none';
   buttonRemoveActive(0);
 });
 
 document.getElementById("tool_pen").addEventListener('click', (e) => {
   type = 'pen';
+  eraserIcon.style.display = 'none';
   buttonRemoveActive(1);
 });
 
@@ -468,6 +478,12 @@ document.getElementById("tool_star").addEventListener('click', (e) => {
 document.getElementById("tool_eraser").addEventListener('click', (e) => {
   type = 'eraser';
   buttonRemoveActive(6);
+  let display = eraserIcon.style.display;
+  if(display === '' || display === 'none'){
+    eraserIcon.style.display = 'block';
+  }else{
+    eraserIcon.style.display = 'none';
+  }
 });
 
 document.getElementById("tool_eraser_all").addEventListener('click', (e) => {
@@ -597,6 +613,10 @@ function draw() {
     });
     pa.startPoint = [rate * pa.startPoint[0], rate * pa.startPoint[1]];
     pa.endPoint = [rate * pa.endPoint[0], rate * pa.endPoint[1]];
+    pa.xMin = rate * pa.xMin;
+    pa.xMax = rate * pa.xMax;
+    pa.yMin = rate * pa.yMin;
+    pa.yMax = rate * pa.yMax;
 
     return pa;
   });

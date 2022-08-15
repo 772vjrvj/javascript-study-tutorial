@@ -1,0 +1,33 @@
+body{
+    position: relative;
+}
+#container{
+    width: 500px;
+    height: 500px;
+    border: 1px solid red;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate( -50%, -50%);
+    overflow: hidden;
+}
+
+#box {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    background-color: #FFFFFF;
+    border: 1px solid #000000;
+    /*border-radius: 50%;*/
+    /*pointer-events: none*/
+    /* wall 을 넣어도 된다.*/
+}
+#wall {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+}
