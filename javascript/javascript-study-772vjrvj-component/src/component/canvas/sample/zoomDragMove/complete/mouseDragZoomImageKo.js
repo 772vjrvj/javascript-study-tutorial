@@ -47,11 +47,13 @@ var uuid = 0;
 var type = 'cursor';
 var color = 'black';
 var lineWidth = 2;
-var eraserWidth = 6;
+var penWidth = 6;
+var eraserWidth = 10;
 
 imageWrapper
 var imageWrapper    = document.getElementById("imageWrapper");
 var eraserIcon    = document.getElementById("eraserIcon");
+var penIcon    = document.getElementById("penIcon");
 
 var canvas           = document.getElementById("myCanvas");
 var canvasWrapper    = document.getElementById("canvasWrapper");
@@ -59,7 +61,7 @@ var ctx              = canvas.getContext("2d");
 
 reset.addEventListener('click', () => {
   rate      = 1/areaRate;    //총 증가율
-  areaRate = 1;
+  areaRate  = 1;
   per       = 0.08; //증가비율
 
   pointX    = 0;   //마지막으로 움직인 마우스 x위치
@@ -76,9 +78,28 @@ reset.addEventListener('click', () => {
   dragged   = false; //이미지 드래그 시작
   move      = false; //이미지 움직일 수 있는지
   line      = false; //라인 표시
-
+  lineWidth = 2;
+  penWidth = 6;
+  eraserWidth = 10;
   moveBtn.style.backgroundColor = '';
   ctx.drawImage(gkhead, 0, 0, canvas.width, canvas.height);
+
+  penIcon.style.display = 'none';
+  penIcon.style.left = pointX - (penWidth/2) + 'px';
+  penIcon.style.top = pointY - (penWidth/2) + 'px';
+  penIcon.style.width = penWidth + 'px';
+  penIcon.style.height = penWidth + 'px';
+
+  eraserIcon.style.display = 'none';
+  eraserIcon.style.left = pointX - eraserWidth/2 + 'px';
+  eraserIcon.style.top = pointY - eraserWidth/2 + 'px';
+  eraserIcon.style.width = eraserWidth + 'px';
+  eraserIcon.style.height = eraserWidth + 'px';
+
+
+
+
+
   draw();
 });
 
@@ -173,6 +194,35 @@ imageWrapper.onwheel = (e) => {
   imgPosY = rate * (imgPosY - pointY) + pointY;
   imgWidth = imgWidth * rate;
   imgHeight = imgHeight * rate;
+
+
+  eraserWidth = rate * eraserWidth;
+  eraserIcon.style.width = eraserWidth + 'px';
+  eraserIcon.style.height = eraserWidth + 'px';
+
+  const eraLeft1 = eraserIcon.style.left;
+  const eraLeft2 = eraLeft1.substring(0, eraLeft1.length-2);
+  eraserIcon.style.left = (rate * eraLeft2) + 'px';
+  const eraTop1 = eraserIcon.style.top;
+  const eraTop2 = eraTop1.substring(0, eraTop1.length-2);
+  eraserIcon.style.top = (rate * eraTop2) + 'px';
+
+
+  penWidth = rate * penWidth;
+  penIcon.style.width = rate * penWidth + 'px';
+  penIcon.style.height = rate * penWidth + 'px';
+
+  const penLeft1 = penIcon.style.left;
+  const penLeft2 = penLeft1.substring(0, penLeft1.length-2);
+  penIcon.style.left = rate * penLeft2 + 'px';
+  const penTop1 = penIcon.style.top;
+  const penTop2 = penTop1.substring(0, penTop1.length-2);
+  penIcon.style.top = rate * penTop2 + 'px';
+
+
+
+
+
 
   canvasWrapper.style.left = imgPosX + 'px';
   canvasWrapper.style.top = imgPosY + 'px';
@@ -289,8 +339,11 @@ canvas.onmousemove = (e) => {
   document.getElementById('rgbG').innerText = rgb[3] === 0? 255: rgb[1]; //RGB G
   document.getElementById('rgbB').innerText = rgb[3] === 0? 255: rgb[2]; //RGB B
 
-    if(type === 'pen' && dragged){
-      if(e.target.id === "myCanvas" ){
+    if(type === 'pen'){
+      penIcon.style.display = 'block';
+      penIcon.style.left = movePointX - (penWidth/2) + 'px';
+      penIcon.style.top = movePointY - (penWidth/2) + 'px';
+      if(dragged){
         mousemoveDraw(pointX, pointY, movePointX, movePointY);
         pointX = movePointX;
         pointY = movePointY;
@@ -298,8 +351,9 @@ canvas.onmousemove = (e) => {
         path[path.length-1].path.push(movePointY);
       }
     }else if(type === 'eraser'){
-      eraserIcon.style.left = movePointX - 5 + 'px';
-      eraserIcon.style.top = movePointY - 5 + 'px';
+      eraserIcon.style.display = 'block';
+      eraserIcon.style.left = movePointX - eraserWidth/2 + 'px';
+      eraserIcon.style.top = movePointY - eraserWidth/2 + 'px';
     }
 }
 
@@ -450,12 +504,17 @@ function buttonRemoveActive(index){
 document.getElementById("tool_pointer").addEventListener('click', (e) => {
   type = 'cursor';
   eraserIcon.style.display = 'none';
+  penIcon.style.display = 'none';
   buttonRemoveActive(0);
 });
 
 document.getElementById("tool_pen").addEventListener('click', (e) => {
   type = 'pen';
   eraserIcon.style.display = 'none';
+  let display = penIcon.style.display;
+  if(display === 'block'){
+    display = 'none';
+  }
   buttonRemoveActive(1);
 });
 
@@ -477,13 +536,12 @@ document.getElementById("tool_star").addEventListener('click', (e) => {
 
 document.getElementById("tool_eraser").addEventListener('click', (e) => {
   type = 'eraser';
-  buttonRemoveActive(6);
+  penIcon.style.display = 'none';
   let display = eraserIcon.style.display;
-  if(display === '' || display === 'none'){
-    eraserIcon.style.display = 'block';
-  }else{
-    eraserIcon.style.display = 'none';
+  if(display === 'block'){
+    display = 'none';
   }
+  buttonRemoveActive(6);
 });
 
 document.getElementById("tool_eraser_all").addEventListener('click', (e) => {
@@ -592,6 +650,30 @@ function settingZoom(type){
   imgPosY = rate * (imgPosY - pointY) + pointY;
   imgWidth = imgWidth * rate;
   imgHeight = imgHeight * rate;
+
+  penWidth = rate * penWidth;
+  penIcon.style.width = rate * penWidth + 'px';
+  penIcon.style.height = rate * penWidth + 'px';
+
+  const penLeft1 = penIcon.style.left;
+  const penLeft2 = penLeft1.substring(0, penLeft1.length-2);
+  penIcon.style.left = rate * penLeft2 + 'px';
+  const penTop1 = penIcon.style.top;
+  const penTop2 = penTop1.substring(0, penTop1.length-2);
+  penIcon.style.top = rate * penTop2 + 'px';
+
+  eraserWidth = rate * eraserWidth;
+  eraserIcon.style.width = eraserWidth + 'px';
+  eraserIcon.style.height = eraserWidth + 'px';
+
+  const eraLeft1 = eraserIcon.style.left;
+  const eraLeft2 = eraLeft1.substring(0, eraLeft1.length-2);
+  eraserIcon.style.left = (rate * eraLeft2) + 'px';
+  const eraTop1 = eraserIcon.style.top;
+  const eraTop2 = eraTop1.substring(0, eraTop1.length-2);
+  eraserIcon.style.top = (rate * eraTop2) + 'px';
+
+
 
 }
 

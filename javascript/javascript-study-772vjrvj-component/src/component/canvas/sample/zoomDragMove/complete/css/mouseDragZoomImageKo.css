@@ -65,6 +65,19 @@
   pointer-events: none;
 }
 
+#penIcon{
+  width: 6px;
+  height: 6px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  background-color: #000000;
+  border-radius: 50%;
+  display: none;
+  pointer-events: none;
+}
+
+
 
 #contents .image_control_area {overflow: hidden; padding-top: 10px; margin: 0 5px 0 5px;}
 #contents .image_control_area .button_area {float: left; width: 50%; height: 80px; background-color: #fff; box-sizing: border-box; padding: 0 10px 0 10px ;}

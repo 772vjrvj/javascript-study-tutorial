@@ -1,0 +1,35 @@
+body{
+    position: relative;
+}
+
+.container{
+    width: 500px;
+    height: 500px;
+    position: absolute;
+    background-color: #734d4d;
+    left: 50%;
+    top: 50%;
+    transform: translate( -50%, -50%);
+    overflow: auto;
+}
+
+
+.wrapper{
+    width: 600px;
+    height: 600px;
+    position: relative;
+    background-color: #cbd0cb;
+}
+
+.box{
+    width: 100px;
+    height: 120px;
+    padding: 10px;
+    border: 10px solid #00ccff;
+    position: absolute;
+    background-color: #d6eaea;
+    left: 100px;
+    top: 100px;
+    overflow: hidden;
+    /*transform: translate( -50%, -50%);*/
+}
