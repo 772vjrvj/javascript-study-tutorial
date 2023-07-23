@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Noto Sans KR', 'Open Sans', sans-serif;
+  background-color: #fff;
+  margin: 0;
+  line-height: 1.5;
+  color: #333;
+  font-size: 16px;
+}
+
+img {
+  vertical-align: middle;
+  max-width: 100%;
+}
+
+#content .content-wrap{
+  padding: 0px;
+  overflow: visible;
+}
+
+#content .content-wrap section.section-block {
+  padding-top: 144px;
+  padding-bottom: 144px;
+}
+
+#content .content-wrap section.section-block .container-fluid{
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 0;
+}
+
+#content .content-wrap section.section-block .container-fluid .row{
+  display: flex;
+  flex-wrap: wrap; /*wrap	Items를 여러 줄로 묶음 다음줄로 넘어감  ex) nowrap 한줄에 쭉 넣음 */ 
+  margin-top: 0;
+  margin-right: 0;
+  margin-left: 0;
+  align-items: flex-end;  /*세로로 바닥에 붙음*/
+}
+
+#content .content-wrap section.section-block .container-fluid .row::after{
+  display: block;
+  clear: both;
+  content: "";
+}
+
+#content .content-wrap section.section-block .container-fluid .row > *{
+  flex-shrink: 0; /* 기본값 1 넘어간 여백을 동등하게 나눠서 줄인다. 0이라면 효과가 없다.  */
+  width: 100%;
+  max-width: 100%;
+}
+
+#content .content-wrap section.section-block .container-fluid .row .col{
+  position: relative;
+  flex: 0 0 auto; /* 1.flex-grow	2. flex-shrink	3. flex-basis flex 즉 사용 안하겠다.*/
+  width: 50%;
+}
+
+#content .content-wrap section.section-block:nth-child(1) .container-fluid .row .img-w{
+  width: auto; /*default 기본값 자동으로 늘어나고 줄어들고 원래 값이 있으면 그걸 쓰고*/
+  display: block;
+  position: absolute;
+  top: 144px;
+  left: 0;
+}
+
+#content .content-wrap section.section-block:nth-child(1) .container-fluid .row .col-1{
+  text-align: center;
+  order: 2; /*flex의 순서*/
+}
+
+#content .content-wrap section.section-block:nth-child(1) .container-fluid .row .col-2{
+  order: 1;
+  padding: 144px;
+  padding-bottom: 0;
+}
+
+#content .content-wrap section.section-block:nth-child(1) .container-fluid .row .col-2 h1{
+  font-family: 'Open Sans', sans-serif;
+  margin: 0 0 18px 0;
+  font-size: 5rem;
+  font-weight: bolder;
+  line-height: 1;
+  color: #2d4766;
+}
+
+#content .content-wrap section.section-block:nth-child(1) .container-fluid .row .col-2 h4{
+  margin-top: 3rem;
+  font-weight: 400;
+  margin: 0 0 18px 0;
+  font-size: 19px;
+  line-height: 1.75;
+}
+
+#content .content-wrap section.section-block:nth-child(2){
+  background-color: #2d4766;
+}
+
+#content .content-wrap section.section-block:nth-child(2) .container-fluid .row .col-1{
+  text-align: center;
+}
+
+#content .content-wrap section.section-block:nth-child(2) .container-fluid .row .col-2{
+  padding: 144px;
+  padding-bottom: 0;
+}
+
+#content .content-wrap section.section-block:nth-child(2) .container-fluid .row .col-2 div h1{
+  margin: 0 0 18px 0;
+  font-size: 5rem;
+  font-weight: bolder;
+  line-height: 1;
+  font-family: 'Open Sans', sans-serif;
+  color: #EEE;
+}
+
+#content .content-wrap section.section-block:nth-child(2) .container-fluid .row .col-2 div h4{
+  margin-top: 3rem;
+  font-weight: 300;
+  margin: 0 0 18px 0;
+  font-size: 19px;
+  line-height: 1.75;
+  color: #EEE;
+}
