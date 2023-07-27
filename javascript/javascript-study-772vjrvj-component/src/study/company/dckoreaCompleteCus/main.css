@@ -1,0 +1,521 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+
+::selection {
+  color: #FFF;
+  text-shadow: none;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --bs-gutter-x: 1.5rem;
+  --bs-gutter-y: 0;
+}
+
+body {
+  font-family: 'Noto Sans KR', 'Open Sans', sans-serif;
+  background-color: #fff;
+  margin: 0;
+  line-height: 1.5;
+  color: #333;
+  font-size: 16px;
+}
+
+img {
+  vertical-align: middle;
+  max-width: 100%;
+  overflow-clip-margin: content-box;
+  overflow: clip;
+}
+
+a {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+a img {
+  border: none;
+}
+
+dl, dt, dd, ol, ul, li {
+  margin: 0;
+  padding: 0;
+}
+
+li{
+  list-style: none;
+}
+
+
+#header{
+  border: 0;
+  color: #EEE;
+  position: relative;
+  z-index: 199;
+  background: transparent;
+}
+
+#header #header-wrap{
+  width: 100%;
+  position: fixed;
+  height: auto;
+  transition: height .2s ease 0s, background-color .3s ease 0s;
+  backface-visibility: hidden;
+  will-change: left, top, transform;
+  z-index: 299;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  background: transparent;
+  border-bottom-color: rgba(255,255,255,0.15);
+}
+
+
+
+#header #header-wrap .container{
+  margin-right: auto;
+  margin-left: auto;
+  width: 100%;
+  max-width: none;
+  padding: 0 30px;
+}
+
+#header #header-wrap .container .header-row{
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  position: initial;
+}
+
+#header #header-wrap .container .header-row #logo{
+  border-right: 0 !important;
+  margin-right: 3rem !important;
+  position: relative;
+  display: flex;
+  align-items: center;
+  max-height: 100%;
+  padding-right: 0px;
+  opacity: 1;
+  transition: padding .4s ease, margin .4s ease, opacity .2s .2s ease;
+  border-color: rgba(255,255,255,0.15);
+}
+
+#header #header-wrap .container .header-row #logo a{
+  width: 100%;
+  font-size: 36px;
+  color: #FFF;
+}
+
+
+
+#header #header-wrap .container .header-row #logo a.standard-logo{
+  display: flex;
+}
+
+#header #header-wrap .container .header-row #logo a.retina-logo {
+  display: none;
+}
+
+
+#header #header-wrap .container .header-row #logo img {
+  display: block;
+  max-width: 100%;
+  transition: height .4s ease, padding .4s ease, margin .4s ease, opacity .3s ease;
+  max-height: 100%;
+  height: 100px;
+}
+
+#header #header-wrap .container .header-row .primary-menu{
+  margin-right: auto !important;
+  display: flex;
+  align-items: center;
+  flex: 0 0 auto;
+  flex-grow: 0;
+  opacity: 1;
+  transition: padding .4s ease, margin .4s ease, opacity .2s .2s ease;
+}
+
+#header #header-wrap .container .header-row .primary-menu .menu-container{
+  border-right: 0;
+  margin-right: 0;
+  padding-right: 0;
+  list-style: none;
+  margin: 0;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  border-color: rgba(255,255,255,0.2);
+}
+
+#header #header-wrap .container .header-row .primary-menu .menu-container .menu-item{
+  position: relative;
+}
+
+#header #header-wrap .container .header-row .primary-menu .menu-container .menu-item .menu-link{
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  display: block;
+  transition: margin .4s ease, padding .4s ease;
+  padding: 50px 15px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #F7F7F7;
+}
+
+
+
+
+
+#header #header-wrap .container .header-row .primary-menu .menu-container .menu-item .sub-menu-container{
+  list-style: none;
+  margin-bottom: 0;
+  position: absolute;
+  visibility: hidden;
+  background-color: #FFF;
+  box-shadow: 0px 13px 42px 11px rgba(0, 0, 0, 0.05);
+  border: 1px solid #eeeeee;
+  border-top: none;
+  top: 100%;
+  left: 0;
+  padding: 10px;
+  width: 220px;
+  z-index: 1;
+  opacity: 0;
+  margin-top: 15px;
+  transition: opacity .3s ease, margin .4s ease;
+}
+
+#header #header-wrap .container .header-row .primary-menu .menu-container .menu-item .sub-menu-container .menu-item .sub-menu-link{
+  display: block;
+  letter-spacing: 0;
+  color: #666666;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 35px 10px;
+  transition: padding .4s ease;
+}
+
+#header #header-wrap .container .header-row .primary-menu .menu-container .menu-item .sub-menu-container .menu-item:hover .sub-menu-link{
+  padding-left: 18px;
+  background-color: #f8f8f8;
+}
+
+
+#header #header-wrap .container .header-row .primary-menu .menu-container .sub-menu:hover > .menu-link{
+  background-color: rgb(169, 169, 169);
+}
+
+#header #header-wrap .container .header-row .primary-menu .menu-container .sub-menu:hover .sub-menu-container{
+  margin-top: 0;
+  opacity: 1;
+  visibility: visible;
+}
+
+
+
+#header #header-wrap.scrollTop{
+  background: #fff;
+}
+
+#header #header-wrap.scrollTop .container .header-row .primary-menu .menu-container .menu-item .menu-link{
+  color: #444;
+}
+
+#header #header-wrap.scrollTop .container .header-row .primary-menu .menu-container .sub-menu:hover > .menu-link{
+  color: #FFF;
+}
+
+#header #header-wrap.scrollTop.scrollTopLogo .container .header-row .primary-menu .menu-container .menu-item .menu-link{
+  padding: 30px 15px;
+}
+
+#header #header-wrap.scrollTop.scrollTopLogo .container .header-row #logo img {
+  height: 60px;
+}
+
+#header #header-wrap.scrollTop.scrollTopLogo{
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  background-color: #FFF;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+
+
+
+
+
+#slider .slider-inner .swiper-container {
+  overflow: hidden;
+  position: relative;
+  height: 100vh;
+}
+
+#slider .slider-inner .swiper-container .swiper-wrapper {
+  position: absolute;
+  height: 100vh;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+
+#slider .slider-inner .swiper-container .swiper-wrapper.shifting {
+  transition: left 0.5s ease-out;
+}
+
+.swiper-slide {
+  height: 100vh;
+  width: 100%;
+  color: #000;
+  font-weight: 500;
+  font-size: larger;
+  float: left;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.slider-arrow-left, .slider-arrow-right{
+  position: absolute;
+  cursor: pointer;
+  z-index: 10;
+  top: 50%;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  width: 52px;
+  height: 52px;
+  border: 0;
+  border-radius: 0 3px 3px 0;
+  transform: translateY(-50%);
+  transition: background-color .3s ease-in-out;
+}
+
+.slider-arrow-right{
+  left: auto;
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+.slider-arrow-left ion-icon, .slider-arrow-right ion-icon{
+  width: 100%;
+  height: 100%;
+  color: rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+}
+
+input[name=tabmenu] {
+  display: none;
+}
+
+#slider .slider-inner .swiper-container .btn {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  z-index: 20;
+  text-align: center;
+  margin-top: 10px;
+}
+
+#slider .slider-inner .swiper-container .btn label {
+  display: inline-block;
+  margin-right: 3px;
+  width: 20px;
+  height: 20px;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+#slider .slider-inner .swiper-container .btn label:last-child {
+  margin-right: 0px;
+}
+
+#slider .slider-inner .swiper-container .btn label.checked {
+  background-color: gray;
+}
+
+
+
+
+
+
+
+#content .content-wrap{
+  padding: 0px;
+  overflow: visible;
+}
+
+#content .content-wrap section.section-block {
+  padding-top: 144px;
+  padding-bottom: 144px;
+  position: relative;
+}
+
+#content .content-wrap section.section-block .container-fluid{
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 0;
+}
+
+#content .content-wrap section.section-block .container-fluid .row{
+  display: flex;
+  flex-wrap: wrap; /*wrap	Items를 여러 줄로 묶음 다음줄로 넘어감  ex) nowrap 한줄에 쭉 넣음 */ 
+  margin-top: 0;
+  margin-right: 0;
+  margin-left: 0;
+  align-items: flex-end;  /*세로로 바닥에 붙음*/
+}
+
+#content .content-wrap section.section-block .container-fluid .row::after{
+  display: block;
+  clear: both;
+  content: "";
+}
+
+#content .content-wrap section.section-block .container-fluid .row > *{
+  flex-shrink: 0; /* 기본값 1 넘어간 여백을 동등하게 나눠서 줄인다. 0이라면 효과가 없다.  */
+  width: 100%;
+  max-width: 100%;
+}
+
+#content .content-wrap section.section-block .container-fluid .row .col{
+  position: relative;
+  flex: 0 0 auto; /* 1.flex-grow	2. flex-shrink	3. flex-basis flex 즉 사용 안하겠다.*/
+  width: 50%;
+}
+
+#content .content-wrap section.section-block:nth-child(1) .container-fluid .row .img-w{
+  width: auto; /*default 기본값 자동으로 늘어나고 줄어들고 원래 값이 있으면 그걸 쓰고*/
+  display: block;
+  position: absolute;
+  top: 144px;
+  left: 0;
+}
+
+#content .content-wrap section.section-block:nth-child(1) .container-fluid .row .col-1{
+  text-align: center;
+  order: 2; /*flex의 순서*/
+}
+
+#content .content-wrap section.section-block:nth-child(1) .container-fluid .row .col-2{
+  order: 1;
+  padding: 144px;
+  padding-bottom: 0;
+}
+
+#content .content-wrap section.section-block:nth-child(1) .container-fluid .row .col-2 h1{
+  font-family: 'Open Sans', sans-serif;
+  margin: 0 0 18px 0;
+  font-size: 5rem;
+  font-weight: bolder;
+  line-height: 1;
+  color: #2d4766;
+}
+
+#content .content-wrap section.section-block:nth-child(1) .container-fluid .row .col-2 h4{
+  margin-top: 3rem;
+  font-weight: 400;
+  margin: 0 0 18px 0;
+  font-size: 19px;
+  line-height: 1.75;
+}
+
+#content .content-wrap section.section-block:nth-child(2){
+  background-color: #2d4766;
+}
+
+#content .content-wrap section.section-block:nth-child(2) .container-fluid .row .col-1{
+  text-align: center;
+}
+
+#content .content-wrap section.section-block:nth-child(2) .container-fluid .row .col-2{
+  padding: 144px;
+  padding-bottom: 0;
+}
+
+#content .content-wrap section.section-block:nth-child(2) .container-fluid .row .col-2 div h1{
+  margin: 0 0 18px 0;
+  font-size: 5rem;
+  font-weight: bolder;
+  line-height: 1;
+  font-family: 'Open Sans', sans-serif;
+  color: #EEE;
+}
+
+#content .content-wrap section.section-block:nth-child(2) .container-fluid .row .col-2 div h4{
+  margin-top: 3rem;
+  font-weight: 300;
+  margin: 0 0 18px 0;
+  font-size: 19px;
+  line-height: 1.75;
+  color: #EEE;
+}
+
+#footer{
+  position: relative;
+  color: rgba(255,255,255,0.75);
+  background-color: #282828;
+}
+
+#footer #copyrights{
+  padding: 40px 0;
+  font-size: 0.875rem;
+  line-height: 1.8;
+  color: rgba(255,255,255,0.4);
+}
+
+#footer #copyrights .container{
+  width: 100%;
+  padding-right: calc(var(--bs-gutter-x) * 0.5);
+  padding-left: calc(var(--bs-gutter-x) * 0.5);
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 1520px;
+}
+
+#footer #copyrights .container .row{
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 0;
+  margin-right: calc(-0.5 * var(--bs-gutter-x));
+  margin-left: calc(-0.5 * var(--bs-gutter-x));
+  margin-bottom: -30px;
+  position: relative;
+}
+
+#footer #copyrights .container .row > *{
+  flex-shrink: 0;
+  width: 100%;
+  max-width: 100%;
+  padding-right: calc(var(--bs-gutter-x) * 0.5);
+  padding-left: calc(var(--bs-gutter-x) * 0.5);
+  margin-top: var(--bs-gutter-y);
+}
+
+
+#footer #copyrights .container .row .col{
+  flex: 0 0 auto;
+  width: 50%;
+  text-align: left !important;
+  padding-bottom: 30px;
+}
+
+#footer #copyrights .container .row .col:nth-child(2){
+  text-align: right !important;
+}
+
+#footer #copyrights .container .row .col .copyright-links a{
+  display: inline-block;
+  margin: 0 3px;
+  color: #888;
+  border-bottom: 1px solid transparent;
+}
+
+#footer #copyrights .container .row .col .copyright-links a:hover{
+  color: #fff;
+  border-bottom: 1px solid #888;
+}

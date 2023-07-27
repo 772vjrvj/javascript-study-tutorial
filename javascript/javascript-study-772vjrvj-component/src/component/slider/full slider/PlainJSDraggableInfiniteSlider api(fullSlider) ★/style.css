@@ -64,10 +64,6 @@ body {
   align-items: center;
 }
 
-.row{
-  height: 100vh;
-}
-
 .slider-arrow-left, .slider-arrow-right{
   position: absolute;
   cursor: pointer;
