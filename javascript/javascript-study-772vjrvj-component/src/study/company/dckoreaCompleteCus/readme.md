@@ -18,3 +18,10 @@ https://developer.mozilla.org/en-US/docs/Web/CSS/align-items
 
 
 https://www.youtube.com/watch?v=7neASrWEFEM
+
+
+ionicons
+
+https://ionic.io/ionicons
+
+https://ionic.io/ionicons/usage

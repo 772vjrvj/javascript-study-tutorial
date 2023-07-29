@@ -2,7 +2,40 @@ window.addEventListener("DOMContentLoaded", () => {
     console.log('DOMContentLoaded');
 
     const headerWrapper = document.querySelector('#header-wrap');
+    const gotoTop = document.querySelector("#gotoTop");
 
+
+    let isScrolling = false;
+
+    window.addEventListener('scroll', (e) => {
+        if(!isScrolling){
+            if(Number(window.scrollY) > 0 && Number(window.scrollY) <= docHeight){
+                headerWrapper.classList.add('scrollTop');
+                logo.src = 'img/logo.png';
+            }else if(Number(window.scrollY) > docHeight){
+                headerWrapper.classList.add('scrollTopLogo');
+            }else{
+                logo.src = 'img/logo-dark.png';
+                headerWrapper.classList.remove('scrollTop');
+                headerWrapper.classList.remove('scrollTopLogo');
+            }
+    
+            if(Number(window.scrollY) >= docHeight * 3 ){
+                gotoTop.classList.add('showTop');
+            }else{
+                gotoTop.classList.remove('showTop');
+            }
+        }
+    });
+
+
+    gotoTop.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        })
+    });
+    //스크롤이 끝나지 않은 상태에서 클리가하면 멈춤 이유는 클릭이후에도 남은 스크롤이 움직여서임
 
     const bodyHeight = document.body.scrollHeight;
     const documentHeight = document.documentElement.scrollHeight;
@@ -11,18 +44,7 @@ window.addEventListener("DOMContentLoaded", () => {
     const docHeight = Math.max(bodyHeight, documentHeight) / 25;
     const logo = document.querySelector('#logo-small');
 
-    window.addEventListener('scroll', (e) => {
-        if(Number(window.scrollY) > 0 && Number(window.scrollY) <= docHeight){
-            headerWrapper.classList.add('scrollTop');
-            logo.src = 'img/logo.png';
-        }else if(Number(window.scrollY) > docHeight){
-            headerWrapper.classList.add('scrollTopLogo');
-        }else{
-            logo.src = 'img/logo-dark.png';
-            headerWrapper.classList.remove('scrollTop');
-            headerWrapper.classList.remove('scrollTopLogo');
-        }
-    });
+
 
 
     async function slide(container, wrapper, prev, next, btn) {
