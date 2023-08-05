@@ -12,6 +12,7 @@
 :root {
   --bs-gutter-x: 1.5rem;
   --bs-gutter-y: 0;
+  --themecolor: #2d4766;
 }
 
 body {
@@ -76,7 +77,6 @@ li{
   opacity: 1;
 }
 
-
 #header{
   border: 0;
   color: #EEE;
@@ -97,8 +97,6 @@ li{
   background: transparent;
   border-bottom-color: rgba(255,255,255,0.15);
 }
-
-
 
 #header #header-wrap .container{
   margin-right: auto;
@@ -135,8 +133,6 @@ li{
   color: #FFF;
 }
 
-
-
 #header #header-wrap .container .header-row #logo a.standard-logo{
   display: flex;
 }
@@ -144,7 +140,6 @@ li{
 #header #header-wrap .container .header-row #logo a.retina-logo {
   display: none;
 }
-
 
 #header #header-wrap .container .header-row #logo img {
   display: block;
@@ -191,10 +186,6 @@ li{
   font-weight: 500;
   color: #F7F7F7;
 }
-
-
-
-
 
 #header #header-wrap .container .header-row .primary-menu .menu-container .menu-item .sub-menu-container{
   list-style: none;
@@ -301,9 +292,10 @@ li{
   flex-flow: column;
 
   max-width: 1520px;
-  max-height: 40vh !important;
-    min-height: 500px !important;
-    position: relative;
+  max-height: 40vh;
+  min-height: 500px;
+  /* height: 100vh; */
+  position: relative;
 }
 
 #page-title .container::after {
@@ -358,7 +350,7 @@ li{
     position: relative;
     display: flex;
     align-items: center;
-    flex-wrap: wrap;
+    flex-wrap: wrap; /*wrap	Items를 여러 줄로 묶음 다음줄로 넘어감  ex) nowrap 한줄에 쭉 넣음 */ 
 }
 
 #page-menu #page-menu-wrap .container .page-menu-row .page-menu-nav{
@@ -370,11 +362,11 @@ li{
     top: 0;
     left: 0;
     background-color: transparent !important;
-    flex: 0 0 auto;
+    flex: 0 0 auto; /* 1.flex-grow	2. flex-shrink	3. flex-basis flex 즉 사용 안하겠다.*/
 
     max-width: 100%;
-    flex-grow: 1;
-    flex-basis: 0;
+    flex-grow: 1; /* 너비 증가율 */
+    flex-basis: 0; /*기본 너비 설정 0이면 없음*/
     text-align: center;
 }
 
@@ -385,14 +377,14 @@ li{
     list-style: none;
     background-color: transparent;
     overflow-y: auto;
-    justify-content: flex-start !important;
-    word-break: keep-all;
+    justify-content: flex-start !important; /*시작점*/
+    word-break: keep-all; /* 긴 단어는 박스 넘어감 https://www.w3schools.com/cssref/tryit.php?filename=trycss3_word-break */
     width: 100%;
-    flex-wrap: nowrap;
+    flex-wrap: nowrap; /*한줄에 다 표시 */
 }
 #page-menu #page-menu-wrap .container .page-menu-row .page-menu-nav .page-menu-container .page-menu-item{
     position: relative;
-    flex-grow: 1;
+    flex-grow: 1; /* 너비 증가율 */
 }
 
 #page-menu #page-menu-wrap .container .page-menu-row .page-menu-nav .page-menu-container .page-menu-item > a {
@@ -407,6 +399,66 @@ li{
     transition: all .2s ease-in-out;
 }
 
+#content {
+  position: relative;
+  background-color: #FFF;
+}
+
+#content .content-wrap {
+  position: relative;
+  overflow: hidden;
+  padding: 0;
+}
+
+#content .content-wrap .title{
+  background-color: #f4f4f4;
+  padding-bottom: 0;
+  padding-top: 72px;
+}
+
+#content .content-wrap .title .container{
+  --bs-gutter-x: 1.5rem;
+  --bs-gutter-y: 0;
+  width: 100%;
+  padding-right: calc(var(--bs-gutter-x) * 0.5);
+  padding-left: calc(var(--bs-gutter-x) * 0.5);
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 960px;
+  position: relative;
+}
+
+#content .content-wrap .title .container .row {
+  --bs-gutter-x: 1.5rem;
+  --bs-gutter-y: 0;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: calc(-1 * var(--bs-gutter-y));
+  margin-right: calc(-0.5 * var(--bs-gutter-x));
+  margin-left: calc(-0.5 * var(--bs-gutter-x));
+}
+
+#content .content-wrap .title .container .row .col{
+  width: 100%;
+  max-width: 100%;
+  padding-right: calc(var(--bs-gutter-x) * 0.5);
+  padding-left: calc(var(--bs-gutter-x) * 0.5);
+  margin-top: var(--bs-gutter-y);
+  flex: 1 0 0%;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  text-align: center;
+}
+
+#content .content-wrap .title .container .row .col h2{
+  margin: 0 0 18px 0;
+  line-height: 1.2;
+  font-weight: 700 !important;
+  text-align: center !important;
+  color: var(--themecolor) !important;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 3rem;
+}
 
 
 
