@@ -10,9 +10,12 @@
 }
 
 :root {
-  --bs-gutter-x: 1.5rem;
+  --bs-gutter-x: 1.5rem; /*16px 전역 font-size기준*/
   --bs-gutter-y: 0;
   --themecolor: #2d4766;
+  --animate-duration: 1s;
+  --animate-delay: 1s;
+  --animate-repeat: 1;
 }
 
 body {
@@ -48,6 +51,15 @@ dl, dt, dd, ol, ul, li {
 li{
   list-style: none;
 }
+
+p {
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
+
 
 #gotoTop {
   z-index: 599;
@@ -410,13 +422,13 @@ li{
   padding: 0;
 }
 
-#content .content-wrap .title{
+.title{
   background-color: #f4f4f4;
   padding-bottom: 0;
   padding-top: 72px;
 }
 
-#content .content-wrap .title .container{
+.title .container{
   --bs-gutter-x: 1.5rem;
   --bs-gutter-y: 0;
   width: 100%;
@@ -428,7 +440,7 @@ li{
   position: relative;
 }
 
-#content .content-wrap .title .container .row {
+.title .container .row {
   --bs-gutter-x: 1.5rem;
   --bs-gutter-y: 0;
   display: flex;
@@ -438,7 +450,7 @@ li{
   margin-left: calc(-0.5 * var(--bs-gutter-x));
 }
 
-#content .content-wrap .title .container .row .col{
+.title .container .row .col{
   width: 100%;
   max-width: 100%;
   padding-right: calc(var(--bs-gutter-x) * 0.5);
@@ -450,7 +462,7 @@ li{
   text-align: center;
 }
 
-#content .content-wrap .title .container .row .col h2{
+.title .container .row .col h2{
   margin: 0 0 18px 0;
   line-height: 1.2;
   font-weight: 700 !important;
@@ -460,6 +472,370 @@ li{
   font-size: 3rem;
 }
 
+.pictogram{
+  background-image: url(img/bg-gray.jpg), url(img/bg-box-1.png), url(img/bg-box-2.png);
+  background-position: top, left, right;
+  background-repeat: repeat-x, no-repeat, no-repeat;
+  background-size: auto, auto 100%, auto 100%;
+  padding-top: 144px;
+  padding-bottom: 144px;
+}
+
+.pictogram .container{
+  --bs-gutter-x: 1.5rem;
+  --bs-gutter-y: 0;
+  width: 100%;
+  padding-right: calc(var(--bs-gutter-x) * 0.5);
+  padding-left: calc(var(--bs-gutter-x) * 0.5);
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 1520px;
+  position: relative;
+}
+
+.pictogram .container .row{
+  --bs-gutter-x: 3rem;
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: calc(-0.5 * var(--bs-gutter-x));
+  margin-left: calc(-0.5 * var(--bs-gutter-x));
+  align-items: stretch; /* 세로 높이를 최대한 맞춘다.*/
+  --col-mb: 48px;
+  margin-bottom: calc(var(--col-mb) / -1);
+  position: relative;
+  margin-top: 0;
+}
+
+.pictogram .container .row .col{
+  --bs-gutter-x: 3rem; /*16x3*/
+  --col-mb: 48px;
+  max-width: 100%;
+  padding-right: calc(var(--bs-gutter-x) * 0.5);
+  padding-left: calc(var(--bs-gutter-x) * 0.5);
+  margin-top: var(--bs-gutter-y);
+  flex: 0 0 auto;
+  width: 50%;
+  padding-bottom: var(--col-mb);
+  display: flex !important; /* 높이 맞아진다. */
+}
+
+.pictogram .container .row .col .feature-box{
+  --bs-gutter-x: 3rem;
+  --col-mb: 48px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 3rem;
+  position: relative;
+  flex-wrap: wrap;
+  background-color: #edf2f7;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+  margin: 0;
+}
+
+.pictogram .container .row .col .feature-box .fbox-icon{
+  --bs-gutter-y: 0;
+  --bs-gutter-x: 3rem;
+  --col-mb: 48px;
+  width: auto !important;
+  padding-left: 0 !important;
+  padding-right: 1.5rem !important;
+  padding: 0 0.75rem;
+  animation-fill-mode: both;
+  animation-duration: var(--animate-duration);
+  animation-name: fadeIn;
+  border: none !important;
+  height: auto !important;
+}
+
+.pictogram .container .row .col .feature-box .fbox-icon a{
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  color: #FFF;
+}
+
+.pictogram .container .row .col .feature-box .fbox-content{
+  flex-basis: 0;
+  flex-grow: 1;
+  min-width: 0;
+  max-width: 100%;
+  padding: 0 0.75rem;
+}
+
+.pictogram .container .row .col .feature-box .fbox-content h4{
+  display: block;
+  
+  margin-block-start: 1.33em; /* 블록요소 방향의 시작 마진이 1.33em 상단 마진 */
+  margin-block-end: 1.33em;  /* 블록요소 방향의 끝 마진이 1.33em 하단 마진 */
+  margin-inline-start: 0px; /* 인라인 방향의 왼쪽 마진 */
+  margin-inline-end: 0px; /* 인라인 방향의 오른쪽 마진 */
+  margin: 0 0 18px 0;
+
+  font-size: 28px;
+  margin-bottom: 0.5rem !important;
+  line-height: 1.25 !important;
+  font-weight: 500 !important;
+  color: var(--themecolor) !important;
+}
+
+.pictogram .container .row .col .feature-box .fbox-content .line-about{
+  clear: both;
+    position: relative;
+    width: 20px;
+    margin: 15px 0;
+    border-top: 3px solid #2d4766;
+}
+
+.pictogram .container .row .col .feature-box .fbox-content p{
+  margin-bottom: 0;
+  line-height: 1.25;
+  color: var(--themecolor);
+  font-weight: 400;
+  margin: 0 0 18px 0;
+  font-size: 19px;
+  margin-top: 0.5rem;
+}
+
+.counter{
+  color: #EEE;
+  padding-top: 144px;
+  padding-bottom: 144px;
+  background-image: url(img/bg-counter.jpg);
+  background-size: cover;
+}
+
+
+.counter .container{
+  --bs-gutter-x: 1.5rem;
+  --bs-gutter-y: 0;
+  width: 100%;
+  padding-right: calc(var(--bs-gutter-x) * 0.5);
+  padding-left: calc(var(--bs-gutter-x) * 0.5);
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 1520px;
+  position: relative;
+}
+
+.counter .container .name{
+  margin-bottom: 3rem;
+}
+
+.counter .container .name .line-box{
+  clear: both;
+  position: relative;
+  border-top: 2px solid #2d4766;
+  border-width: 4px;
+  width: 50px;
+  margin: 10px auto;
+  border-color: #fff;
+}
+
+.counter .container .name h4{
+  display: block;
+  margin-block-start: 1.33em;
+  margin-block-end: 1.33em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  margin: 0 0 18px 0;
+  line-height: 1.2;
+  font-size: 3rem;
+  font-weight: 700 !important;
+  text-align: center !important;
+  font-family: 'Open Sans', sans-serif;
+  color: #EEE;
+}
+
+.counter .container .row{
+  display: flex;
+  flex-wrap: wrap;
+  --bs-gutter-x: 1rem;
+  --bs-gutter-y: 1rem;
+  margin-top: calc(-1 * var(--bs-gutter-y));
+  margin-right: calc(-0.5 * var(--bs-gutter-x));
+  margin-left: calc(-0.5 * var(--bs-gutter-x));
+  
+}
+
+.counter .container .row .col{
+  max-width: 100%;
+  --bs-gutter-x: 1rem;
+  --bs-gutter-y: 1rem;
+  padding-right: calc(var(--bs-gutter-x) * 0.5);
+  padding-left: calc(var(--bs-gutter-x) * 0.5);
+  margin-top: var(--bs-gutter-y);
+  flex: 0 0 auto;
+  width: 25%;
+  text-align: center !important;
+}
+
+.counter .container .row .col:not(:last-child){
+  border-right: 4px dotted #fff;
+}
+
+.counter .container .row .col h5{
+  display: block;
+  margin-block-start: 1.67em;
+  margin-block-end: 1.67em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: 400;
+  margin: 0 0 18px 0;
+  font-size: 1.5rem;
+  line-height: 1.25 !important;
+}
+
+.counter .container .row .col .number{
+  font-weight: 700 !important;
+  font-family: "Poppins", sans-serif;
+  font-size: 64px;
+}
+
+.wedo{
+  background-size: auto 100%; /* height width 실제 높이에 넓이는 꽉차게 즉 너비가 100%에 맞게 높이가 맞춰진다.*/
+  background-position: left bottom;
+  padding-top: 144px;
+  padding-bottom: 144px;
+  background-image: url(img/bg-map.png);
+  background-repeat: no-repeat;
+}
+
+.wedo .container{
+  --bs-gutter-x: 1.5rem;
+  --bs-gutter-y: 0;
+  width: 100%;
+  padding-right: calc(var(--bs-gutter-x) * 0.5);
+  padding-left: calc(var(--bs-gutter-x) * 0.5);
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 1520px;
+  position: relative;
+}
+
+.wedo .container .row{
+  --bs-gutter-x: 1.5rem;
+  --bs-gutter-y: 0;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: calc(-1 * var(--bs-gutter-y));
+  margin-right: calc(-0.5 * var(--bs-gutter-x));
+  margin-left: calc(-0.5 * var(--bs-gutter-x));
+}
+
+.wedo .container .row .col{
+  max-width: 100%;
+  padding-right: calc(var(--bs-gutter-x) * 0.5);
+  padding-left: calc(var(--bs-gutter-x) * 0.5);
+  margin-top: var(--bs-gutter-y);
+  flex: 0 0 auto;
+  width: 75%;
+  margin-left: 25%;
+  position: relative;
+}
+
+.wedo .container .row .col .name{
+  --bs-gutter-x: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.wedo .container .row .col .name .line-box{
+  clear: both;
+  position: relative;
+  border-top: 2px solid #2d4766;
+  border-width: 4px;
+  width: 50px;
+  margin: 10px auto;
+}
+
+.wedo .container .row .col .name h4{
+  display: block;
+  margin-block-start: 1.33em;
+  margin-block-end: 1.33em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  margin: 0 0 18px 0;
+  line-height: 1.2;
+  font-size: 3rem;
+  font-weight: 700 !important;
+  text-align: center !important;
+  color: var(--themecolor) !important;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.wedo .container .row .col .sub-row{
+  --bs-gutter-x: 1.5rem;
+  --bs-gutter-y: 0;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: calc(-1 * var(--bs-gutter-y));
+  margin-right: calc(-0.5 * var(--bs-gutter-x));
+  margin-left: calc(-0.5 * var(--bs-gutter-x));
+  align-items: stretch !important;
+  --col-mb: 24px;
+  margin-bottom: calc(var(--col-mb) / -1);
+  position: relative;
+}
+
+.wedo .container .row .col .sub-row .sub-col{
+  --col-mb: 24px;
+  max-width: 100%;
+  padding-right: calc(var(--bs-gutter-x) * 0.5);
+  padding-left: calc(var(--bs-gutter-x) * 0.5);
+  margin-top: var(--bs-gutter-y);
+  flex: 0 0 auto;
+  width: 50%;
+  padding-bottom: var(--col-mb);
+}
+
+.wedo .container .row .col .sub-row .sub-col .sub-content{
+  display: flex !important;
+  align-items: center !important;
+  padding: 3rem !important;
+  height: 100% !important; /* 이게 없으면 자신의 크기만큼만 높이가 생성되서 서로 높이들이 안맞는다 */
+  position: relative !important;
+  background-color: #edf2f7;
+}
+
+.wedo .container .row .col .sub-row .sub-col .sub-content img{
+  padding-right: 3rem !important;
+}
+
+.wedo .container .row .col .sub-row .sub-col .sub-content .content h4{
+  display: block;
+  margin-block-start: 1.33em;
+  margin-block-end: 1.33em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  margin-bottom: 0.5rem !important;
+  font-weight: 500 !important;
+  line-height: 1.5;
+  margin: 0 0 18px 0;
+  font-size: 1.5rem;
+}
+
+
+.wedo .container .row .col .sub-row .sub-col .sub-content .content p{
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 1.8;
+}
+
+.wedo .container .row .col .sub-row .sub-col .sub-content .content p span{
+  color: #EEE;
+}
+
+.wedo .container .row .col .sub-row .sub-col .sub-content .icon{
+  bottom: 0 !important;
+  right: 0 !important;
+  position: absolute !important;
+}
+
+.wedo .container .row .col .sub-row .sub-col .sub-content .icon img{
+  margin-right: 1rem !important;
+  margin-bottom: 1rem !important;
+}
 
 
 #footer{
