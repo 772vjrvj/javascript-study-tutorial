@@ -1,11 +1,21 @@
 window.addEventListener("DOMContentLoaded", () => {
-    console.log('DOMContentLoaded');
 
     const headerWrapper = document.querySelector('#header-wrap');
     const gotoTop = document.querySelector("#gotoTop");
 
 
     let isScrolling = false;
+
+    //스크롤이 끝나지 않은 상태에서 클리가하면 멈춤 이유는 클릭이후에도 남은 스크롤이 움직여서임
+
+    const bodyHeight = document.body.scrollHeight;
+    const documentHeight = document.documentElement.scrollHeight;
+
+    // body와 documentElement 중 더 큰 높이를 반환
+    const docHeight = Math.max(bodyHeight, documentHeight) / 25;
+    const logo = document.querySelector('#logo-small');
+
+
 
     window.addEventListener('scroll', (e) => {
         if(!isScrolling){
@@ -35,17 +45,6 @@ window.addEventListener("DOMContentLoaded", () => {
             behavior: 'smooth'
         })
     });
-    //스크롤이 끝나지 않은 상태에서 클리가하면 멈춤 이유는 클릭이후에도 남은 스크롤이 움직여서임
-
-    const bodyHeight = document.body.scrollHeight;
-    const documentHeight = document.documentElement.scrollHeight;
-
-    // body와 documentElement 중 더 큰 높이를 반환
-    const docHeight = Math.max(bodyHeight, documentHeight) / 25;
-    const logo = document.querySelector('#logo-small');
-
-
-
 
     async function slide(container, wrapper, prev, next, btn) {
         let posX1 = 0,                                            //mouse down 하고  drag 시작 위치
@@ -74,8 +73,9 @@ window.addEventListener("DOMContentLoaded", () => {
                 const swiperSlide = document.createElement('div');
                 swiperSlide.classList.add('swiper-slide');
 
+
                 //데이터를 넣는다. 
-                swiperSlide.textContent = 'slide content : ' + val.name;
+                // swiperSlide.textContent = 'slide content : ' + val.name;
 
                 swiperSlide.style.backgroundImage = `url(${val.imageUrl})`;
 
@@ -83,8 +83,43 @@ window.addEventListener("DOMContentLoaded", () => {
 
                 swiperSlide.style.backgroundSize ='cover';
 
-
                 swiperSlide.style.width = slideWidth;
+
+                const swiperSlideContainer = document.createElement('div');
+                swiperSlideContainer.classList.add('container');
+
+                const sliderCaption = document.createElement('div');
+                sliderCaption.classList.add('slider-caption');
+
+                const heroLogo = document.createElement('div');
+                heroLogo.classList.add('hero-logo');
+
+                const heroLogoImg = document.createElement('img');
+                heroLogoImg.classList.add('hero-logo-img');
+                heroLogoImg.src = 'img/' + val.imageInnerUrl;
+
+                const slideInnerTitle = document.createElement('h2');
+                slideInnerTitle.classList.add('slide-inner-title');
+                slideInnerTitle.innerHTML = 'Manage Your Success <br>' + val.name;
+                if(idx === 0){
+                    heroLogoImg.classList.add('animated');
+                    slideInnerTitle.classList.add('animated');
+                }else if(idx !== 0){
+                    heroLogoImg.classList.add('not-animated');
+                    slideInnerTitle.classList.add('not-animated');
+                }
+
+
+
+                heroLogo.appendChild(heroLogoImg);
+
+                sliderCaption.appendChild(heroLogo);
+                sliderCaption.appendChild(slideInnerTitle);
+
+                swiperSlideContainer.appendChild(sliderCaption);
+
+                swiperSlide.appendChild(swiperSlideContainer);
+
                 wrapper.appendChild(swiperSlide);
 
                 if(idx === 0){
@@ -118,6 +153,11 @@ window.addEventListener("DOMContentLoaded", () => {
 
             const tabmenuList = container.querySelectorAll('input[name="tabmenu"]');
             const labels = btn.children;
+
+            const heroLogoImgs = container.querySelectorAll('.hero-logo-img');
+            const slideInnerTitles = container.querySelectorAll('.slide-inner-title');
+
+            //heroLogoImgs, slideInnerTitles의 첫번째는 바로 나와야 하므로
 
             for (let i = 0; i < labels.length; i++) {
                 const label = labels[i];
@@ -246,6 +286,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
             function checkIndex (){
                 wrapper.classList.remove('shifting');
+
                 //왼쪽으로 읻홍(숫자 증가) 하면서 slide가 5에서 1(복사본)로 간경우
                 if (index == -1) {
                     wrapper.style.left = -(slidesLength * 100) + "%";
@@ -256,6 +297,22 @@ window.addEventListener("DOMContentLoaded", () => {
                 if (index == slidesLength) {
                     wrapper.style.left = '-100%';
                     index = 0;
+                }
+
+                //indxe는 0,1,2 밖에 없고 heroLogoImgs는 복사본까지 5개 0,1,2,3,4 이다. 하지만 우리가 사용해야 하는 것은 1,2,3이다.
+                //따라서 index에 1을 더한 값을 처리해 주면 된다. 이미 위에서 0,1,2 처리를 했으므로 1만 더하면 됨
+                for (let i = 0; i < heroLogoImgs.length; i++) {
+                    if(i === index + 1){
+                        heroLogoImgs[i].classList.remove('not-animated');
+                        heroLogoImgs[i].classList.add('animated');
+                        slideInnerTitles[i].classList.remove('not-animated');
+                        slideInnerTitles[i].classList.add('animated');
+                    }else{
+                        heroLogoImgs[i].classList.remove('animated');
+                        heroLogoImgs[i].classList.add('not-animated');
+                        slideInnerTitles[i].classList.remove('animated');
+                        slideInnerTitles[i].classList.add('not-animated');
+                    }
                 }
 
                 tabmenuList[index].checked = true;
@@ -332,12 +389,17 @@ window.addEventListener("DOMContentLoaded", () => {
             // 'https://cdn.pixabay.com/photo/2016/10/18/21/22/beach-1751455_1280.jpg'
         ];
         
-
+        const imageInnerList = [
+            'hero-logo-1.png',
+            'hero-logo-1.png',
+            'hero-logo-1.png'
+        ];
 
         const response = await fetch('https://jsonplaceholder.typicode.com/users');
         const data = await response.json();
         data.forEach((d,i)=>{
             d.imageUrl = imageList[i];
+            d.imageInnerUrl = imageInnerList[0];
         });
         return [data[0], data[1], data[2]];
         // return null;

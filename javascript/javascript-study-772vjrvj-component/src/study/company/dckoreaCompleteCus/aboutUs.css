@@ -233,7 +233,6 @@ p {
   background-color: #f8f8f8;
 }
 
-
 #header #header-wrap .container .header-row .primary-menu .menu-container .sub-menu:hover > .menu-link{
   background-color: rgb(169, 169, 169);
 }
@@ -243,8 +242,6 @@ p {
   opacity: 1;
   visibility: visible;
 }
-
-
 
 #header #header-wrap.scrollTop{
   background: #fff;
@@ -304,8 +301,8 @@ p {
   flex-flow: column;
 
   max-width: 1520px;
-  max-height: 40vh;
-  min-height: 500px;
+  max-height: 60vh;
+  min-height: 60vh;
   /* height: 100vh; */
   position: relative;
 }
@@ -334,12 +331,11 @@ p {
 
 #page-menu #page-menu-wrap{
   position: absolute;
-    z-index: 199;
+    z-index: 198;
     top: 0;
     left: 0;
     width: 100%;
     transform: translateZ(0);
-    -webkit-backface-visibility: hidden;
     margin-top: -58px;
     background-color: transparent;
     border-top: 1px solid rgba(255, 255, 255, .15);
@@ -554,6 +550,10 @@ p {
   width: 100%;
   height: 100%;
   color: #FFF;
+}
+
+.pictogram .container .row .col .feature-box .fbox-icon a img{
+  opacity: 0;
 }
 
 .pictogram .container .row .col .feature-box .fbox-content{
@@ -901,4 +901,21 @@ p {
 #footer #copyrights .container .row .col .copyright-links a:hover{
   color: #fff;
   border-bottom: 1px solid #888;
+}
+
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+
+	to {
+		opacity: 1;
+	}
+}
+
+.fadeIn {
+	animation-name: fadeIn;
+  animation-duration: 2s;
+  animation-fill-mode: both; /* 처음속성  opacity: 0 적용 후 opacity: 1마지막 적용 */
 }
