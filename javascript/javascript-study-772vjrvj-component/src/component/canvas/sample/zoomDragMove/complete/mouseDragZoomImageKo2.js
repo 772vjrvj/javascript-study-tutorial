@@ -8,7 +8,7 @@ window.onload = function(){
 //이미지
 var gkhead = new Image();
     gkhead.crossOrigin = "anonymous";
-    gkhead.src = '/javascript/javascript-study-772vjrvj-component/src/component/canvas/sample/zoomDragMove/complete/image/narae.png';
+    gkhead.src = '/javascript/javascript-study-772vjrvj-component/src/component/canvas/sample/zoomDragMove/complete/image/카우보이 비밥 스파이크4.jpg';
 
 //버튼
 var reset     = document.getElementById("reset");

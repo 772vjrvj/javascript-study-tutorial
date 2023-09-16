@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Page Title</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' href='css/mouseDragZoomImageKo.css'>
+  <link rel='stylesheet' type='text/css' href='css/reset.css'>
+  <link rel="stylesheet" type='text/css' href="css/font-awesome.css">
+</head>
+<body>
+<div id="wrap">
+  <div id="header">HEADER</div>
+  <div id="nav">
+      <div class="toolbar_left">toolbar_left</div>
+      <div class="toolbar_center">
+        <div class="buttons">
+          <ul>
+            <li>
+              <button id="tool_pointer" class="toolbar_button active"><i class="fa fa-mouse-pointer" aria-hidden="true"></i></button>
+            </li>
+            <li>
+              <button id="tool_pen" class="toolbar_button"><i class="fa fa-paint-brush" aria-hidden="true"></i></button>
+            </li>
+            <li>
+              <button id="tool_line" class="toolbar_button"><i class="fa fa fa-minus" aria-hidden="true"></i></button>
+            </li>
+            <li>
+              <button id="tool_square" class="toolbar_button"><i class="fa fa-square-o" aria-hidden="true"></i></button>
+            </li>
+            <li>
+              <button id="tool_circle" class="toolbar_button"><i class="fa fa-circle-o" aria-hidden="true"></i></button>
+            </li>
+            <li>
+              <button id="tool_star" class="toolbar_button"><i class="fa fa-star-o" aria-hidden="true"></i></button>
+            </li>
+            <li>
+              <button id="tool_eraser" class="toolbar_button"><i class="fa fa-eraser" aria-hidden="true"></i></button>
+            </li>
+            <li>
+              <button id="tool_eraser_all" class="toolbar_button"></button>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="toolbar_right">toolbar_right</div>
+  </div>
+  <div id="container">
+    <div id="side_left">SIDE_LEFT</div>
+    <div id="contents">
+      <div class="image_area">
+        <div id="imageWrapper">
+          <div id="canvasWrapper">
+            <canvas id="myCanvas" width="500" height="500">
+              Your browser does not support the canvas element.
+            </canvas>
+            <div id="eraserIcon">
+
+            </div>
+            <div id="penIcon">
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="image_control_area">
+        <div class="button_area">
+          <div class="buttons">
+            <ul>
+              <li>
+                <button id="move" >Move</button>
+              </li>
+              <li>
+                <button id="reset">Reset</button>
+              </li>
+              <li>
+                <button id="plus">+</button>
+              </li>
+              <li>
+                <button id="minus">-</button>
+              </li>
+            </ul>
+          </div>
+          <div class="slider">
+            <ul>
+              <li>
+                <input type="range" min="1" max="99" value="8" id="rate">
+              </li>
+              <li>
+                <p>Rate: <span id="rate_value"></span>%</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="info_area">
+          <div class="coordinate">
+            <ul>
+              <li>
+                <p><span class="info_text">X</span><span class="info_value" id="posX">0</span></p>
+              </li>
+              <li>
+                <p><span class="info_text">Y</span><span class="info_value" id="posY">0</span></p>
+              </li>
+            </ul>
+          </div>
+          <div class="rgb">
+            <ul>
+              <li>
+                <p><span class="info_text">R</span><span class="info_value" id="rgbR">255</span></p>
+              </li>
+              <li>
+                <p><span class="info_text">G</span><span class="info_value" id="rgbG">255</span></p>
+              </li>
+              <li>
+                <p><span class="info_text">B</span><span class="info_value" id="rgbB">255</span></p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="side_right">SIDE_RIGHT</div>
+  </div>
+  <div id="footer">FOOTER</div>
+</div>
+
+<script type="text/javascript" src="mouseDragZoomImageKo.js"></script>
+</body>
+</html>
