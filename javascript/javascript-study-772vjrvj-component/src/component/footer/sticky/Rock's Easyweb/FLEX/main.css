@@ -1,0 +1,18 @@
+html,body{
+	margin:0; padding:0;
+	height:100%
+}
+.wrapper{
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+}
+.main-content{
+	flex: 1; /* 100%  채워*/ 
+}
+footer{
+	padding: 30px 0;
+	background: #333;
+	color:#fff;
+	/* 높이 지정 X */
+}

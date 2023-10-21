@@ -1,0 +1,33 @@
+
+//toFixed를 이용하여 소수점 자리수 제거(n자리로 반올림)
+const num10 = 1.1234;
+const num11 = 12.5678;
+const num12 = 123.5678;
+console.log(num10.toFixed(2));   // 1.12
+console.log(num11.toFixed(2));   // 12.57
+console.log(num12.toFixed(2));   // 123.57
+
+
+//round()를 이용하여 소수점 n자리로 반올림
+let num13 = 1.1234
+let result13 = Math.round(num13 * 100) / 100;
+console.log(result13);  // 1.12
+
+num14 = 12.5678
+result14 = Math.round(num14 * 100) / 100;
+console.log(result14);  // 12.57
+
+num15 = 123.5678
+result15 = Math.round(num15 * 100) / 100;
+console.log(result15);  // 123.57
+
+
+//n자리 올림
+let num16 = 1.1234
+let result16 = Math.ceil(num16 * 100) / 100;
+console.log(result16);  // 1.13
+
+//n자리 버림
+num17 = 12.5678
+result = Math.floor(num17 * 100) / 100;
+console.log(result17);  // 12.56

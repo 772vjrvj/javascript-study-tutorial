@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script>
+        const obj = {
+            a: 1,
+            b: {
+                c: 2,
+                d: 3,
+                e: 4,
+            },
+            f: 1,
+            g: 1,
+        };
+
+        function copyObj(obj) {
+
+            const result = {};
+
+            for (let key in obj) {
+                if (typeof obj[key] === 'object') {
+                    result[key] = copyObj(obj[key]);
+                } else {
+                    result[key] = obj[key];
+                }
+            }
+
+            return result;
+        }
+
+        const copiedObj = copyObj(obj);
+
+        copiedObj.b.c = 3
+
+        obj.b.c === copiedObj.b.c //false 
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
