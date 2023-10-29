@@ -1,0 +1,29 @@
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, tbody, tfoot, thead, tr, th, td{margin:0;padding:0;border: 0;}
+div, span, article, section, header, footer, p, ul, li, label{ box-sizing: border-box;}
+body{font-size: 1.5rem;}
+.container{
+  display: flex; 
+
+  /* 디폴트 */
+  /* flex-direction: row;   */
+  /* flex-direction: column; */
+  /* flex-direction: row-reverse; */
+  /* flex-direction: column-reverse; */
+
+  height: 100vh;
+  background: lightgray;
+}
+
+.item {
+  flex-basis: 0;
+  background: rgba(255, 0, 0, 0.5);
+}
+
+
+.item:nth-child(odd){
+  background: rgba(255, 255, 0, 0.5);
+}
+.test-img{
+  width: 100px;
+  height: 100px;
+}

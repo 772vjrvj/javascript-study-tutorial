@@ -1,0 +1,89 @@
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, tbody, tfoot, thead, tr, th, td{margin:0;padding:0;border: 0;}
+div, span, article, section, header, footer, p, ul, li, label{ box-sizing: border-box;}
+body{font-size: 1.5rem;}
+.container{
+  display: flex; 
+
+  /* 디폴트 */
+  /* flex-direction: row;   */
+  /* flex-direction: column; */
+  /* flex-direction: row-reverse; */
+  /* flex-direction: column-reverse; */
+
+  /* 디폴트 */
+  /* flex-wrap: wrap;  */
+  /* flex-wrap: no-wrap; */
+  /* flex-wrap: wrap-reverse;  */
+
+  /* 디폴트 justify item은 작동이 안됨 묶어서 가니깐*/
+  /* justify-content: flex-start; */
+  /* justify-content: center; */
+  /* justify-content: flex-end; */
+  /* justify-content: space-around; */
+  /* justify-content: space-evenly; */
+  /* justify-content: space-between; */
+  
+  /* 디폴트 */
+  /* align-items: flex-start; */
+  /* align-items: center; */
+  /* align-items: flex-end; */
+
+  /* 중앙 */
+  /* justify-content: center; */
+  /* align-items: center; */
+
+  /* 묶어서 감 */
+  /* flex-wrap: wrap; */
+  /* align-content: flex-start; */
+  /* align-content: center; */
+  /* align-content: flex-end; */
+
+  /* 윈도우 싸이즈 줄여서 요소들이 떨어졌을 때 가능*/
+  /* align-content: space-around;  */
+  /* align-content: space-evenly;  */
+  /* align-content: space-between;  */
+
+  height: 100vh;
+  background: lightgray;
+}
+
+.item {
+  /* 기본값 */
+  /* flex-basis: auto; */
+
+   /*이래야 1:2:1로 됨  점유하는 공감을 0으로*/
+  flex-basis: 0;
+  background: rgba(255, 0, 0, 0.5);
+}
+
+/* 늘어늘때 줄어들때 */
+/* flex-basis: 0;  flex-grow: 1; flex-shrink: 1; */
+
+
+
+/*flex-grow 남은 여백을 1:2:1로 가짐 넓어질 때*/
+.item:nth-child(1) {
+  /* flex-grow: 1; */
+  /* flex-shrink: 1; */
+  flex: 1; /*축약형은 basis 0으로 세팅 */
+}
+
+.item:nth-child(2) {
+  /* flex-grow: 2; */
+  /* flex-shrink: 2; */
+  flex: 2;
+}
+
+.item:nth-child(3) {
+  /* flex-grow: 1; */
+  /* flex-shrink: 1; */
+  flex: 1;
+}
+
+.item:nth-child(odd){
+  background: rgba(255, 255, 0, 0.5);
+}
+.test-img{
+  width: 100px;
+  height: 100px;
+}

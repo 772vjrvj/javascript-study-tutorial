@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Page Title</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='style.css'>
+</head>
+<body>
+  <ul class="pagination">
+    <li><a href="#" class="prev">< Prev </a></li>
+    <li class="pageNumber active"><a href="#">1</a></li>
+    <li class="pageNumber"><a href="#">2</a></li>
+    <li class="pageNumber"><a href="#">3</a></li>
+    <li class="pageNumber"><a href="#">4</a></li>
+    <li class="pageNumber"><a href="#">5</a></li>
+    <li class="pageNumber"><a href="#">6</a></li>
+    <li><a href="#" class="next">Next ></a></li>
+  </ul>
+  <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script type="text/JavaScript">
+    $(document).ready(function() {
+      $('.next').click(function(){
+        $('.pagination').find('.pageNumber.active').next()
+        .addClass('active')
+        $('.pagination').find('.pageNumber.active').prev()
+        .removeClass('active')
+      });
+      $('.prev').click(function(){
+        $('.pagination').find('.pageNumber.active').prev()
+        .addClass('active')
+        $('.pagination').find('.pageNumber.active').next()
+        .removeClass('active')
+      });
+    })
+
+  </script>
+</body>
+</html>
