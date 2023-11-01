@@ -1,0 +1,27 @@
+/* layout */
+#header {height: 95px;}
+
+/* container */
+.container {width:1020px; margin: 0 auto; height: inherit;/* background: rgba(0,0,0,0.2); */ }
+
+/* header */
+.header {overflow: hidden;}
+.header h1 {float: left; width: 200px; margin-top: 17px; }
+.header .nav {float: left; width: 600px; margin-top: 40px;}
+.header .nav li {display: inline; padding: 0 20px;}
+.header .nav li a {font-size: 15px; font-weight: bold; text-transform: uppercase; letter-spacing: 0.025em;}
+.header .nav_icon {float: right; margin-top: 30px; }
+.header .nav_icon li {float: left; width: 47px; text-align: center; margin-left: 10px;}
+.header .nav_icon li a {color: #767676; display: block;}
+.header .nav_icon li a i {font-size: 20px; }
+.header .nav_icon li a:hover {color: #ea5d4b; }
+.header .nav_icon li a:hover i {color: #ea5d4b; }
+.header .nav_icon li span {display: block;}
+
+
+
+
+
+
+
+

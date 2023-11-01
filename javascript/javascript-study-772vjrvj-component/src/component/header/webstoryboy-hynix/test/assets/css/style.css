@@ -1,0 +1,41 @@
+#wrap{}
+
+#header{height: 95px;}
+
+.container{width: 1020px; margin: 0 auto; height: inherit;}
+
+.header{height: inherit; }
+.header h1{float: left; margin-top: 15px;}
+
+.header .nav{float: left; margin-top: 17px; margin-left: 120px;}
+.header .nav ul li{float: left; padding: 20px; letter-spacing: normal; text-transform: uppercase; font-weight: bold; font-size: 16px;}
+
+.header .nav ul li:hover a{
+  color: red;
+  text-decoration: underline;
+}
+
+.header .nav_icon{float: right; margin-top: 20px;}
+
+.header .nav_icon ul li {
+  float: left; padding: 10px;
+  text-align: center;
+}
+
+
+.header .nav_icon ul li a i{
+  font-size: 20px;
+  color: rgba(84, 84, 84, 0.653);
+}
+
+.header .nav_icon ul li a span{
+  display: block;
+}
+
+.header .nav_icon ul li a:hover i{
+  color : red
+}
+
+.header .nav_icon ul li a:hover span{
+  color : red
+}
