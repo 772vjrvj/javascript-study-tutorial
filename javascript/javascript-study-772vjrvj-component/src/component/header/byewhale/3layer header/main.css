@@ -1,0 +1,60 @@
+header{
+  background: greenyellow;
+  height: 150px;
+}
+
+.container{
+  background: violet;
+  height: inherit;
+  max-width: 1250px;
+  margin: 0 auto;
+}
+
+.header{
+  display: flex;
+  flex-wrap: wrap;
+  flex-basis: auto;
+  width: 100%;
+  height: inherit;
+}
+
+.logo{
+  background: dodgerblue;
+  flex-grow: 1.5;
+}
+
+.menu-list{
+  background: yellow;
+  flex-grow: 7;
+}
+
+.menu-user{
+  background: gainsboro;
+  flex-grow: 1.5;
+}
+
+
+main{
+  background: skyblue;
+}
+
+.main{
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  flex: 1 1 auto;
+  flex-direction: row;
+  padding: 10px;
+}
+
+.main div{
+  box-sizing: border-box;
+  padding: 30px;
+  flex-grow: 1;
+  background: white;
+  border: 1px solid black;
+  margin: 10px;
+  width: 300px;
+}
+
+
