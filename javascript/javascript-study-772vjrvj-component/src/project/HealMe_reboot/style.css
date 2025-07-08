@@ -1,0 +1,182 @@
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+:root {
+    --main-color: #0162c3;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Jua', sans-serif;
+    list-style: none;
+    text-decoration: none;
+    color: var(--main-color); /* 전체 텍스트 색상 적용 */
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 0 10%;
+    display: flex;
+    align-items: center;
+    z-index: 100;
+}
+
+.header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #FCFDFD;
+    backdrop-filter: blur(50px); /* ✅ 이것이 stacking context 생성 부모보다 z-index가 낮아도, 시각적으로는 앞에 보일 수 있음! */
+    z-index: -1;
+}
+
+.container {
+    max-width: 1250px;
+    margin: 0 auto;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    height: 80px;
+}
+
+.logo img {
+    height: 100%;
+    object-fit: contain;
+}
+
+.navbar {
+    display: flex;
+}
+
+.navbar .nav-list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.navbar .nav-list li a {
+    font-size: 1.3rem;
+    color: var(--main-color);
+    font-weight: 300;
+    margin-left: 2.5rem;
+}
+
+/* 기본은 숨김 */
+.mobile-login {
+    display: none;
+}
+
+
+.right-box {
+    height: 80px;                 /* .logo와 동일 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;                  /* 필요시 로고 너비와 동일하게 조정 */
+    font-size: 1.8rem;
+}
+
+
+/* checkbox 는 없애도됨 lable에 연결*/
+#check {
+    display: none;
+}
+
+.icons {
+    position: absolute;
+    top: 50%;                /* 부모 기준 수직 가운데 */
+    transform: translateY(-50%); /* 정확한 중앙 정렬 */
+    right: 5%;
+    font-size: 2.8rem;
+    color: var(--main-color);
+    cursor: pointer;
+    display: none;
+}
+
+@media (max-width: 1000px) {
+    .header {
+        padding: 0 5%;
+    }
+}
+
+@media (max-width: 900px) {
+
+    .mobile-login {
+        display: block;
+    }
+
+    .icons {
+        display: inline-flex;
+    }
+
+    /* 맨 처음은 햄버거 인데 체크되면 -> 햄버거 사라지고 X 표시 나옴 */
+    /* 체크 햄버거 없앰*/
+    #check:checked ~ .icons #menu-icon {
+        display: none;
+    }
+
+    /* 기본 적으로 X는 없음*/
+    .icons #close-icon {
+        display: none;
+    }
+
+    /* 체크 X 존재*/
+    #check:checked ~ .icons #close-icon {
+        display: block;
+    }
+
+    .navbar {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        max-height: 0;
+        background: #FCFDFD;
+        box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .1);
+        transition: .5s ease;
+        overflow: hidden;
+    }
+
+    .navbar .nav-list {
+        flex-direction: column;
+        flex-wrap: nowrap;
+        width: 100%;
+    }
+
+    .right-box {
+        display: none; /* ✅ 모바일에서는 숨김 */
+    }
+
+    #check:checked ~ .navbar {
+        max-height: 500px; /* 충분한 값으로 지정 (예: 메뉴 5~6줄 정도 커버 가능) */
+    }
+
+    .navbar .nav-list li a {
+        display: block;
+        width: 100%;
+        font-size: 1.1rem;
+        margin: 1rem 0;
+        text-align: center;
+        transform: translateY(-50px);
+        opacity: 0;
+        transition: .5s ease;
+    }
+
+    #check:checked ~ .navbar .nav-list li a {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}

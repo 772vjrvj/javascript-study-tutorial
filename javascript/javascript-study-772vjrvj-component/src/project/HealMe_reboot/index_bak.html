@@ -1,0 +1,483 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Document</title>
+
+    <!--    https://cdnjs.com/libraries/font-awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- head에 css -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+
+    <!-- body 맨 아래에 js -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+
+    <link rel="stylesheet" href="style.css">
+    <script src="healme.js"></script>
+
+</head>
+<body>
+<!--    header-->
+<header>
+    <div class="container">
+        <a href="#" class="logo">
+            <i class="fa-solid fa-bath"></i><span>JK Care.</span>
+        </a>
+
+        <nav class="navbar">
+            <a href="#home">샵위치</a>
+            <a href="#dishes">관리사</a>
+            <a href="#about">내주변</a>
+            <a href="#menu">홈케어</a>
+            <a href="#review">커뮤니티</a>
+            <a href="#order">order</a>
+        </nav>
+
+        <div class="icons">
+            <i class="fas fa-bars" id="menu-bars"></i>
+            <i class="fas fa-search" id="search-icon"></i>
+            <a href="#" class="fa-solid fa-user"></a>
+            <a href="#" class="fa-solid fa-paper-plane"></a>
+        </div>
+    </div>
+</header>
+
+
+<!--    search form-->
+<form action="" id="search-form">
+    <input type="search" placeholder="search here..." name="" id="search-box">
+    <label for="search-box" class="fas fa-search"></label>
+    <i class="fas fa-times" id="close"></i>
+</form>
+
+<!--    home -->
+<section class="home" id="home">
+    <div class="container">
+        <div class="swiper home-slider">
+            <div class="swiper-wrapper wrapper">
+                <div class="swiper-slide slide">
+                    <picture>
+                        <source media="(max-width: 550px)" srcset="images/banner/banner_main1.png">
+                        <img src="images/banner/info_banner1.png" alt="">
+                    </picture>
+                </div>
+                <div class="swiper-slide slide">
+                    <picture>
+                        <source media="(max-width: 550px)" srcset="images/banner/banner_main2.png">
+                        <img src="images/banner/info_banner2.png" alt="">
+                    </picture>
+                </div>
+                <div class="swiper-slide slide">
+                    <picture>
+                        <source media="(max-width: 550px)" srcset="images/banner/banner_main3.png">
+                        <img src="images/banner/info_banner3.png" alt="">
+                    </picture>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--    topMain-->
+<section class="topMain" id="topMain">
+    <div class="container">
+        <h3 class="sub-heading">샵위치</h3>
+        <h1 class="heading">인기 TOP 10</h1>
+
+        <div class="swiper region-slider">
+            <div class="swiper-wrapper">
+                <!-- 슬라이드 1 -->
+                <div class="swiper-slide">
+                    <div class="button-grid">
+                        <button>서울</button>
+                        <button>인천</button>
+                        <button>대전</button>
+                        <button>세종</button>
+                        <button>광주</button>
+                        <button>대구</button>
+                    </div>
+                </div>
+
+                <!-- 슬라이드 2 -->
+                <div class="swiper-slide">
+                    <div class="button-grid">
+                        <button>울산</button>
+                        <button>부산</button>
+                        <button>경기</button>
+                        <button>강원</button>
+                        <button>충북</button>
+                        <button>충남</button>
+                    </div>
+                </div>
+
+                <!-- 슬라이드 3 -->
+                <div class="swiper-slide">
+                    <div class="button-grid">
+                        <button>전북</button>
+                        <button>전남</button>
+                        <button>경북</button>
+                        <button>경남</button>
+                        <button>제주</button>
+                        <button class="placeholder"></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 화살표 -->
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+        </div>
+
+        <!-- 샵 카드 슬라이더 -->
+        <div class="swiper top-store-slider">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="topCardItem topStore" wr_id="7067">
+                        <div class="wrap">
+                            <a href="/bbs/board.php?bo_table=gm_1&amp;wr_id=7067">
+                                <div class="thumb">
+                                    <img src="https://cdn.vipgunma.com/imgChecked/1674110341_THUMB_1000x490_MTJV9CR4_20220630161729.jpg" alt="마포-레옹테라피">
+                                </div>
+                                <div class="info">
+                                    <div class="storeName">마포-레옹테라피</div>
+                                    <div class="address">서울 강남구 신사동 508-1 신사역 8번출구 3분거리</div>
+                                    <div class="phone">010-1234-5678</div>
+                                </div>
+                                <div class="cost">
+                                    <del class="before">130,000원</del>
+                                    <div class="after">
+                                        <div class="discount">16%</div>
+                                        <div class="price">110,000원</div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="topCardItem topStore" wr_id="7067">
+                        <div class="wrap">
+                            <a href="/bbs/board.php?bo_table=gm_1&amp;wr_id=7067">
+                                <div class="thumb">
+                                    <img src="https://cdn.vipgunma.com/imgChecked/1674110341_THUMB_1000x490_MTJV9CR4_20220630161729.jpg" alt="마포-레옹테라피">
+                                </div>
+                                <div class="info">
+                                    <div class="storeName">마포-레옹테라피</div>
+                                    <div class="address">서울 강남구 신사동 508-1 신사역 8번출구 3분거리</div>
+                                    <div class="phone">010-1234-5678</div>
+                                </div>
+                                <div class="cost">
+                                    <del class="before">130,000원</del>
+                                    <div class="after">
+                                        <div class="discount">16%</div>
+                                        <div class="price">110,000원</div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="topCardItem topStore" wr_id="7067">
+                        <div class="wrap">
+                            <a href="/bbs/board.php?bo_table=gm_1&amp;wr_id=7067">
+                                <div class="thumb">
+                                    <img src="https://cdn.vipgunma.com/imgChecked/1674110341_THUMB_1000x490_MTJV9CR4_20220630161729.jpg" alt="마포-레옹테라피">
+                                </div>
+                                <div class="info">
+                                    <div class="storeName">마포-레옹테라피</div>
+                                    <div class="address">서울 강남구 신사동 508-1 신사역 8번출구 3분거리</div>
+                                    <div class="phone">010-1234-5678</div>
+                                </div>
+                                <div class="cost">
+                                    <del class="before">130,000원</del>
+                                    <div class="after">
+                                        <div class="discount">16%</div>
+                                        <div class="price">110,000원</div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="topCardItem topStore" wr_id="7067">
+                        <div class="wrap">
+                            <a href="/bbs/board.php?bo_table=gm_1&amp;wr_id=7067">
+                                <div class="thumb">
+                                    <img src="https://cdn.vipgunma.com/imgChecked/1674110341_THUMB_1000x490_MTJV9CR4_20220630161729.jpg" alt="마포-레옹테라피">
+                                </div>
+                                <div class="info">
+                                    <div class="storeName">마포-레옹테라피</div>
+                                    <div class="address">서울 강남구 신사동 508-1 신사역 8번출구 3분거리</div>
+                                    <div class="phone">010-1234-5678</div>
+                                </div>
+                                <div class="cost">
+                                    <del class="before">130,000원</del>
+                                    <div class="after">
+                                        <div class="discount">16%</div>
+                                        <div class="price">110,000원</div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="topCardItem topStore" wr_id="7067">
+                        <div class="wrap">
+                            <a href="/bbs/board.php?bo_table=gm_1&amp;wr_id=7067">
+                                <div class="thumb">
+                                    <img src="https://cdn.vipgunma.com/imgChecked/1674110341_THUMB_1000x490_MTJV9CR4_20220630161729.jpg" alt="마포-레옹테라피">
+                                </div>
+                                <div class="info">
+                                    <div class="storeName">마포-레옹테라피</div>
+                                    <div class="address">서울 강남구 신사동 508-1 신사역 8번출구 3분거리</div>
+                                    <div class="phone">010-1234-5678</div>
+                                </div>
+                                <div class="cost">
+                                    <del class="before">130,000원</del>
+                                    <div class="after">
+                                        <div class="discount">16%</div>
+                                        <div class="price">110,000원</div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- 추가 카드 복사 -->
+            </div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+        </div>
+
+        <div class="view-more-wrapper">
+            <a href="/bbs/board.php?bo_table=gm_1" class="view-more-btn">+ 상세보기</a>
+        </div>
+
+    </div>
+</section>
+
+
+
+<!--    menu-->
+<section class="theme" id="theme">
+    <div class="container">
+        <h3 class="sub-heading">테마별</h3>
+        <h1 class="heading">고객의 취향 저격</h1>
+
+        <div class="theme-list">
+            <div class="theme-row">
+                <div class="theme-btn selected" theme="swedish">스웨디시</div>
+                <div class="theme-btn" theme="one">1인샵</div>
+                <div class="theme-btn" theme="lomi">로미로미</div>
+            </div>
+            <div class="theme-row">
+                <div class="theme-btn" theme="tai">타이마사지</div>
+                <div class="theme-btn" theme="spa">사우나/스파</div>
+                <div class="theme-btn" theme="waxing">왁싱</div>
+            </div>
+        </div>
+
+        <div class="swiper theme-slider">
+            <div class="swiper-wrapper box-container">
+                <div class="swiper-slide">
+                    <div class="box">
+                        <div class="image">
+                            <img src="images/food-menu-1.png" alt="">
+                        </div>
+                        <div class="content">
+                            <h3>delicious food</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores, eligendi.</p>
+                            <div class="phone">010-1234-5678</div>
+                            <span class="price">130,000원</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="box">
+                        <div class="image">
+                            <img src="images/food-menu-1.png" alt="">
+                        </div>
+                        <div class="content">
+                            <h3>delicious food</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores, eligendi.</p>
+                            <div class="phone">010-1234-5678</div>
+                            <span class="price">130,000원</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="box">
+                        <div class="image">
+                            <img src="images/food-menu-1.png" alt="">
+                        </div>
+                        <div class="content">
+                            <h3>delicious food</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores, eligendi.</p>
+                            <div class="phone">010-1234-5678</div>
+                            <span class="price">130,000원</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="box">
+                        <div class="image">
+                            <img src="images/food-menu-1.png" alt="">
+                        </div>
+                        <div class="content">
+                            <h3>delicious food</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores, eligendi.</p>
+                            <div class="phone">010-1234-5678</div>
+                            <span class="price">130,000원</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="box">
+                        <div class="image">
+                            <img src="images/food-menu-1.png" alt="">
+                        </div>
+                        <div class="content">
+                            <h3>delicious food</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores, eligendi.</p>
+                            <div class="phone">010-1234-5678</div>
+                            <span class="price">130,000원</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- 추가 카드 복사 -->
+            </div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+        </div>
+        <div class="view-more-wrapper">
+            <a href="/bbs/board.php?bo_table=gm_1" class="view-more-btn">+ 상세보기</a>
+        </div>
+    </div>
+</section>
+
+
+<section class="new-store" id="new-store">
+    <div class="container">
+        <h3 class="sub-heading">신규샵</h3>
+        <h1 class="heading">새롭세 OPEN한 신규샵을 만나보세요</h1>
+
+        <!-- 샵 카드 슬라이더 -->
+        <div class="swiper new-store-slider">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="topCardItem topStore" wr_id="7067">
+                        <div class="wrap">
+                            <a href="/bbs/board.php?bo_table=gm_1&amp;wr_id=7067">
+                                <div class="thumb">
+                                    <img src="https://cdn.vipgunma.com/imgChecked/1674110341_THUMB_1000x490_MTJV9CR4_20220630161729.jpg" alt="마포-레옹테라피">
+                                </div>
+                                <div class="info">
+                                    <div class="storeName">마포-레옹테라피</div>
+                                    <div class="address">서울 강남구 신사동 508-1 신사역 8번출구 3분거리</div>
+                                    <div class="phone">010-1234-5678</div>
+                                </div>
+                                <div class="cost">
+                                    110,000원
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="topCardItem newStore" wr_id="7067">
+                        <div class="wrap">
+                            <a href="/bbs/board.php?bo_table=gm_1&amp;wr_id=7067">
+                                <div class="thumb">
+                                    <img src="https://cdn.vipgunma.com/imgChecked/1674110341_THUMB_1000x490_MTJV9CR4_20220630161729.jpg" alt="마포-레옹테라피">
+                                </div>
+                                <div class="info">
+                                    <div class="storeName">마포-레옹테라피</div>
+                                    <div class="address">서울 강남구 신사동 508-1 신사역 8번출구 3분거리</div>
+                                    <div class="phone">010-1234-5678</div>
+                                </div>
+                                <div class="cost">
+                                    110,000원
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="newCardItem newStore" wr_id="7067">
+                        <div class="wrap">
+                            <a href="/bbs/board.php?bo_table=gm_1&amp;wr_id=7067">
+                                <div class="thumb">
+                                    <img src="https://cdn.vipgunma.com/imgChecked/1674110341_THUMB_1000x490_MTJV9CR4_20220630161729.jpg" alt="마포-레옹테라피">
+                                </div>
+                                <div class="info">
+                                    <div class="storeName">마포-레옹테라피</div>
+                                    <div class="address">서울 강남구 신사동 508-1 신사역 8번출구 3분거리</div>
+                                    <div class="phone">010-1234-5678</div>
+                                </div>
+                                <div class="cost">
+                                    110,000원
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="newCardItem newStore" wr_id="7067">
+                        <div class="wrap">
+                            <a href="/bbs/board.php?bo_table=gm_1&amp;wr_id=7067">
+                                <div class="thumb">
+                                    <img src="https://cdn.vipgunma.com/imgChecked/1674110341_THUMB_1000x490_MTJV9CR4_20220630161729.jpg" alt="마포-레옹테라피">
+                                </div>
+                                <div class="info">
+                                    <div class="storeName">마포-레옹테라피</div>
+                                    <div class="address">서울 강남구 신사동 508-1 신사역 8번출구 3분거리</div>
+                                    <div class="phone">010-1234-5678</div>
+                                </div>
+                                <div class="cost">
+                                    110,000원
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="newCardItem newStore" wr_id="7067">
+                        <div class="wrap">
+                            <a href="/bbs/board.php?bo_table=gm_1&amp;wr_id=7067">
+                                <div class="thumb">
+                                    <img src="https://cdn.vipgunma.com/imgChecked/1674110341_THUMB_1000x490_MTJV9CR4_20220630161729.jpg" alt="마포-레옹테라피">
+                                </div>
+                                <div class="info">
+                                    <div class="storeName">마포-레옹테라피</div>
+                                    <div class="address">서울 강남구 신사동 508-1 신사역 8번출구 3분거리</div>
+                                    <div class="phone">010-1234-5678</div>
+                                </div>
+                                <div class="cost">
+                                    110,000원
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- 추가 카드 복사 -->
+            </div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+        </div>
+
+        <div class="view-more-wrapper">
+            <a href="/bbs/board.php?bo_table=gm_1" class="view-more-btn">+ 상세보기</a>
+        </div>
+
+    </div>
+</section>
+
+
+</body>
+</html>
