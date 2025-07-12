@@ -5,38 +5,63 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Responsive Navbar</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+
+
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-<header class="header">
-    <div class="container">
-        <a href="#" class="logo">
-            <img src="images/healme_logo.png" alt="Heal Me Logo" />
-        </a>
+    <header class="header">
+        <div class="container">
+            <a href="#" class="logo">
+                <img src="images/healme_logo.png" alt="Heal Me Logo" />
+            </a>
 
-        <input type="checkbox" id="check" />
-        <label for="check" class="icons">
-            <i class="bx bx-menu" id="menu-icon"></i>
-            <i class="bx bx-x" id="close-icon"></i>
-        </label>
+            <input type="checkbox" id="check" />
+            <label for="check" class="icons">
+                <i class="bx bx-menu" id="menu-icon"></i>
+                <i class="bx bx-x" id="close-icon"></i>
+            </label>
 
-        <nav class="navbar">
-            <ul class="nav-list">
-                <li><a href="#" style="--i:0;">업종별</a></li>
-                <li><a href="#" style="--i:1;">지역별</a></li>
-                <li><a href="#" style="--i:2;">내주변</a></li>
-                <li><a href="#" style="--i:3;">게시판</a></li>
-                <li><a href="#" style="--i:4;">제휴톡</a></li>
-                <li class="mobile-login"><a href="#" style="--i:4;">로그인</a></li> <!-- ✅ 추가 -->
-            </ul>
-        </nav>
+            <nav class="navbar">
+                <ul class="nav-list">
+                    <li><a href="#" style="--i:0;">업종별</a></li>
+                    <li><a href="#" style="--i:1;">지역별</a></li>
+                    <li><a href="#" style="--i:2;">내주변</a></li>
+                    <li><a href="#" style="--i:3;">게시판</a></li>
+                    <li><a href="#" style="--i:4;">제휴톡</a></li>
+                    <li class="mobile-login"><a href="#" style="--i:4;">로그인</a></li> <!-- ✅ 추가 -->
+                </ul>
+            </nav>
 
-        <div class="right-box">
-            <i class='bx bx-user'></i>
+            <div class="right-box">
+                <i class='bx bx-user'></i>
+            </div>
+
         </div>
+    </header>
+    <section class="main-slider">
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="images/images_1.jpg" alt="Slide 1" /></div>
+                <div class="swiper-slide"><img src="images/images_2.jpg" alt="Slide 2" /></div>
+                <div class="swiper-slide"><img src="images/images_3.jpg" alt="Slide 3" /></div>
+            </div>
 
-    </div>
-</header>
+            <!-- 좌우 버튼 -->
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+
+            <!-- 하단 점 -->
+            <div class="swiper-pagination"></div>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <script src="healme.js"></script>
+
 </body>
 </html>

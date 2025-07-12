@@ -1,19 +1,15 @@
-$(document).ready(function () {
-    const $menuBars = $('#menu-bars');
-    const $menuClose = $('#menu-close');
-    const $navbar = $('.navbar');
-    const $header = $('header');
-
-    function openMenu() {
-        $navbar.addClass('active');
-        $header.addClass('menu-open');
+const swiper = new Swiper(".mySwiper", {
+    loop: true,
+    autoplay: {
+        delay: 3000,
+        disableOnInteraction: false
+    },
+    pagination: {
+        el: ".swiper-pagination",
+        clickable: true
+    },
+    navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev"
     }
-
-    function closeMenu() {
-        $navbar.removeClass('active');
-        $header.removeClass('menu-open');
-    }
-
-    $menuBars.on('click', openMenu);
-    $menuClose.on('click', closeMenu);
 });
